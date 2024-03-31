@@ -1,0 +1,10 @@
+
+*.pdf
+*.png
+*.o
+*.a
+*.d
+*.out
+miniRT
+.vscode/
+tests/assertz/
