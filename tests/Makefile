@@ -1,10 +1,10 @@
 NAME = test.out
 
-LIBFT_DIR = ../libft/
+LIBFT_DIR = ../src/libs/libft/
 ASSERTZ_DIR = ./assertz/
 
 
-# LIBFT   = $(LIBFT_DIR)libft.a
+LIBFT   = $(LIBFT_DIR)libft.a
 ASSERTZ = $(ASSERTZ_DIR)assertz.a
 
 SOURCES_PROGRAM  = \
@@ -29,11 +29,11 @@ DEPENDS = $(SOURCES:.c=.d)
 
 all : $(NAME)
 
-$(NAME) : $(ASSERTZ) $(OBJECTS)
-	$(CC) $(OBJECTS) -o $@  $(ASSERTZ)
+$(NAME) : $(ASSERTZ) $(OBJECTS) $(LIBFT)
+	$(CC) $(OBJECTS) -o $@  $(ASSERTZ) $(LIBFT)
 
 %.o : %.c
-	$(CC) -MMD -c $< -o $@ -DALL -I../src/includes/ -I./assertz/
+	$(CC) -MMD -c $< -o $@ -DALL -I../src/includes/ -I./assertz/ -I$(LIBFT_DIR) -DTEST
 
 -include $(DEPENDS)
 

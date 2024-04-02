@@ -20,7 +20,8 @@ LIBML_A = $(MLX_DIR)libmlx.a
 
 LIBS = $(LIBFT_A) $(LIBML_A)
 
-SOURCES_FILES = main.c
+SOURCES_FILES = main.c \
+				matrix.c
 
 
 # SOURCES_FILES_BONUS = colors.c \
@@ -66,10 +67,9 @@ $(NAME) : $(LIBS) $(OBJECTS)
 	$(CC) $(FLAGS) $(OBJECTS) -o $@ $(LIBFT_A) $(LIBML_A) -lXext -lX11 -lm
 
 %.o : %.c
-	$(CC) -MMD -c $< -o $@
+	$(CC) -I$(INCL_DIR) -I$(LIBFT_DIR) -MMD -c $< -o $@
 
 -include $(DEPENDS)
--include $(DEPENDS_BONUS)
 
 $(LIBS) :
 	$(MAKE) -C $(LIBFT_DIR)
@@ -80,8 +80,8 @@ clean :
 	$(MAKE) -C $(MLX_DIR) clean
 	$(RM) $(OBJECTS)
 	$(RM) $(DEPENDS)
-# $(RM) $(OBJECTS_BONUS)
-# $(RM) $(DEPENDS_BONUS)
+#$(RM) $(OBJECTS_BONUS)
+#$(RM) $(DEPENDS_BONUS)
 
 fclean : clean
 	$(RM) $(NAME)

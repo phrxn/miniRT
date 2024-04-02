@@ -6,12 +6,24 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 19:19:47 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/03/30 21:37:46 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/04/02 21:45:15 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 #include <stdlib.h>
+#include "libft.h"
+
+#ifdef TEST //delete.... please!!!
+	void *malloc_mock_matrix(size_t size);
+	void *ft_calloc_mock_matrix(size_t nitems, size_t size);
+	void free_mock_matrix(void *freez);
+
+	#define malloc malloc_mock_matrix
+	#define ft_calloc ft_calloc_mock_matrix
+	#define free free_mock_matrix
+#endif
+
 
 static int	get_position(t_matrix *matrix, int row, int col)
 {
@@ -45,7 +57,7 @@ t_matrix	*create_matrix(int rows, int cols)
 		return (NULL);
 	matrix->rows = rows;
 	matrix->cols = cols;
-	matrix->elements = malloc(sizeof(*matrix->elements) * elements_amount);
+	matrix->elements = ft_calloc(elements_amount, sizeof(*matrix->elements));
 	if (!matrix->elements)
 		destroy_matrix(&matrix);
 	return (matrix);
@@ -57,6 +69,6 @@ void	destroy_matrix(t_matrix **matrix)
 		return ;
 	if ((*matrix)->elements)
 		free((*matrix)->elements);
-	free(matrix);
+	free(*matrix);
 	*matrix = NULL;
 }

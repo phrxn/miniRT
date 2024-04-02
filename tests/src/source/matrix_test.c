@@ -4,9 +4,86 @@
 
 #include "../../assertz/assertz.h"
 
+static int count_malloc = 0;
+static int count_ft_calloc = 0;
+static int count_free = 0;
+
+t_matrix malloc_1;
+t_matrix malloc_1_to_destroy;
+double matrix_elements[4] = {1,2,3,4};
+
+
+t_matrix malloc_2_to_destroy;
+double matrix_elements_2_to_destroy[4] = {1,2,3,4};
+
 void *malloc_mock_matrix(size_t size){
+	if (count_malloc == 0)
+	{
+		count_malloc++;
+		return NULL;
+	}
+	if (count_malloc == 1)
+	{
+		count_malloc++;
+		return &malloc_1;
+	}
+	if (count_malloc == 2)
+	{
+		count_malloc++;
+		return &malloc_1;
+	}
 	return NULL;
 }
+
+void *ft_calloc_mock_matrix(size_t nitems, size_t size)
+{
+
+	if (count_ft_calloc == 0)
+	{
+		count_ft_calloc++;
+		return NULL;
+	}
+	if (count_ft_calloc == 1)
+	{
+		count_ft_calloc++;
+		return matrix_elements;
+	}
+	return NULL;
+}
+
+void free_mock_matrix(void *freez)
+{
+	if (count_free == 0)
+	{
+		count_free++;
+		return ;
+	}
+	if (count_free == 1)
+	{
+		count_free++;
+		assert_address(&malloc_1_to_destroy, freez, "free_mock_matrix free->malloc_1_to_destroy");
+		return ;
+	}
+	if (count_free == 2)
+	{
+		count_free++;
+		assert_address(&matrix_elements_2_to_destroy, freez, "free_mock_matrix free->matrix_elements_2_to_destroy");
+		return ;
+	}
+	if (count_free == 3)
+	{
+		count_free++;
+		assert_address(&malloc_2_to_destroy, freez, "free_mock_matrix free->malloc_2_to_destroy");
+		return ;
+	}
+}
+
+
+
+
+
+
+
 
 static void	get_element_test()
 {
@@ -89,6 +166,56 @@ static void	set_element_test()
 	assert_svalue(33, matrix_2_2_elements[3], "set_element matrix 2x2");
 }
 
+void create_matrix_test()
+{
+	create_subtitle("create_matrix_test");
+
+    //must be free
+	t_matrix *must_be_null = create_matrix(3,3);
+	assert_address(NULL, must_be_null, "must_be_null ");
+
+	//erro ft_calloc
+	t_matrix *error_ft_calloc = create_matrix(3,3);
+	assert_address(NULL, error_ft_calloc, "error_ft_calloc ");
+
+	//all ok
+	t_matrix *all_ok_matrix = create_matrix(2,2);
+	assert_address(&malloc_1, all_ok_matrix, "all_ok_matrix matrix");
+	assert_address(matrix_elements, all_ok_matrix->elements, "all_ok_matrix elements address");
+}
+
+void destroy_matrix_test()
+{
+	create_subtitle("destroy_matrix_test");
+
+	//all null
+	destroy_matrix(NULL);
+
+	t_matrix *null_point = NULL;
+	destroy_matrix(&null_point);
+
+	//valid matrix, but invalid element address(NULL)
+	t_matrix *valid_matrix = &malloc_1_to_destroy;
+	destroy_matrix(&valid_matrix);
+	assert_address(NULL, valid_matrix, "destroy_matrix_test valid_matrix");
+
+
+	//valid matrix with valid element address
+	t_matrix *valid_matrix2 = &malloc_2_to_destroy;
+	valid_matrix2->elements = matrix_elements_2_to_destroy;
+	destroy_matrix(&valid_matrix2);
+	assert_address(NULL, valid_matrix2, "destroy_matrix_test valid_matrix2");
+
+
+
+
+
+
+
+
+	assert_utils_print_ok("destroy_matrix ok");
+}
+
 void matrix_test(int argc, char **argv)
 {
 
@@ -99,5 +226,9 @@ void matrix_test(int argc, char **argv)
 
 	get_element_test();
 	set_element_test();
+	create_matrix_test();
+	destroy_matrix_test();
 
 }
+
+#undef malloc_mock_matrix
