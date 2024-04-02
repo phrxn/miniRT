@@ -10,15 +10,15 @@ FLAGS = -Wall -Werror -Wextra
 SRCS_DIR = source/
 INCL_DIR = includes/
 #BONU_DIR = bonus/
-# LIBS_DIR = libs/
-# LIBFT_DIR = $(LIBS_DIR)libft/
-# MLX_DIR = $(LIBS_DIR)minilibx-linux/
+LIBS_DIR = libs/
+LIBFT_DIR = $(LIBS_DIR)libft/
+MLX_DIR = $(LIBS_DIR)minilibx-linux/
 
 #libs
-# LIBFT_A = $(LIBFT_DIR)libft.a
-# LIBML_A = $(MLX_DIR)libmlx.a
+LIBFT_A = $(LIBFT_DIR)libft.a
+LIBML_A = $(MLX_DIR)libmlx.a
 
-# LIBS = $(LIBFT_A)
+LIBS = $(LIBFT_A) $(LIBML_A)
 
 SOURCES_FILES = main.c
 
@@ -40,7 +40,7 @@ SOURCES_FILES = main.c
 # $(BONU_DIR)menu_bonus.c \
 # $(BONU_DIR)menu2_bonus.c \
 # $(BONU_DIR)main_bonus.c \
-# $(BONU_DIR)map_bonus.c \
+# $(BONU_DI $(LIBFT_A)R)map_bonus.c \
 # $(BONU_DIR)map2_bonus.c \
 # $(BONU_DIR)matrix_bonus.c \
 # $(BONU_DIR)point_bonus.c \
@@ -76,8 +76,8 @@ $(LIBS) :
 	$(MAKE) -C $(MLX_DIR)
 
 clean :
-# $(MAKE) -C $(LIBFT_DIR) fclean
-# $(MAKE) -C $(MLX_DIR) clean
+	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
 	$(RM) $(OBJECTS)
 	$(RM) $(DEPENDS)
 # $(RM) $(OBJECTS_BONUS)
@@ -85,6 +85,7 @@ clean :
 
 fclean : clean
 	$(RM) $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re : fclean all
 
