@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 19:19:47 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/02 21:45:15 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/04/06 15:03:50 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 #include "libft.h"
 
 #ifdef TEST //delete.... please!!!
-	void *malloc_mock_matrix(size_t size);
-	void *ft_calloc_mock_matrix(size_t nitems, size_t size);
-	void free_mock_matrix(void *freez);
-
+	void	*malloc_mock_matrix(size_t size);
+	void	*ft_calloc_mock_matrix(size_t nitems, size_t size);
+	void	free_mock_matrix(void *freez);
 	#define malloc malloc_mock_matrix
 	#define ft_calloc ft_calloc_mock_matrix
 	#define free free_mock_matrix
 #endif
-
 
 static int	get_position(t_matrix *matrix, int row, int col)
 {

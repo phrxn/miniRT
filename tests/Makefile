@@ -8,16 +8,26 @@ LIBFT   = $(LIBFT_DIR)libft.a
 ASSERTZ = $(ASSERTZ_DIR)assertz.a
 
 SOURCES_PROGRAM  = \
-			     ../src/source/matrix.c
+			     ../src/source/matrix.c\
+				 ../src/source/matrix_operations.c\
+				 ../src/source/matrix_operations_2.c\
+				 ../src/source/matrix_operations_3.c\
+				 ../src/source/matrix_operations_4.c
 
 
 
 SOURCES_TESTS    = \
-					src/source/matrix_test.c
+					src/source/matrix_test.c\
+					src/source/matrix_operations_test.c
+
+SOURCES_DEBUG    = \
+					../debug/compare.c\
+					../debug/print_matrix.c
 
 
 SOURCES :=	$(SOURCES_PROGRAM)\
 			$(SOURCES_TESTS)\
+			$(SOURCES_DEBUG)\
 			main.c
 
 CC = gcc
@@ -30,10 +40,10 @@ DEPENDS = $(SOURCES:.c=.d)
 all : $(NAME)
 
 $(NAME) : $(ASSERTZ) $(OBJECTS) $(LIBFT)
-	$(CC) $(OBJECTS) -o $@  $(ASSERTZ) $(LIBFT)
+	$(CC) $(OBJECTS) -o $@  $(ASSERTZ) $(LIBFT) -lm
 
 %.o : %.c
-	$(CC) -MMD -c $< -o $@ -DALL -I../src/includes/ -I./assertz/ -I$(LIBFT_DIR) -DTEST
+	$(CC) -MMD -c $< -o $@ -DALL -I../debug/ -I../src/includes/ -I./assertz/ -I$(LIBFT_DIR) -DTEST
 
 -include $(DEPENDS)
 
