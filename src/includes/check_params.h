@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_params.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 20:09:42 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 18:42:55 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/04/13 18:36:15 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/04/13 19:11:38 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_params.h"
+#ifndef CHECK_PARAMS_H
+# define CHECK_PARAMS_H
 
-int	main(int argc, char *argv[])
-{
-	check_params(argc, argv);
-	return (0);
-}
+# define MSG_INV_PARAMS "Invalid number of parameters"
+# define MSG_INV_EXTENSION "Invalid file extension, must be \".rt\""
+
+void	check_params(int argc, char *argv[]);
+
+#endif

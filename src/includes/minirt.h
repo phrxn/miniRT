@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 20:09:42 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 18:42:55 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/04/13 17:58:06 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/04/13 18:02:24 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_params.h"
+#ifndef MINIRT_H
+# define MINIRT_H
 
-int	main(int argc, char *argv[])
+typedef struct s_minirt
 {
-	check_params(argc, argv);
-	return (0);
-}
+
+}			t_minirt;
+
+#endif

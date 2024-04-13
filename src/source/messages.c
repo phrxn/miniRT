@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   messages.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 20:09:42 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 18:42:55 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/04/13 18:11:58 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/04/13 18:27:32 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_params.h"
+#include "messages.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	show_error_message(char *message)
 {
-	check_params(argc, argv);
-	return (0);
+	ft_putendl_fd("Error", 2);
+	if (message)
+	{
+		ft_putendl_fd(message, 2);
+		return ;
+	}
 }

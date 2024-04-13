@@ -21,7 +21,11 @@ LIBML_A = $(MLX_DIR)libmlx.a
 LIBS = $(LIBFT_A) $(LIBML_A)
 
 SOURCES_FILES = main.c \
-				matrix.c
+				matrix.c \
+				messages.c \
+				exit.c \
+				minirt.c \
+				check_params.c
 
 
 # SOURCES_FILES_BONUS = colors.c \

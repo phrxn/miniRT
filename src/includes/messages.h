@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   messages.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 20:09:42 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 18:42:55 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/04/13 18:11:25 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/04/13 18:27:56 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_params.h"
+#ifndef MESSSAGES_H
+# define MESSSAGES_H
 
-int	main(int argc, char *argv[])
-{
-	check_params(argc, argv);
-	return (0);
-}
+void	show_error_message(char *message);
+
+#endif

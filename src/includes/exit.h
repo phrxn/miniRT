@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 20:09:42 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 18:42:55 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/04/13 18:14:15 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/04/13 18:46:18 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_params.h"
+#ifndef EXIT_H
+# define EXIT_H
 
-int	main(int argc, char *argv[])
-{
-	check_params(argc, argv);
-	return (0);
-}
+# include "minirt.h"
+
+void	exit_program(t_minirt *ptr, int exit_code, char *message);
+
+#endif
