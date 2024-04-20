@@ -7,4 +7,3 @@
 *.out
 miniRT
 .vscode/
-tests/assertz/
