@@ -1,5 +1,5 @@
 #include "compare.h"
-#include "../src/includes/matrix.h"
+#include "matrix.h"
 #include <math.h>
 
 int compare_double(double a, double b)

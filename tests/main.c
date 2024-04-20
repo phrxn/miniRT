@@ -1,12 +1,12 @@
-#include "main.h"
-
-int	g_global_config;
+#include "canvas_test.h"
+#include "matrix_operations_test.h"
+#include "matrix_test.h"
 
 int main(int argc, char *argv[])
 {
 
-	//matrix_test(argc, argv);
+	matrix_test(argc, argv);
 	matrix_operations_test(argc, argv);
-
+	canvas_test(argc, argv);
 	return 0;
 }

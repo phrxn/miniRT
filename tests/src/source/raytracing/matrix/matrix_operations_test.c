@@ -6,7 +6,7 @@
 #include <math.h>
 
 //test
-#include "../../assertz/assertz.h"
+#include "assertz.h"
 
 //debug
 #include "compare.h"

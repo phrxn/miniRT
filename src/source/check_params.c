@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 18:37:04 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 19:19:12 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/04/20 16:21:44 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,4 @@ void	check_params(int argc, char *argv[])
 		exit_program(NULL, 1, MSG_INV_PARAMS);
 	if (!is_extension_valid(argv[1]))
 		exit_program(NULL, 1, MSG_INV_EXTENSION);
-
 }

@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 20:09:42 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 21:27:09 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/04/13 19:26:39 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/04/13 21:26:37 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_params.h"
-#include "minirt.h"
+#include "file.h"
+#include "messages.h"
+#include <fcntl.h>
 
-int	main(int argc, char *argv[])
+int	open_file(char *file_name)
 {
-	t_minirt	minirt;
+	int	fd;
 
-	check_params(argc, argv);
-	return (0);
+	fd = open(file_name, O_RDONLY);
+	if (fd == -1)
+		show_error_perror(MSG_OPEN_RT_FILE);
+	return fd;
 }

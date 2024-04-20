@@ -1,7 +1,7 @@
 #ifndef COMPARE_H
 #define COMPARE_H
 
-#include "../src/includes/matrix.h"
+#include "matrix.h"
 
 #define EPSILON 0.00001
 

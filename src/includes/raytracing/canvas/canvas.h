@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.h                                           :+:      :+:    :+:   */
+/*   canvas.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 19:13:30 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/11 19:54:12 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/04/18 20:00:15 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/04/18 21:09:07 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATRIX_H
-# define MATRIX_H
-# include <stdlib.h>
+#ifndef CANVAS_H
+# define CANVAS_H
 
-# define MATRIX_4X4_SIZE 16
+# define WIN_WIDTH 500
+# define WIN_HIGHT 500
+# define COLOR_MAX 255
 
-typedef struct s_matrix
+typedef struct s_color
 {
-	int		rows;
-	int		cols;
-	double	*elements;
-}	t_matrix;
+	double	red;
+	double	green;
+	double	blue;
+}		t_color;
 
-double		get_element(t_matrix *matrix, int row, int col);
+typedef struct s_canvas
+{
+	int		width;
+	int		hight;
+	int		pixels[WIN_WIDTH * WIN_HIGHT];
+	char	is_endian;
+}		t_canvas;
 
-void		set_element(t_matrix *matrix, int row, int col, double value);
-
-t_matrix	*create_matrix(int rows, int cols);
-
-void		destroy_matrix(t_matrix **matrix);
+void	set_pixel(t_canvas *canvas, int row, int col, t_color *color);
 
 #endif

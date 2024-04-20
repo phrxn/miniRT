@@ -2,7 +2,7 @@
 #include "matrix.h"
 #include "string.h"
 
-#include "../../assertz/assertz.h"
+#include "assertz.h"
 
 static int count_malloc = 0;
 static int count_ft_calloc = 0;
@@ -205,13 +205,6 @@ void destroy_matrix_test()
 	valid_matrix2->elements = matrix_elements_2_to_destroy;
 	destroy_matrix(&valid_matrix2);
 	assert_address(NULL, valid_matrix2, "destroy_matrix_test valid_matrix2");
-
-
-
-
-
-
-
 
 	assert_utils_print_ok("destroy_matrix ok");
 }

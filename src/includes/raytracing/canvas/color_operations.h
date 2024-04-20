@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   color_operations.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 20:09:42 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 21:27:09 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/04/18 22:05:20 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/04/18 22:19:49 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_params.h"
-#include "minirt.h"
+#ifndef COLOR_OPERATIONS_H
+# define COLOR_OPERATIONS_H
+# include "canvas.h"
 
-int	main(int argc, char *argv[])
-{
-	t_minirt	minirt;
+void	color_addition(t_color *a, t_color *b, t_color *result);
 
-	check_params(argc, argv);
-	return (0);
-}
+void	color_subtration(t_color *a, t_color *b, t_color *result);
+
+void	color_mult_scalar(t_color *a, double scalar, t_color *result);
+
+void	color_mult(t_color *a, t_color *b, t_color *result);
+
+#endif

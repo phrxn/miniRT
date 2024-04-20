@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   matrix.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 20:09:42 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 21:27:09 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/03/30 19:13:30 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/04/13 22:17:58 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_params.h"
-#include "minirt.h"
+#ifndef MATRIX_H
+# define MATRIX_H
+# include <stdlib.h>
 
-int	main(int argc, char *argv[])
+# define MATRIX_4X4_SIZE 16
+
+typedef struct s_matrix
 {
-	t_minirt	minirt;
+	int		rows;
+	int		cols;
+	double	*elements;
+}	t_matrix;
 
-	check_params(argc, argv);
-	return (0);
-}
+double		get_element(t_matrix *matrix, int row, int col);
+
+void		set_element(t_matrix *matrix, int row, int col, double value);
+
+t_matrix	*create_matrix(int rows, int cols);
+
+void		destroy_matrix(t_matrix **matrix);
+
+#endif
