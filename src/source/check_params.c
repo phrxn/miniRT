@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_params.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 18:37:04 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/20 16:21:44 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:28:13 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	is_extension_valid(char *arg)
 		return (0);
 	if (ft_strncmp(extension, ".rt", 4))
 		return (0);
-	return(1);
+	return (1);
 }
 
 void	check_params(int argc, char *argv[])

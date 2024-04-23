@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 19:13:30 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 22:17:58 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/04/20 19:12:28 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 # include <stdlib.h>
 
 # define MATRIX_4X4_SIZE 16
+
+# define POINT						1
+# define VECTOR						0
+
+# define X							0
+# define Y							1
+# define Z							2
+# define W							3
 
 typedef struct s_matrix
 {

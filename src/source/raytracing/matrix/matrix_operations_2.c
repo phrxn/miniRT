@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_operations_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 15:04:27 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/08 18:01:50 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:31:25 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ double	matrix_get_magnitude(t_matrix *a)
 	z = a->elements[Z];
 	w = a->elements[W];
 	magnitude = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2) + pow(w, 2));
-	return(magnitude);
+	return (magnitude);
 }
 
 int	matrix_normalization(t_matrix *a, t_matrix *unit)
@@ -79,9 +79,12 @@ int	matrix_cross(t_matrix *a, t_matrix *b, t_matrix *c)
 
 	if (matrix_is_vector(a) || matrix_is_vector(b))
 		return (ERR_NOT_VECTOR);
-	c->elements[X] = a->elements[Y] * b->elements[Z] - a->elements[Z] * b->elements[Y];
-	c->elements[Y] = a->elements[Z] * b->elements[X] - a->elements[X] * b->elements[Z];
-	c->elements[Z] = a->elements[X] * b->elements[Y] - a->elements[Y] * b->elements[X];
+	c->elements[X] = a->elements[Y] * b->elements[Z] \
+				- a->elements[Z] * b->elements[Y];
+	c->elements[Y] = a->elements[Z] * b->elements[X] \
+				- a->elements[X] * b->elements[Z];
+	c->elements[Z] = a->elements[X] * b->elements[Y] \
+				- a->elements[Y] * b->elements[X];
 	c->elements[W] = VECTOR;
 	return (OK_OPERATION);
 }

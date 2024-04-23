@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:00:21 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/18 22:21:33 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:37:47 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static int	color_double_to_pixel(double color)
 	if (color_tmp < 0)
 		return (0);
 	if (color_tmp > COLOR_MAX)
-		return(COLOR_MAX);
-	return(color_tmp);
+		return (COLOR_MAX);
+	return (color_tmp);
 }
 
 static int	color_to_pixel(t_color *color, char endian)

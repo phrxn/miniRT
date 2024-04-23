@@ -1,5 +1,3 @@
-# variables
-
 # =============== VARIABLES ===============
 
 NAME = miniRT
@@ -12,6 +10,7 @@ FLAGS = -Wall -Werror -Wextra
 
 # ++++++++++ SOURCES ++++++++++
 DIR_SOURCE = source/
+DIR_ERRORS = source/errors/
 DIR_MATRIX = source/raytracing/matrix/
 DIR_CANVAS = source/raytracing/canvas/
 
@@ -27,7 +26,14 @@ LIBS = $(LIBFT_A) $(LIBML_A)
 
 
 # =============== SOURCES FILES ===============
-FILES_MATRIX =	matrix_operations_2.c \
+FILES_ERRORS =	matrix_errors.c
+
+FILES_MATRIX =	matrix_alloc_2.c \
+				matrix_alloc_3.c \
+				matrix_alloc.c \
+				matrix_fill_2.c \
+				matrix_fill.c \
+				matrix_operations_2.c \
 				matrix_operations_3.c \
 				matrix_operations_4.c \
 				matrix_operations.c \
@@ -42,15 +48,16 @@ FILES_SOURCES = check_params.c \
 				minirt.c \
 				main.c
 
-
 # =============== INCLUDES FILES ===============
 INCLUDES =	includes/ \
+			includes/errors \
 			includes/raytracing/canvas \
 			includes/raytracing/matrix
 
 
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
-OPERATIONS_F = $(addprefix $(DIR_MATRIX), $(FILES_MATRIX))
+ERRORS_F = $(addprefix $(DIR_ERRORS), $(FILES_ERRORS))
+MATRIX_F = $(addprefix $(DIR_MATRIX), $(FILES_MATRIX))
 CANVAS_F = $(addprefix $(DIR_CANVAS), $(FILES_CANVAS))
 SOURCES_F = $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
 
@@ -58,9 +65,14 @@ SOURCES_F = $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
 
-SOURCES = $(SOURCES_F) $(OPERATIONS_F) $(CANVAS_F)
+SOURCES = $(ERRORS_F) $(SOURCES_F) $(MATRIX_F) $(CANVAS_F)
 OBJECTS = $(SOURCES:.c=.o)
 DEPENDS = $(SOURCES:.c=.d)
+
+
+
+
+
 
 
 

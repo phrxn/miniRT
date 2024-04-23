@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_operations_3.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:25:52 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/11 22:46:42 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:50:48 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,14 @@ int	matrix_inverse_4x4(t_matrix *matrix_4x4, t_matrix *result)
 	unsigned int	count_rows;
 	unsigned int	count_cols;
 
-
 	determinant = matrix_determinant_4x4(matrix_4x4, result);
 	if (!determinant)
 		return (ERR_DETERMINANT_ZERO);
 	count_rows = 0;
-	while(count_rows < 4)
+	while (count_rows < 4)
 	{
 		count_cols = 0;
-		while(count_cols < 4)
+		while (count_cols < 4)
 		{
 			cofactor = cofactor_3x3(matrix_4x4, count_rows, count_cols);
 			new_value = cofactor / determinant;

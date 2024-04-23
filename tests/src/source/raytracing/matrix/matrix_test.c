@@ -16,7 +16,8 @@ double matrix_elements[4] = {1,2,3,4};
 t_matrix malloc_2_to_destroy;
 double matrix_elements_2_to_destroy[4] = {1,2,3,4};
 
-void *malloc_mock_matrix(size_t size){
+void *malloc_mock_matrix(size_t size)
+{
 	if (count_malloc == 0)
 	{
 		count_malloc++;
@@ -32,12 +33,13 @@ void *malloc_mock_matrix(size_t size){
 		count_malloc++;
 		return &malloc_1;
 	}
-	return NULL;
+#undef malloc_mock_matrix
+	return malloc(size);
+#define malloc_mock_matrix
 }
 
 void *ft_calloc_mock_matrix(size_t nitems, size_t size)
 {
-
 	if (count_ft_calloc == 0)
 	{
 		count_ft_calloc++;
@@ -48,7 +50,9 @@ void *ft_calloc_mock_matrix(size_t nitems, size_t size)
 		count_ft_calloc++;
 		return matrix_elements;
 	}
-	return NULL;
+#undef ft_calloc_mock_matrix
+	return calloc(nitems, size);
+#define ft_calloc_mock_matrix
 }
 
 void free_mock_matrix(void *freez)
@@ -76,9 +80,10 @@ void free_mock_matrix(void *freez)
 		assert_address(&malloc_2_to_destroy, freez, "free_mock_matrix free->malloc_2_to_destroy");
 		return ;
 	}
+#undef free_mock_matrix
+	free(freez);
+#define free_mock_matrix
 }
-
-
 
 
 
@@ -225,3 +230,5 @@ void matrix_test(int argc, char **argv)
 }
 
 #undef malloc_mock_matrix
+#undef ft_calloc_mock_matrix
+#undef free_mock_matrix

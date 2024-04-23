@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   messages.h                                         :+:      :+:    :+:   */
+/*   matrix_alloc_3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 18:11:25 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/22 19:21:35 by gacalaza         ###   ########.fr       */
+/*   Created: 2024/04/20 19:02:02 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/04/22 22:07:10 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MESSAGES_H
-# define MESSAGES_H
+#include "matrix_alloc.h"
+#include "matrix.h"
+#include "matrix_operations.h"
+#include "matrix_fill.h"
+#include "messages.h"
+#include "matrix_errors.h"
+#include <stdlib.h>
 
-void	show_error_method(char *method_name, char *message);
-void	show_error_message(char *message);
-void	show_error_perror(char *message);
+t_matrix	*matrix_create_shearing(t_shearing *shearing)
+{
+	t_matrix	*new_matrix;
 
-#endif
+	new_matrix = create_matrix(4, 4);
+	if (!new_matrix)
+		return (new_matrix);
+	matrix_fill_shearing(new_matrix, shearing);
+	return (new_matrix);
+}

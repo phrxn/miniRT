@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_operations.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 14:35:20 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 22:18:12 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:38:50 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,19 @@
 # define ERR_MATRIX_MUL_INV_RESULT	6
 # define ERR_DETERMINANT_ZERO 		7
 
-# define POINT						1
-# define VECTOR						0
-
-# define X							0
-# define Y							1
-# define Z							2
-# define W							3
+# define MERR_ROWS_SIZE				"The number of rows is different in both \
+matrices."
+# define MERR_COLS_SIZE				"The number of columns is different in \
+both matrices."
+# define MERR_NOT_VECTOR			"The matrix isn't a vector."
+# define MERR_MAGNITUDE_ZERO		"The vector magnitude is zero."
+# define MERR_MATRIX_MUL_ROW_COL	"The number of columns in A matrix is \
+different from matrix B."
+# define MERR_MATRIX_MUL_INV_RESULT	"The number of rows in result matrix is \
+different from matrix A or the number of columns in result matrix \
+is different from matrix B."
+# define MERR_DETERMINANT_ZERO 		"Can't inverse matrix, the determinant\
+									 is zero."
 
 double	matrix_get_magnitude(t_matrix *a);
 int		matrix_normalization(t_matrix *a, t_matrix *unit);

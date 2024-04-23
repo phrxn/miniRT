@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:26:39 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 21:26:37 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:25:29 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int	open_file(char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		show_error_perror(MSG_OPEN_RT_FILE);
-	return fd;
+	return (fd);
 }

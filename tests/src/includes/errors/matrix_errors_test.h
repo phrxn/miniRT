@@ -1,20 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   messages.h                                         :+:      :+:    :+:   */
+/*   matrix_errors_test.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 18:11:25 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/22 19:21:35 by gacalaza         ###   ########.fr       */
+/*   Created: 2024/04/20 19:59:22 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/04/22 19:52:38 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MESSAGES_H
-# define MESSAGES_H
-
-void	show_error_method(char *method_name, char *message);
-void	show_error_message(char *message);
-void	show_error_perror(char *message);
-
-#endif
