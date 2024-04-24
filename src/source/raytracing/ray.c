@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 19:32:54 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/04/23 21:22:30 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/04/23 22:24:10 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "matrix_alloc.h"
 #include "matrix_utils.h"
 #include "stdlib.h"
+#include "libft.h"
 
 t_matrix	*position(t_ray *ray, double t)
 {
@@ -33,7 +34,7 @@ t_ray	*create_ray(t_matrix *origin, t_matrix *direction)
 {
 	t_ray	*new_ray;
 
-	new_ray = malloc(sizeof(*new_ray) * 1);
+	new_ray = ft_calloc(1, sizeof(*new_ray));
 	if (!new_ray)
 		return (NULL);
 	new_ray->origin = matrix_create_point(0, 0, 0);
@@ -53,7 +54,7 @@ void	destroy_ray(t_ray **ray)
 	t_ray	*ray_to_free;
 
 	ray_to_free = *ray;
-	if (!ray_to_free)
+	if (!ray || !ray_to_free)
 		return ;
 	if (ray_to_free->origin)
 		destroy_matrix(&ray_to_free->origin);
