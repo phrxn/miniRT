@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 19:32:54 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/04/23 21:04:19 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/04/23 21:22:30 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "matrix_alloc.h"
 #include "matrix_utils.h"
 #include "stdlib.h"
-
-#include "print_matrix.h"
 
 t_matrix	*position(t_ray *ray, double t)
 {
