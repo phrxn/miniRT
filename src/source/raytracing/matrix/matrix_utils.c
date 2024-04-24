@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_alloc_3.c                                   :+:      :+:    :+:   */
+/*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/20 19:02:02 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/04/23 20:10:46 by gacalaza         ###   ########.fr       */
+/*   Created: 2024/04/23 19:54:41 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/04/23 20:03:38 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "matrix_alloc.h"
+#include "matrix_utils.h"
 #include "matrix.h"
-#include "matrix_operations.h"
-#include "matrix_fill.h"
-#include "messages.h"
-#include "matrix_errors.h"
-#include <stdlib.h>
+#include "types.h"
 
-t_matrix	*matrix_create_shearing(t_shearing *shearing)
+void	matrix_copy(t_matrix *from, t_matrix *to)
 {
-	t_matrix	*new_matrix;
+	t_uint	size;
+	t_uint	count;
 
-	new_matrix = create_matrix(4, 4);
-	if (!new_matrix)
-		return (new_matrix);
-	matrix_fill_shearing(new_matrix, shearing);
-	return (new_matrix);
+	count = 0;
+	size = from->rows * from->cols;
+	to->rows = from->rows;
+	to->cols = from->cols;
+	while (size > count)
+	{
+		to->elements[count] = from->elements[count];
+		count++;
+	}
 }

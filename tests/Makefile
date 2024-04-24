@@ -15,15 +15,16 @@ CC = gcc
 
 
 # ++++++++++ SOURCES ++++++++++
-DIR_SOURCE = source/
-DIR_ERRORS = source/errors/
-DIR_MATRIX = source/raytracing/matrix/
-DIR_CANVAS = source/raytracing/canvas/
+DIR_SOURCE		= source/
+DIR_ERRORS		= source/errors/
+DIR_RAYTRACING	= source/raytracing/
+DIR_MATRIX		= source/raytracing/matrix/
+DIR_CANVAS		= source/raytracing/canvas/
 
 # ++++++++++ LIBRARIES ++++++++++
-DIR_LIBS = libs/
-DIR_LIBFT = $(DIR_LIBS)libft/
-DIR_MLX = $(DIR_LIBS)minilibx-linux/
+DIR_LIBS	= libs/
+DIR_LIBFT	= $(DIR_LIBS)libft/
+DIR_MLX		= $(DIR_LIBS)minilibx-linux/
 
 # =============== LIBRARIES ===============
 LIBFT_A = $(DIR_LIBFT)libft.a
@@ -43,7 +44,10 @@ FILES_MATRIX =	matrix_alloc_2.c \
 				matrix_operations_3.c \
 				matrix_operations_4.c \
 				matrix_operations.c \
+				matrix_utils.c \
 				matrix.c
+
+FILES_RAYTRACING = ray.c
 
 FILES_CANVAS = canvas.c
 
@@ -56,23 +60,26 @@ FILES_SOURCES = check_params.c \
 # =============== INCLUDES FILES ===============
 INCLUDES =	includes/ \
 			includes/errors \
+			includes/raytracing \
 			includes/raytracing/canvas \
 			includes/raytracing/matrix
 
 
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
-ERRORS_F = $(addprefix $(DIR_ERRORS), $(FILES_ERRORS))
-MATRIX_F = $(addprefix $(DIR_MATRIX), $(FILES_MATRIX))
-CANVAS_F = $(addprefix $(DIR_CANVAS), $(FILES_CANVAS))
-SOURCES_F = $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
+ERRORS_F		= $(addprefix $(DIR_ERRORS), $(FILES_ERRORS))
+MATRIX_F		= $(addprefix $(DIR_MATRIX), $(FILES_MATRIX))
+RAYTRACING_F	= $(addprefix $(DIR_RAYTRACING), $(FILES_RAYTRACING))
+CANVAS_F		= $(addprefix $(DIR_CANVAS), $(FILES_CANVAS))
+SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
 
 # =============== INCLUDES FILES + ITS DIRECTORIES ===============
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
 
-SOURCES = $(ERRORS_F) $(SOURCES_F) $(MATRIX_F) $(CANVAS_F)
+SOURCES = $(ERRORS_F) $(SOURCES_F) $(MATRIX_F) $(CANVAS_F) $(RAYTRACING_F)
 OBJECTS = $(SOURCES:.c=.o)
 DEPENDS = $(SOURCES:.c=.d)
+
 
 
 
