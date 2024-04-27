@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gacalaza <gacalaza@student.42.fr>          +#+  +:+       +#+         #
+#    By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/12 19:45:45 by gacalaza          #+#    #+#              #
-#    Updated: 2023/04/15 15:07:15 by gacalaza         ###   ########.fr        #
+#    Updated: 2024/04/27 02:39:11 by dmanoel-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS += get_next_line.c get_next_line_utils.c ft_printf.c ft_printf_utils.c
 
 BSRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c
 BSRCS += ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+BSRCS += $(SRCS)
 
 FLAGS = -Wall \
 		-Wextra \
