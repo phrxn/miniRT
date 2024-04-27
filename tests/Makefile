@@ -16,6 +16,7 @@ CC = gcc
 
 # ++++++++++ SOURCES ++++++++++
 DIR_SOURCE		= source/
+DIR_ARRAY		= source/array/
 DIR_ERRORS		= source/errors/
 DIR_RAYTRACING	= source/raytracing/
 DIR_MATRIX		= source/raytracing/matrix/
@@ -34,6 +35,8 @@ LIBS = $(LIBFT_A) $(LIBML_A)
 
 # =============== SOURCES FILES ===============
 FILES_ERRORS =	matrix_errors.c
+
+FILES_ARRAY  = array.c
 
 FILES_MATRIX =	matrix_alloc_2.c \
 				matrix_alloc_3.c \
@@ -59,6 +62,7 @@ FILES_SOURCES = check_params.c \
 
 # =============== INCLUDES FILES ===============
 INCLUDES =	includes/ \
+			includes/array \
 			includes/errors \
 			includes/raytracing \
 			includes/raytracing/canvas \
@@ -66,6 +70,7 @@ INCLUDES =	includes/ \
 
 
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
+ARRAY_F			= $(addprefix $(DIR_ARRAY), $(FILES_ARRAY))
 ERRORS_F		= $(addprefix $(DIR_ERRORS), $(FILES_ERRORS))
 MATRIX_F		= $(addprefix $(DIR_MATRIX), $(FILES_MATRIX))
 RAYTRACING_F	= $(addprefix $(DIR_RAYTRACING), $(FILES_RAYTRACING))
@@ -76,7 +81,7 @@ SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
 
-SOURCES = $(ERRORS_F) $(SOURCES_F) $(MATRIX_F) $(CANVAS_F) $(RAYTRACING_F)
+SOURCES = $(ERRORS_F) $(SOURCES_F) $(MATRIX_F) $(CANVAS_F) $(RAYTRACING_F) $(ARRAY_F)
 OBJECTS = $(SOURCES:.c=.o)
 DEPENDS = $(SOURCES:.c=.d)
 
@@ -157,7 +162,7 @@ fclean :
 	make -C $(LIBFT_DIR) fclean
 
 $(LIBFT) :
-	make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR) bonus
 
 $(ASSERTZ) :
 	make -C $(ASSERTZ_DIR)

@@ -3,6 +3,7 @@
 #include "matrix_test.h"
 #include "matrix_fill_test.h"
 #include "ray_test.h"
+#include "array_test.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,5 +15,7 @@ int main(int argc, char *argv[])
 	//canvas_test(argc, argv);
 	//matrix_fill_test(argc, argv);
 	ray_test(argc, argv);
+
+	array_test(argc, argv);
 	return 0;
 }
