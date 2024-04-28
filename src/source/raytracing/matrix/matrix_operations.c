@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 14:34:51 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/06 20:42:46 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:46:03 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	matrix_addition(t_matrix *a, t_matrix *b, t_matrix *c)
 	return (OK_OPERATION);
 }
 
-int	matrix_subtration(t_matrix *a, t_matrix *b, t_matrix *c)
+int	matrix_subtraction(t_matrix *a, t_matrix *b, t_matrix *c)
 {
 	int	count;
 	int	matrix_size;

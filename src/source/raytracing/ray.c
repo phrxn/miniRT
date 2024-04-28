@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 19:32:54 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/04/23 22:24:10 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/01 13:42:05 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ t_matrix	*position(t_ray *ray, double t)
 	return (new_point);
 }
 
+/**
+ * create_ray - create a new ray and copy the oring and direction
+*/
 t_ray	*create_ray(t_matrix *origin, t_matrix *direction)
 {
 	t_ray	*new_ray;

@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array.h                                            :+:      :+:    :+:   */
+/*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 23:13:35 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/30 17:24:35 by gacalaza         ###   ########.fr       */
+/*   Created: 2024/04/23 21:41:10 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/04/30 19:47:46 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARRAY_H
-# define ARRAY_H
+#ifndef SHAPE_H
+# define SHAPE_H
 
-# include "libft.h"
+# include "matrix.h"
 # include "types.h"
+# define TYPE_SPHERE	1
 
-t_list	*ft_lstget(t_list *head, t_uint index);
-void	ft_lstsort(t_list *head, void sort_function(void *a, void *b));
+typedef struct s_shape
+{
+	int			type;
+	void		*shape;
+	t_uint		id;
+	t_matrix	*transformation;
+}			t_shape;
+
+typedef struct s_sphere
+{
+	t_matrix	*center;
+	double		radius;
+}			t_sphere;
 
 #endif

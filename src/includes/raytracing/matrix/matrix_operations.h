@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 14:35:20 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/22 19:38:50 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:24:04 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		matrix_normalization(t_matrix *a, t_matrix *unit);
 int		matrix_dot(t_matrix *a, t_matrix *b, double *c);
 int		matrix_cross(t_matrix *a, t_matrix *b, t_matrix *c);
 int		matrix_addition(t_matrix *a, t_matrix *b, t_matrix *c);
-int		matrix_subtration(t_matrix *a, t_matrix *b, t_matrix *c);
+int		matrix_subtraction(t_matrix *a, t_matrix *b, t_matrix *c);
 void	matrix_negation(t_matrix *a);
 void	matrix_mult_scalar(t_matrix *a, double scalar);
 void	matrix_div_scalar(t_matrix *a, double scalar);

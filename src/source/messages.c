@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 18:11:58 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/22 13:28:32 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/01 14:31:16 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	show_error_method(char *method_name, char *message)
 		ft_putstr_fd(": ", 2);
 		if (message)
 			ft_putstr_fd(message, 2);
+		ft_putstr_fd("\n", 2);
 	}
 }
 

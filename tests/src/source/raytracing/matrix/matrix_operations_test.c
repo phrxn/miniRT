@@ -67,20 +67,20 @@ static void matrix_addition_test()
 
 
 
-static void matrix_subtration_test()
+static void matrix_subtraction_test()
 {
-	create_subtitle("matrix_subtration_test()");
+	create_subtitle("matrix_subctration_test()");
 
     //test 1 ERR_ROWS_SIZE
 	t_matrix matrix1_a; matrix1_a.rows = 1; matrix1_a.cols = 1;
 	t_matrix matrix1_b; matrix1_b.rows = 2; matrix1_b.cols = 1;
-	int returnz1 = matrix_subtration(&matrix1_a, &matrix1_b, NULL);
+	int returnz1 = matrix_subtraction(&matrix1_a, &matrix1_b, NULL);
 	assert_svalue(ERR_ROWS_SIZE, returnz1, "test subtration 1x1 2x1 (test ERR_ROWS_SIZE)");
 
     //test 2 ERR_COLS_SIZE
 	t_matrix matrix2_a; matrix2_a.rows = 1; matrix2_a.cols = 1;
 	t_matrix matrix2_b; matrix2_b.rows = 1; matrix2_b.cols = 2;
-	int returnz2 = matrix_subtration(&matrix2_a, &matrix2_b, NULL);
+	int returnz2 = matrix_subtraction(&matrix2_a, &matrix2_b, NULL);
 	assert_svalue(ERR_COLS_SIZE, returnz2, "test subtration 1x1 1x2 (test ERR_COLS_SIZE)");
 
 
@@ -91,7 +91,7 @@ static void matrix_subtration_test()
 	t_matrix matrix4a; matrix4a.rows = 1; matrix4a.cols = 1; matrix4a.elements = matrix4a_elements;
 	double matrix5a_elements[1]; matrix5a_elements[0] = -9090;
 	t_matrix matrix5a; matrix5a.rows = 1; matrix5a.cols = 1; matrix5a.elements = matrix5a_elements;
-	int returnz3 = matrix_subtration(&matrix3a, &matrix4a, &matrix5a);
+	int returnz3 = matrix_subtraction(&matrix3a, &matrix4a, &matrix5a);
 	assert_svalue(OK_OPERATION, returnz3,    "test subtration: test 3.1  1x1 1x1 return");
 	assert_svalue(-11, matrix5a_elements[0], "test subtration: matrix5a_elements[0]");
 
@@ -102,7 +102,7 @@ static void matrix_subtration_test()
 	t_matrix matrix4b; matrix4b.rows = 1; matrix4b.cols = 1; matrix4b.elements = matrix4b_elements;
 	double matrix5b_elements[1]; matrix5b_elements[0] = -9090;
 	t_matrix matrix5b; matrix5b.rows = 1; matrix5b.cols = 1; matrix5b.elements = matrix5b_elements;
-	int returnz4 = matrix_subtration(&matrix4b, &matrix3b, &matrix5b);
+	int returnz4 = matrix_subtraction(&matrix4b, &matrix3b, &matrix5b);
 	assert_svalue(OK_OPERATION, returnz4,  "test subtration: test 3.2  1x1 1x1 return");
 	assert_svalue(11, matrix5b_elements[0], "test subtration: matrix5b_elements[0]");
 
@@ -114,7 +114,7 @@ static void matrix_subtration_test()
 	double matrix41c_elements[2]; matrix41c_elements[0] = -9090;  matrix41c_elements[0] = -9999;
 	t_matrix matrix41c; matrix41c.rows = 1; matrix41c.cols = 1; matrix41c.elements = matrix41c_elements;
 
-	int returnz5 = matrix_subtration(&matrix41a, &matrix41b, &matrix41c);
+	int returnz5 = matrix_subtraction(&matrix41a, &matrix41b, &matrix41c);
 	assert_svalue(OK_OPERATION, returnz5,     "test subtration: test 4.1 1x2 1x2 return");
 	assert_svalue(19, matrix41c_elements[0],   "test subtration: test 4.1 matrix41c_elements[0]");
 	assert_svalue(8, matrix41c_elements[1],   "test subtration: test 4.1 matrix41c_elements[1]");
@@ -518,7 +518,7 @@ void matrix_operations_test(int argc, char **argv)
 	create_title("matrix_operations_test");
 
 	matrix_addition_test();
-	matrix_subtration_test();
+	matrix_subtraction_test();
 	matrix_negation_test();
 	matrix_mult_scalar_test();
 	matrix_div_scalar_test();

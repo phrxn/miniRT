@@ -13,6 +13,7 @@ DIR_SOURCE		= source/
 DIR_ARRAY		= source/array/
 DIR_ERRORS		= source/errors/
 DIR_RAYTRACING	= source/raytracing/
+DIR_INTERSECT	= source/raytracing/intersect/
 DIR_MATRIX		= source/raytracing/matrix/
 DIR_CANVAS		= source/raytracing/canvas/
 
@@ -44,7 +45,11 @@ FILES_MATRIX =	matrix_alloc_2.c \
 				matrix_utils.c \
 				matrix.c
 
-FILES_RAYTRACING = ray.c
+FILES_INTERSECT = intersect_sphere.c \
+				intersect_utils.c
+
+FILES_RAYTRACING =	ray.c \
+					world.c
 
 FILES_CANVAS = canvas.c
 
@@ -60,14 +65,15 @@ INCLUDES =	includes/ \
 			includes/array/ \
 			includes/errors/ \
 			includes/raytracing/ \
-			includes/raytracing/canvas/ \
+			includes/raytracing/canvas \
+			includes/raytracing/intersect \
 			includes/raytracing/matrix/
-
 
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
 ARRAY_F			= $(addprefix $(DIR_ARRAY), $(FILES_ARRAY))
 ERRORS_F		= $(addprefix $(DIR_ERRORS), $(FILES_ERRORS))
 MATRIX_F		= $(addprefix $(DIR_MATRIX), $(FILES_MATRIX))
+INTERSECT_F		= $(addprefix $(DIR_INTERSECT), $(FILES_INTERSECT))
 RAYTRACING_F	= $(addprefix $(DIR_RAYTRACING), $(FILES_RAYTRACING))
 CANVAS_F		= $(addprefix $(DIR_CANVAS), $(FILES_CANVAS))
 SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
@@ -75,8 +81,8 @@ SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
 # =============== INCLUDES FILES + ITS DIRECTORIES ===============
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
-
-SOURCES = $(ERRORS_F) $(SOURCES_F) $(MATRIX_F) $(CANVAS_F) $(RAYTRACING_F) $(ARRAY_F)
+SOURCES = $(ERRORS_F) $(SOURCES_F) $(MATRIX_F) $(CANVAS_F) $(RAYTRACING_F)
+SOURCES += $(INTERSECT_F) $(ARRAY_F)
 OBJECTS = $(SOURCES:.c=.o)
 DEPENDS = $(SOURCES:.c=.d)
 
