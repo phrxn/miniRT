@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 21:14:34 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/01 16:29:05 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/01 21:03:57 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "matrix.h"
 #include "matrix_alloc.h"
 #include "ray.h"
+
+#include <string.h>
 
 #include "assertz.h"
 
@@ -183,5 +185,7 @@ static void intersect_sphere_test1()
 
 void	intersect_sphere_test(int argc, char **argv)
 {
+	if (argc != 1 &&  strcmp(argv[1], "intersect_sphere_test") != 0)
+		return ;
 	intersect_sphere_test1();
 }
