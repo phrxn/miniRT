@@ -49,6 +49,7 @@ FILES_INTERSECT = intersect_sphere.c \
 				intersect_utils.c
 
 FILES_RAYTRACING =	ray.c \
+					hit.c \
 					world.c
 
 FILES_CANVAS = canvas.c
