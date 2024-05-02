@@ -12,7 +12,7 @@ void	set_pixel_test()
 
 	//test1 endian == 1
 	t_color colort; colort.red=1; colort.green = 0.5; colort.blue = 0.1;
-	t_canvas canvas; canvas.width = 10; canvas.hight = 3; canvas.is_endian = 1;
+	t_canvas canvas; canvas.width = 10; canvas.height = 3; canvas.is_endian = 1;
 	canvas.pixels[9] = 0;
 	set_pixel(&canvas, 0, 9, &colort);
 	int color = canvas.pixels[9];
@@ -21,7 +21,7 @@ void	set_pixel_test()
 
 	//test2 endian == 0
 	t_color test2Colort; test2Colort.red=1; test2Colort.green = 0.5; test2Colort.blue = 0.1;
-	t_canvas test2Canvas; test2Canvas.width = 10; test2Canvas.hight = 3; test2Canvas.is_endian = 0;
+	t_canvas test2Canvas; test2Canvas.width = 10; test2Canvas.height = 3; test2Canvas.is_endian = 0;
 	test2Canvas.pixels[9] = 0;
 	set_pixel(&test2Canvas, 0, 9, &test2Colort);
 	int test2color = test2Canvas.pixels[9];
