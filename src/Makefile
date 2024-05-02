@@ -50,6 +50,7 @@ FILES_INTERSECT = intersect_sphere.c \
 
 FILES_RAYTRACING =	ray.c \
 					hit.c \
+					transform.c \
 					world.c
 
 FILES_CANVAS = canvas.c

@@ -6,6 +6,7 @@
 #include "array_test.h"
 #include "intersect_sphere_test.h"
 #include "hit_test.h"
+#include "transform_test.h"
 
 int main(int argc, char *argv[])
 {
@@ -24,6 +25,7 @@ int main(int argc, char *argv[])
 
 	hit_test(argc, argv);
 
+	transform_test(argc, argv);
 
 	return 0;
 }

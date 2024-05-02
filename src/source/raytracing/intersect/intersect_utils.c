@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 21:19:18 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/01 15:57:31 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/01 20:07:37 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,8 @@ void	destroy_intersection2(void	*del)
 {
 	t_inter	*intersec;
 
-	intersec = (t_inter*)del;
+	intersec = (t_inter *)del;
 	if (!intersec)
 		return ;
 	free(intersec);
 }
-

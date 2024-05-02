@@ -56,6 +56,7 @@ FILES_INTERSECT = intersect_sphere.c \
 
 FILES_RAYTRACING =	ray.c \
 					hit.c \
+					transform.c \
 					world.c
 
 FILES_CANVAS = canvas.c
@@ -148,9 +149,6 @@ T_INCLUDES_F = $(addprefix -Isrc/, $(INCLUDES))
 # recipes
 
 all : $(NAME)
-
-printz :
-	@echo $(T_INCLUDES_F)
 
 $(NAME) : $(S_OBJECTS) $(T_OBJECTS) $(D_OBJECTS) $(ASSERTZ) $(LIBFT)
 	$(CC) $(S_OBJECTS) $(T_OBJECTS) $(D_OBJECTS) -o $@  $(ASSERTZ) $(LIBFT) -lm

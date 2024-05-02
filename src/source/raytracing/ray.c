@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 19:32:54 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/01 13:42:05 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/01 19:40:16 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,17 @@ t_matrix	*position(t_ray *ray, double t)
 }
 
 /**
- * create_ray - create a new ray and copy the oring and direction
+ * create_ray - create a new ray, with its own origin and direction, copying
+ * the values of the matrices passed as parameters
+ * 
+ * @origin:    the matrix to copy its values to ray oringin
+ * @direction: the matrix to copy its values to direction
+ * 
+ * Return:
+ * 	On success:
+ * 		A new malloced ray
+ *  On Failure:
+ * 		NULL is retorned
 */
 t_ray	*create_ray(t_matrix *origin, t_matrix *direction)
 {

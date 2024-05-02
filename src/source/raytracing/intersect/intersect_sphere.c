@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 21:14:34 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/01 15:52:50 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/01 21:11:14 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "libft.h"
 #include "math.h"
 #include "messages.h"
+#include "transform.h"
 
 static void	calc_abc(double abc[3], t_ray *ray, t_matrix *sphere_to_ray, int *s)
 {
@@ -41,7 +42,7 @@ static double	calc_disc(t_ray *ray, t_shape *sph, int *status, double abc[3])
 	t_sphere	*sphere;
 
 	*status = 0;
-	sphere = (t_sphere*) sph->shape;
+	sphere = (t_sphere *)sph->shape;
 	sphere_to_ray = matrix_create_subtraction(ray->origin, sphere->center);
 	if (!sphere_to_ray)
 		*status = 1;
@@ -98,11 +99,11 @@ static t_list	*make_inter(double t1, double t2, t_shape *shape, int *status)
 			destroy_intersection(&i0);
 		if (i1)
 			destroy_intersection(&i1);
+		show_error_method("intersect_sphere", MERR_INTER_MALLOC);
 		return (NULL);
 	}
 	return (item1);
 }
-
 
 /**
  * intersect_sphere - create a t_list of intersections
@@ -113,9 +114,12 @@ t_list	*intersect_sphere(t_shape *shape, t_ray *ray_transformed)
 	double	discriminant;
 	double	abc[3];
 	double	ts[2];
-	t_list	*lst;
-	discriminant = calc_disc(ray_transformed, shape, &status, abc);
 
+	ray_transformed = transform_ray(shape, ray_transformed);
+	if (!ray_transformed)
+		return (NULL);
+	discriminant = calc_disc(ray_transformed, shape, &status, abc);
+	destroy_ray(&ray_transformed);
 	if (status)
 	{
 		show_error_method("intersect_sphere", MERR_DETERMINANT_MALLOC);
@@ -125,8 +129,5 @@ t_list	*intersect_sphere(t_shape *shape, t_ray *ray_transformed)
 		return (NULL);
 	ts[T1] = (-abc[B] - sqrt(discriminant)) / (2 * abc[A]);
 	ts[T2] = (-abc[B] + sqrt(discriminant)) / (2 * abc[A]);
-	lst = make_inter(ts[T1], ts[T2], shape, &status);
-	if (!lst)
-		show_error_method("intersect_sphere", MERR_INTER_MALLOC);
-	return (lst);
+	return (make_inter(ts[T1], ts[T2], shape, &status));
 }
