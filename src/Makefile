@@ -6,9 +6,9 @@ CC = cc
 
 FLAGS = -Wall -Werror -Wextra
 
-# =============== DIRECTORIES ===============
+# ==================================================
 
-# ++++++++++ SOURCES ++++++++++
+# ++++++++++ SOURCES DIRECTORIES ++++++++++
 DIR_SOURCE		= source/
 DIR_ARRAY		= source/array/
 DIR_ERRORS		= source/errors/
@@ -16,8 +16,9 @@ DIR_RAYTRACING	= source/raytracing/
 DIR_INTERSECT	= source/raytracing/intersect/
 DIR_MATRIX		= source/raytracing/matrix/
 DIR_CANVAS		= source/raytracing/canvas/
+DIR_SHAPE		= source/raytracing/shape/
 
-# ++++++++++ LIBRARIES ++++++++++
+# ++++++++++ LIBRARIES DIRECTORIES ++++++++++
 DIR_LIBS	= libs/
 DIR_LIBFT	= $(DIR_LIBS)libft/
 DIR_MLX		= $(DIR_LIBS)minilibx-linux/
@@ -45,8 +46,8 @@ FILES_MATRIX =	matrix_alloc_2.c \
 				matrix_utils.c \
 				matrix.c
 
-FILES_INTERSECT = intersect_sphere.c \
-				intersect_utils.c
+FILES_INTERSECT =	intersect_sphere.c \
+					intersect_utils.c
 
 FILES_RAYTRACING =	ray.c \
 					hit.c \
@@ -62,6 +63,9 @@ FILES_SOURCES = check_params.c \
 				minirt.c \
 				main.c
 
+FILES_SHAPE =	shape_sphere.c \
+				shape.c
+
 # =============== INCLUDES FILES ===============
 INCLUDES =	includes/ \
 			includes/array/ \
@@ -69,22 +73,24 @@ INCLUDES =	includes/ \
 			includes/raytracing/ \
 			includes/raytracing/canvas \
 			includes/raytracing/intersect \
-			includes/raytracing/matrix/
+			includes/raytracing/matrix/ \
+			includes/raytracing/shape/
 
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
 ARRAY_F			= $(addprefix $(DIR_ARRAY), $(FILES_ARRAY))
+CANVAS_F		= $(addprefix $(DIR_CANVAS), $(FILES_CANVAS))
 ERRORS_F		= $(addprefix $(DIR_ERRORS), $(FILES_ERRORS))
 MATRIX_F		= $(addprefix $(DIR_MATRIX), $(FILES_MATRIX))
 INTERSECT_F		= $(addprefix $(DIR_INTERSECT), $(FILES_INTERSECT))
 RAYTRACING_F	= $(addprefix $(DIR_RAYTRACING), $(FILES_RAYTRACING))
-CANVAS_F		= $(addprefix $(DIR_CANVAS), $(FILES_CANVAS))
+SHAPE_F			= $(addprefix $(DIR_SHAPE), $(FILES_SHAPE))
 SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
 
 # =============== INCLUDES FILES + ITS DIRECTORIES ===============
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
-SOURCES = $(ERRORS_F) $(SOURCES_F) $(MATRIX_F) $(CANVAS_F) $(RAYTRACING_F)
-SOURCES += $(INTERSECT_F) $(ARRAY_F)
+SOURCES = $(ARRAY_F) $(ERRORS_F) $(MATRIX_F) $(INTERSECT_F) $(RAYTRACING_F)
+SOURCES += $(CANVAS_F) $(SHAPE_F) $(SOURCES_F)
 OBJECTS = $(SOURCES:.c=.o)
 DEPENDS = $(SOURCES:.c=.d)
 

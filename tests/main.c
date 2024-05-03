@@ -7,6 +7,7 @@
 #include "intersect_sphere_test.h"
 #include "hit_test.h"
 #include "transform_test.h"
+#include "shape_test.h"
 
 int main(int argc, char *argv[])
 {
@@ -26,6 +27,10 @@ int main(int argc, char *argv[])
 	hit_test(argc, argv);
 
 	transform_test(argc, argv);
+
+	shape_test(argc, argv);
+
+	shape_sphere_test(argc, argv);
 
 	return 0;
 }
