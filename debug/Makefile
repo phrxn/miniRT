@@ -1,0 +1,168 @@
+NAME = debug.out
+
+LIBFT_DIR = ../src/libs/libft/
+
+LIBFT   = $(LIBFT_DIR)libft.a
+
+
+CC = gcc
+
+# **************************** SOURCES ****************************
+
+# ++++++++++ SOURCES DIRECTORIES ++++++++++
+DIR_SOURCE		= source/
+DIR_ARRAY		= source/array/
+DIR_ERRORS		= source/errors/
+DIR_RAYTRACING	= source/raytracing/
+DIR_INTERSECT	= source/raytracing/intersect/
+DIR_MATRIX		= source/raytracing/matrix/
+DIR_CANVAS		= source/raytracing/canvas/
+DIR_SHAPE		= source/raytracing/shape/
+
+# ++++++++++ LIBRARIES DIRECTORIES ++++++++++
+DIR_LIBS	= libs/
+DIR_LIBFT	= $(DIR_LIBS)libft/
+DIR_MLX		= $(DIR_LIBS)minilibx-linux/
+
+# =============== LIBRARIES ===============
+LIBFT_A = $(DIR_LIBFT)libft.a
+LIBML_A = $(DIR_MLX)libmlx.a
+LIBS = $(LIBFT_A) $(LIBML_A)
+
+
+# =============== SOURCES FILES ===============
+FILES_ERRORS =	matrix_errors.c
+
+FILES_ARRAY  = array.c
+
+FILES_MATRIX =	matrix_alloc_2.c \
+				matrix_alloc_3.c \
+				matrix_alloc.c \
+				matrix_fill_2.c \
+				matrix_fill.c \
+				matrix_operations_2.c \
+				matrix_operations_3.c \
+				matrix_operations_4.c \
+				matrix_operations.c \
+				matrix_utils.c \
+				matrix.c
+
+FILES_INTERSECT =	intersect_sphere.c \
+					intersect_utils.c
+
+FILES_RAYTRACING =	ray.c \
+					hit.c \
+					transform.c \
+					world.c
+
+FILES_CANVAS =	canvas.c \
+				canvas_2.c
+
+FILES_SOURCES = check_params.c \
+				exit.c \
+				file.c \
+				messages.c \
+				minirt.c
+
+FILES_SHAPE =	shape_sphere.c \
+				shape.c
+
+# =============== INCLUDES FILES ===============
+INCLUDES =	includes/ \
+			includes/array/ \
+			includes/errors/ \
+			includes/raytracing/ \
+			includes/raytracing/canvas \
+			includes/raytracing/intersect \
+			includes/raytracing/matrix/ \
+			includes/raytracing/shape/
+
+# =============== SOURCES FILES + ITS DIRECTORIES ===============
+ARRAY_F			= $(addprefix $(DIR_ARRAY), $(FILES_ARRAY))
+CANVAS_F		= $(addprefix $(DIR_CANVAS), $(FILES_CANVAS))
+ERRORS_F		= $(addprefix $(DIR_ERRORS), $(FILES_ERRORS))
+MATRIX_F		= $(addprefix $(DIR_MATRIX), $(FILES_MATRIX))
+INTERSECT_F		= $(addprefix $(DIR_INTERSECT), $(FILES_INTERSECT))
+RAYTRACING_F	= $(addprefix $(DIR_RAYTRACING), $(FILES_RAYTRACING))
+SHAPE_F			= $(addprefix $(DIR_SHAPE), $(FILES_SHAPE))
+SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
+
+# =============== INCLUDES FILES + ITS DIRECTORIES ===============
+INCLUDES_F = $(addprefix -I, $(INCLUDES))
+
+SOURCES = $(ARRAY_F) $(ERRORS_F) $(MATRIX_F) $(INTERSECT_F) $(RAYTRACING_F)
+SOURCES += $(CANVAS_F) $(SHAPE_F) $(SOURCES_F)
+OBJECTS = $(SOURCES:.c=.o)
+DEPENDS = $(SOURCES:.c=.d)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# **************************** DEBUG ****************************
+
+S_SOURCES_DIR   = ../src/
+
+# *** things in src directory ***
+S_SOURCES = $(addprefix $(S_SOURCES_DIR), $(SOURCES))
+S_OBJECTS = $(S_SOURCES:.c=.o)
+S_DEPENDS = $(S_SOURCES:.c=.d)
+
+S_INCLUDES_F = $(addprefix -I, $(addprefix $(S_SOURCES_DIR),$(INCLUDES)))
+
+# *** things debug ***
+
+D_SOURCES_DIR = ./
+D_INCLUDE_DIR = ./
+
+D_FILES =	compare.c \
+			create_ppm.c \
+			print_matrix.c
+
+D_SOURCES = $(addprefix $(D_SOURCES_DIR), $(D_FILES))
+D_OBJECTS = $(D_SOURCES:.c=.o)
+D_DEPENDS = $(D_SOURCES:.c=.d)
+
+D_INCLUDES_F =  $(addprefix -I, $(D_INCLUDE_DIR))
+
+# *** the test file things
+
+chapter5 : $(S_OBJECTS)  $(D_OBJECTS) $(LIBFT)
+	$(CC) $(S_INCLUDES_F) $(D_INCLUDES_F) -I$(LIBFT_DIR) $(S_OBJECTS) $(D_OBJECTS) chapter5.c -o $@ $(LIBFT) -lm
+
+
+%.o : %.c
+	$(CC) $(S_INCLUDES_F) $(D_INCLUDES_F) -I$(LIBFT_DIR) -MMD -c $< -o $@
+
+
+fclean :
+	rm -rf $(NAME)
+	rm -rf $(S_OBJECTS)
+	rm -rf $(S_DEPENDS)
+	rm -rf $(D_OBJECTS)
+	rm -rf $(D_DEPENDS)
+	make -C $(LIBFT_DIR) fclean
+
+$(LIBFT) :
+	make -C $(LIBFT_DIR) bonus
+
+-include $(D_DEPENDS)
+-include $(S_DEPENDS)
+
+.PHONY : all clean fclean re bonus
