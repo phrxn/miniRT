@@ -23,14 +23,14 @@ static int	create_center(t_sphere *sphere)
 	int			status;
 
 	status = OK_MALLOC;
-	center = matrix_create_point(0,0,0);
+	center = matrix_create_point(0, 0, 0);
 	if (!center)
 		status = ERR_MALLOC_SHAPE;
 	sphere->center = center;
 	return (status);
 }
 
-t_shape	*create_sphere()
+t_shape	*create_sphere(void)
 {
 	t_shape		*shape;
 	t_sphere	*sphere;
@@ -61,7 +61,7 @@ void	destroy_sphere(t_shape **shape)
 	if (!shape || !*shape)
 		return ;
 	shape_tmp = *shape;
-	sphere = (t_sphere*) shape_tmp->shape;
+	sphere = (t_sphere *)shape_tmp->shape;
 	if (sphere && sphere->center)
 		destroy_matrix(&(sphere->center));
 	free(sphere);

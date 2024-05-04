@@ -54,7 +54,8 @@ FILES_RAYTRACING =	ray.c \
 					transform.c \
 					world.c
 
-FILES_CANVAS = canvas.c
+FILES_CANVAS =	canvas.c \
+				canvas_2.c
 
 FILES_SOURCES = check_params.c \
 				exit.c \

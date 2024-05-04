@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   canvas_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/20 12:50:52 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/04 13:48:01 by gacalaza         ###   ########.fr       */
+/*   Created: 2024/04/18 20:00:21 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/05/04 15:42:06 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "canvas.h"
+#include "types.h"
 
-# define BOOL char
-# define TRUE ((char)1)
-# define FALSE ((char)0)
+void	canvas_start(t_canvas *canvas, BOOL is_endian)
+{
+	t_uint	count;
 
-typedef unsigned int	t_uint;
-
-#endif
+	canvas->width = WIN_WIDTH;
+	canvas->height = WIN_HEIGHT;
+	canvas->is_endian = is_endian;
+	canvas->size = WIN_WIDTH * WIN_HEIGHT;
+	count = 0;
+	while (count < canvas->size)
+	{
+		canvas->pixels[count] = 0;
+		count++;
+	}
+}

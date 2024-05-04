@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:20:33 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/01 21:02:38 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/04 15:36:59 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,10 @@ t_ray	*transform(t_ray *ray, t_matrix *matrix)
 	return (new_ray);
 }
 
-
 t_ray	*transform_ray(t_shape *shape, t_ray *ray)
 {
-	t_matrix *inverse;
-	t_ray	 *ray_transformed;
+	t_matrix	*inverse;
+	t_ray		*ray_transformed;
 
 	inverse = matrix_create_inverse(shape->transformation);
 	if (!inverse)

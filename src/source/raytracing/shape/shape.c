@@ -24,7 +24,7 @@ static int	create_transformation_matrix(t_shape *shape)
 
 	status = OK_MALLOC;
 	transformation = matrix_create_identity_4x4();
-	if(!transformation)
+	if (!transformation)
 		status = ERR_MALLOC_SHAPE;
 	shape->transformation = transformation;
 	return (status);
@@ -32,12 +32,12 @@ static int	create_transformation_matrix(t_shape *shape)
 
 int	create_shape(t_shape **shape)
 {
-	int			status;
+	int	status;
 
 	status = OK_MALLOC;
 	*shape = ft_calloc(1, sizeof(**shape));
 	if (!*shape)
-		return ERR_MALLOC_SHAPE;
+		return (ERR_MALLOC_SHAPE);
 	status = create_transformation_matrix(*shape);
 	if (status != OK_MALLOC)
 		destroy_shape(shape);
