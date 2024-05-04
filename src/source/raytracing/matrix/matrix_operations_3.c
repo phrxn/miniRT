@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:25:52 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/22 19:50:48 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/04 17:23:50 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,17 @@ int	matrix_mult(t_matrix *a, t_matrix *b, t_matrix *c)
 	return (OK_OPERATION);
 }
 
-void	matrix_transpose(t_matrix *a, t_matrix *b)
+int	matrix_transpose(t_matrix *a, t_matrix *b)
 {
 	unsigned int	size_matrix;
 	int				count_rows;
 	int				count_cols;
 	int				temp_value;
 
+	if (a->rows != b->rows)
+		return (ERR_MATRIX_TRANSP_ROW);
+	if (a->cols != b->cols)
+		return (ERR_MATRIX_TRANSP_COL);
 	count_rows = 0;
 	size_matrix = a->rows * a->cols;
 	while (count_rows < a->rows)
@@ -81,6 +85,7 @@ void	matrix_transpose(t_matrix *a, t_matrix *b)
 		}
 		count_rows++;
 	}
+	return (OK_OPERATION);
 }
 
 int	matrix_inverse_4x4(t_matrix *matrix_4x4, t_matrix *result)

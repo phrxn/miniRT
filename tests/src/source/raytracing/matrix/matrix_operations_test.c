@@ -69,7 +69,7 @@ static void matrix_addition_test()
 
 static void matrix_subtraction_test()
 {
-	create_subtitle("matrix_subctration_test()");
+	create_subtitle("matrix_subtraction_test()");
 
     //test 1 ERR_ROWS_SIZE
 	t_matrix matrix1_a; matrix1_a.rows = 1; matrix1_a.cols = 1;
@@ -448,23 +448,35 @@ static void matrix_transpose_test()
 {
 	create_subtitle("matrix_transpose_test");
 
-	//test 1   1x1
-	double   test1Matrix1Elements[1] = {2};
-	t_matrix test1Matrix1; test1Matrix1.rows = 1; test1Matrix1.cols = 1; test1Matrix1.elements = test1Matrix1Elements;
-	double   test1Matrix2Elements[1] = {-8};
-	t_matrix test1Matrix2; test1Matrix2.rows = 1; test1Matrix2.cols = 1; test1Matrix2.elements = test1Matrix2Elements;
-	matrix_transpose(&test1Matrix1, &test1Matrix2);
-	assert_svalue(2, test1Matrix2Elements[0], "transpose 1x1");
+	//test1 ERR_MATRIX_TRANSP_ROW different rows
+	t_matrix test1Matrix1; test1Matrix1.rows = 1; test1Matrix1.cols = 1;
+	t_matrix test1Matrix2; test1Matrix2.rows = 2; test1Matrix2.cols = 1;
+	int test1Return1 = matrix_transpose(&test1Matrix1, &test1Matrix2);
+	assert_svalue(ERR_MATRIX_TRANSP_ROW, test1Return1,  "test transpose 1x1 2x1 (test ERR_MATRIX_TRANSP_ROW)");
 
-	//test 1   2x2
-	double   test2Matrix1Elements[4] = {1,2,3,4};
-	t_matrix test2Matrix1; test2Matrix1.rows = 2; test2Matrix1.cols = 2; test2Matrix1.elements = test2Matrix1Elements;
-	double   test2Matrix2Elements[4] = {-1,-1,-1,-1};
-	t_matrix test2Matrix2; test2Matrix2.rows = 2; test2Matrix2.cols = 2; test2Matrix2.elements = test2Matrix2Elements;
-	matrix_transpose(&test2Matrix1, &test2Matrix2);
-	double   test2Matrix3Elements[4] = {1, 3, 2, 4};
-	t_matrix test2Matrix3; test2Matrix3.rows = 2; test2Matrix3.cols = 2; test2Matrix3.elements = test2Matrix3Elements;
-	assert_svalue(0, compare_matrix(&test2Matrix3, &test2Matrix2), "transpose 2x2");
+	//test2 ERR_MATRIX_TRANSP_COL different cols
+	t_matrix test2Matrix1; test2Matrix1.rows = 1; test2Matrix1.cols = 1;
+	t_matrix test2Matrix2; test2Matrix2.rows = 1; test2Matrix2.cols = 2;
+	int test2Return1 = matrix_transpose(&test2Matrix1, &test2Matrix2);
+	assert_svalue(ERR_MATRIX_TRANSP_COL, test2Return1,  "test transpose 1x1 1x2 (test ERR_MATRIX_TRANSP_ROW)");
+
+	//test 3   1x1
+	double   test3Matrix1Elements[1] = {2};
+	t_matrix test3Matrix1; test3Matrix1.rows = 1; test3Matrix1.cols = 1; test3Matrix1.elements = test3Matrix1Elements;
+	double   test3Matrix2Elements[1] = {-8};
+	t_matrix test3Matrix2; test3Matrix2.rows = 1; test3Matrix2.cols = 1; test3Matrix2.elements = test3Matrix2Elements;
+	matrix_transpose(&test3Matrix1, &test3Matrix2);
+	assert_svalue(2, test3Matrix2Elements[0], "transpose 1x1");
+
+	//test 4   2x2
+	double   test4Matrix1Elements[4] = {1,2,3,4};
+	t_matrix test4Matrix1; test4Matrix1.rows = 2; test4Matrix1.cols = 2; test4Matrix1.elements = test4Matrix1Elements;
+	double   test4Matrix2Elements[4] = {-1,-1,-1,-1};
+	t_matrix test4Matrix2; test4Matrix2.rows = 2; test4Matrix2.cols = 2; test4Matrix2.elements = test4Matrix2Elements;
+	matrix_transpose(&test4Matrix1, &test4Matrix2);
+	double   test4Matrix3Elements[4] = {1, 3, 2, 4};
+	t_matrix test4Matrix3; test4Matrix3.rows = 2; test4Matrix3.cols = 2; test4Matrix3.elements = test4Matrix3Elements;
+	assert_svalue(0, compare_matrix(&test4Matrix3, &test4Matrix2), "transpose 2x2");
 }
 
 static void matrix_inverse_4x4_test()

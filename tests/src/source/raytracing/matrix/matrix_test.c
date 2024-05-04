@@ -217,9 +217,6 @@ void destroy_matrix_test()
 void matrix_test(int argc, char **argv)
 {
 
-	if (argc != 1 &&  strcmp(argv[1], "matrix_test") != 0)
-		return ;
-
 	create_title("matrix_test");
 
 	get_element_test();

@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 14:35:20 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/30 17:24:04 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/04 17:35:51 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define ERR_MATRIX_MUL_ROW_COL		5
 # define ERR_MATRIX_MUL_INV_RESULT	6
 # define ERR_DETERMINANT_ZERO 		7
+# define ERR_MATRIX_TRANSP_ROW		8
+# define ERR_MATRIX_TRANSP_COL		9
 
 # define MERR_ROWS_SIZE				"The number of rows is different in both \
 matrices."
@@ -49,7 +51,7 @@ void	matrix_negation(t_matrix *a);
 void	matrix_mult_scalar(t_matrix *a, double scalar);
 void	matrix_div_scalar(t_matrix *a, double scalar);
 int		matrix_mult(t_matrix *a, t_matrix *b, t_matrix *c);
-void	matrix_transpose(t_matrix *a, t_matrix *b);
+int		matrix_transpose(t_matrix *a, t_matrix *b);
 int		matrix_determinant_4x4(t_matrix *matrix_4x4, t_matrix *result);
 double	cofactor_3x3(t_matrix *matrix_4x4, int row, int col);
 int		matrix_inverse_4x4(t_matrix *matrix_4x4, t_matrix *result);
