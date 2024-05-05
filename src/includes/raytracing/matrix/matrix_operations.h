@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 14:35:20 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/04 17:35:51 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:02:16 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ different from matrix B."
 # define MERR_MATRIX_MUL_INV_RESULT	"The number of rows in result matrix is \
 different from matrix A or the number of columns in result matrix \
 is different from matrix B."
-# define MERR_DETERMINANT_ZERO 		"Can't inverse matrix, the determinant\
-									 is zero."
+# define MERR_DETERMINANT_ZERO 		"Can't inverse matrix, the determinant \
+is zero."
 
 double	matrix_get_magnitude(t_matrix *a);
 int		matrix_normalization(t_matrix *a, t_matrix *unit);
