@@ -30,7 +30,7 @@ static int	create_center(t_sphere *sphere)
 	return (status);
 }
 
-t_shape	*create_sphere(void)
+t_shape	*create_sphere(t_uint id)
 {
 	t_shape		*shape;
 	t_sphere	*sphere;
@@ -47,7 +47,11 @@ t_shape	*create_sphere(void)
 	if (status == OK_MALLOC)
 		sphere->radius = 1;
 	if (status == OK_MALLOC)
+	{
+		shape->id = id;
+		shape->type = TYPE_SPHERE;
 		shape->shape = sphere;
+	}
 	if (status != OK_MALLOC)
 		destroy_sphere(&shape);
 	return (shape);

@@ -14,7 +14,7 @@ static void create_sphere_test()
 {
 	create_subtitle("create_sphere_test");
 
-	t_shape *sphere = create_sphere();
+	t_shape *sphere = create_sphere(1);
 	if (sphere)
 	{
 		destroy_sphere(&sphere);

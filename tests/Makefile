@@ -21,9 +21,10 @@ DIR_SOURCE		= source/
 DIR_ARRAY		= source/array/
 DIR_ERRORS		= source/errors/
 DIR_RAYTRACING	= source/raytracing/
+DIR_CANVAS		= source/raytracing/canvas/
 DIR_INTERSECT	= source/raytracing/intersect/
 DIR_MATRIX		= source/raytracing/matrix/
-DIR_CANVAS		= source/raytracing/canvas/
+DIR_NORMAL		= source/raytracing/normal/
 DIR_SHAPE		= source/raytracing/shape/
 
 # ++++++++++ LIBRARIES DIRECTORIES ++++++++++
@@ -40,39 +41,43 @@ LIBS = $(LIBFT_A) $(LIBML_A)
 # =============== SOURCES FILES ===============
 FILES_ERRORS =	matrix_errors.c
 
-FILES_ARRAY  = array.c
+FILES_ARRAY = array.c
 
-FILES_MATRIX =	matrix_alloc_2.c \
-				matrix_alloc_3.c \
-				matrix_alloc.c \
-				matrix_fill_2.c \
-				matrix_fill.c \
-				matrix_operations_2.c \
-				matrix_operations_3.c \
-				matrix_operations_4.c \
-				matrix_operations.c \
-				matrix_utils.c \
-				matrix.c
+FILES_MATRIX	=	matrix_alloc_2.c \
+					matrix_alloc_3.c \
+					matrix_alloc.c \
+					matrix_fill_2.c \
+					matrix_fill.c \
+					matrix_operations_2.c \
+					matrix_operations_3.c \
+					matrix_operations_4.c \
+					matrix_operations.c \
+					matrix_utils.c \
+					matrix.c
 
-FILES_INTERSECT =	intersect_sphere.c \
+FILES_INTERSECT	=	intersect_sphere.c \
 					intersect_utils.c
 
-FILES_RAYTRACING =	ray.c \
-					hit.c \
-					transform.c \
-					world.c
+FILES_RAYTRACING	=	ray.c \
+						hit.c \
+						transform.c \
+						world.c
 
-FILES_CANVAS =	canvas.c \
-				canvas_2.c
+FILES_NORMAL	=	normal.c \
+					normal_sphere.c
 
-FILES_SOURCES = check_params.c \
-				exit.c \
-				file.c \
-				messages.c \
-				minirt.c
+FILES_CANVAS	=	canvas.c \
+					canvas_2.c
 
-FILES_SHAPE =	shape_sphere.c \
+FILES_SHAPE	=	shape_sphere.c \
 				shape.c
+				
+FILES_SOURCES	=	check_params.c \
+					exit.c \
+					file.c \
+					messages.c \
+					minirt.c 
+					
 
 # =============== INCLUDES FILES ===============
 INCLUDES =	includes/ \
@@ -81,6 +86,7 @@ INCLUDES =	includes/ \
 			includes/raytracing/ \
 			includes/raytracing/canvas \
 			includes/raytracing/intersect \
+			includes/raytracing/normal/ \
 			includes/raytracing/matrix/ \
 			includes/raytracing/shape/
 
@@ -92,13 +98,14 @@ MATRIX_F		= $(addprefix $(DIR_MATRIX), $(FILES_MATRIX))
 INTERSECT_F		= $(addprefix $(DIR_INTERSECT), $(FILES_INTERSECT))
 RAYTRACING_F	= $(addprefix $(DIR_RAYTRACING), $(FILES_RAYTRACING))
 SHAPE_F			= $(addprefix $(DIR_SHAPE), $(FILES_SHAPE))
+NORMAL_F		= $(addprefix $(DIR_NORMAL), $(FILES_NORMAL))
 SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
 
 # =============== INCLUDES FILES + ITS DIRECTORIES ===============
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
 SOURCES = $(ARRAY_F) $(ERRORS_F) $(MATRIX_F) $(INTERSECT_F) $(RAYTRACING_F)
-SOURCES += $(CANVAS_F) $(SHAPE_F) $(SOURCES_F)
+SOURCES += $(CANVAS_F) $(SHAPE_F) $(SOURCES_F) $(NORMAL_F)
 OBJECTS = $(SOURCES:.c=.o)
 DEPENDS = $(SOURCES:.c=.d)
 

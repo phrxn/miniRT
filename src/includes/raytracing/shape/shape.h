@@ -51,7 +51,7 @@ int		create_shape(t_shape **shape);
 void	destroy_shape(t_shape **shape);
 
 //sphere
-t_shape	*create_sphere();
+t_shape	*create_sphere(t_uint id);
 void	destroy_sphere(t_shape **shape);
 
 #endif
