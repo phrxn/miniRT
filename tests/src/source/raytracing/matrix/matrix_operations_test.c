@@ -477,6 +477,16 @@ static void matrix_transpose_test()
 	double   test4Matrix3Elements[4] = {1, 3, 2, 4};
 	t_matrix test4Matrix3; test4Matrix3.rows = 2; test4Matrix3.cols = 2; test4Matrix3.elements = test4Matrix3Elements;
 	assert_svalue(0, compare_matrix(&test4Matrix3, &test4Matrix2), "transpose 2x2");
+
+	//test 4 double value
+	double   test5Matrix1Elements[4] = {1.5,2.4,0.42,0.567};
+	t_matrix test5Matrix1; test5Matrix1.rows = 2; test5Matrix1.cols = 2; test5Matrix1.elements = test5Matrix1Elements;
+	double   test5Matrix2Elements[4] = {-1,-1,-1,-1};
+	t_matrix test5Matrix2; test5Matrix2.rows = 2; test5Matrix2.cols = 2; test5Matrix2.elements = test5Matrix2Elements;
+	matrix_transpose(&test5Matrix1, &test5Matrix2);
+	double   test5Matrix3Elements[4] = {1.5,0.42,2.4,0.567};
+	t_matrix test5Matrix3; test5Matrix3.rows = 2; test5Matrix3.cols = 2; test5Matrix3.elements = test5Matrix3Elements;
+	assert_svalue(0, compare_matrix(&test5Matrix3, &test5Matrix2), "transpose 2x2 doubles");
 }
 
 static void matrix_inverse_4x4_test()
@@ -513,13 +523,33 @@ static void matrix_inverse_4x4_test()
 	test2Matrix3.rows = 4; test2Matrix3.cols = 4; test2Matrix3.elements = test2Matrix3Elements;
 	int test2Return = matrix_inverse_4x4(&test2Matrix1, &test2Matrix2);
 	assert_svalue(0, compare_matrix(&test2Matrix2, &test2Matrix3), "test2: valid invert matrix");
+
+	//test 3 valid inverted matrix
+
+	double test3Matrix1Elements[MATRIX_SIZE] = {1, 0,   0, 0,
+												0, 0.5, 0, 0,
+												0, 0,   1, 0,
+												0, 0,   0, 1};
+	t_matrix test3Matrix1;
+	test3Matrix1.rows = 4; test3Matrix1.cols = 4; test3Matrix1.elements = test3Matrix1Elements;
+
+	double test3Matrix2Elements[MATRIX_SIZE];
+	t_matrix test3Matrix2;
+	test3Matrix2.rows = 4; test3Matrix2.cols = 4; test3Matrix2.elements = test3Matrix2Elements;
+
+	double test3Matrix3Elements[MATRIX_SIZE] = {1, 0, 0, 0,
+												0, 2, 0, 0,
+												0, 0, 1, 0,
+												0, 0, 0, 1};
+	t_matrix test3Matrix3;
+	test3Matrix3.rows = 4; test3Matrix3.cols = 4; test3Matrix3.elements = test3Matrix3Elements;
+
+	int test3Return = matrix_inverse_4x4(&test3Matrix1, &test3Matrix2);
+	assert_svalue(OK_OPERATION, test3Return, "test3: return value");
+	assert_svalue(0, compare_matrix(&test3Matrix2, &test3Matrix3), "test3: valid invert matrix 0.5 and 2");
+
+	//
 }
-
-
-
-
-
-
 
 
 void matrix_operations_test(int argc, char **argv)

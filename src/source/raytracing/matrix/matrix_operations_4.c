@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_operations_4.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 21:29:06 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/11 22:49:43 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:18:54 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ double	cofactor_3x3(t_matrix *matrix_4x4, int row, int col)
 	return (determinant);
 }
 
-int	matrix_determinant_4x4(t_matrix *matrix_4x4, t_matrix *result)
+double	matrix_determinant_4x4(t_matrix *matrix_4x4, t_matrix *result)
 {
 	double			determinant;
 	double			cofactor3x3;

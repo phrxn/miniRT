@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:25:52 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/04 17:23:50 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/06 19:39:50 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	matrix_transpose(t_matrix *a, t_matrix *b)
 	unsigned int	size_matrix;
 	int				count_rows;
 	int				count_cols;
-	int				temp_value;
+	double			temp_value;
 
 	if (a->rows != b->rows)
 		return (ERR_MATRIX_TRANSP_ROW);

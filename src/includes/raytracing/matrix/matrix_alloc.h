@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 19:02:55 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/04/27 20:58:27 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/04 17:53:08 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ t_matrix	*matrix_create_rot_y(double radians);
 t_matrix	*matrix_create_rot_z(double radians);
 t_matrix	*matrix_create_shearing(t_shearing *shearing);
 t_matrix	*matrix_create_subtraction(t_matrix *a, t_matrix *b);
+t_matrix	*matrix_create_transpose(t_matrix *a);
 
 #endif
