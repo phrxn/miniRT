@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 19:02:55 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/04 17:53:08 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:01:37 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_matrix	*matrix_create_point(double x, double y, double z);
 t_matrix	*matrix_create_vector(double x, double y, double z);
 t_matrix	*matrix_create_identity_4x4(void);
 t_matrix	*matrix_create_inverse(t_matrix *matrix_to_invert);
-t_matrix	*matrix_create_multip(t_matrix *a, t_matrix *b);
+t_matrix	*matrix_create_mult(t_matrix *a, t_matrix *b);
 t_matrix	*matrix_create_translate(double x, double y, double z);
 t_matrix	*matrix_create_scaling(double x, double y, double z);
 t_matrix	*matrix_create_rot_x(double radians);

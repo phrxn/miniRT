@@ -92,7 +92,7 @@ static void normal_at_sphere_test()
 	t_shape  *test6Sphere = create_sphere(45);
 	t_matrix *test6MatrixScale = matrix_create_scaling(1, 0.5, 1);
 	t_matrix *test6MatrixRotZ = matrix_create_rot_z(M_PI / 5);
-	t_matrix *test6MatrixTransf = matrix_create_multip(test6MatrixScale, test6MatrixRotZ);
+	t_matrix *test6MatrixTransf = matrix_create_mult(test6MatrixScale, test6MatrixRotZ);
 	matrix_copy(test6MatrixTransf, test6Sphere->transformation);
 	t_matrix *test6Normal = normal_at(test6Sphere, test6Point1);
 	t_matrix *test6Espected = matrix_create_vector(0, 0.97014, -0.24254);

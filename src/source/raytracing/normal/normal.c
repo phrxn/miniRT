@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:34:47 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/06 19:40:52 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:01:37 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_matrix	*point_to_obj(t_shape *sp, t_matrix *pnt, t_matrix *inv, int *s)
 
 	local_point = NULL;
 	if (*s == 0)
-		local_point = matrix_create_multip(inv, pnt);
+		local_point = matrix_create_mult(inv, pnt);
 	if (!local_point)
 		*s = 1;
 	return (local_point);
@@ -48,7 +48,7 @@ static t_matrix	*point_to_world(t_matrix *inv, t_matrix *local_norm, int *s)
 	if (!transpose)
 		*s = 1;
 	if (*s == 0)
-		world_normal = matrix_create_multip(transpose, local_norm);
+		world_normal = matrix_create_mult(transpose, local_norm);
 	if (!world_normal)
 		*s = 1;
 	if (*s == 0)

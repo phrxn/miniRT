@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 19:02:02 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/04 22:01:13 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:01:37 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_matrix	*matrix_create_inverse(t_matrix *matrix_to_invert)
 	return (new_inverse);
 }
 
-t_matrix	*matrix_create_multip(t_matrix *a, t_matrix *b)
+t_matrix	*matrix_create_mult(t_matrix *a, t_matrix *b)
 {
 	int			return_code;
 	t_matrix	*new_matrix_mul;
@@ -85,7 +85,7 @@ t_matrix	*matrix_create_multip(t_matrix *a, t_matrix *b)
 	return_code = matrix_mult(a, b, new_matrix_mul);
 	if (return_code != OK_OPERATION)
 	{
-		show_error_matrix("matrix_create_multip", return_code);
+		show_error_matrix("matrix_create_mult", return_code);
 		destroy_matrix(&new_matrix_mul);
 	}
 	return (new_matrix_mul);
