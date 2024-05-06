@@ -6,11 +6,12 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 21:14:34 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/01 21:18:02 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:24:01 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersect_sphere_test.h"
+#include "intersect_sphere.h"
 #include "intersect.h"
 #include "intersect_utils.h"
 #include "matrix.h"

@@ -55,7 +55,8 @@ FILES_MATRIX	=	matrix_alloc_2.c \
 					matrix_utils.c \
 					matrix.c
 
-FILES_INTERSECT	=	intersect_sphere.c \
+FILES_INTERSECT	=	intersect.c \
+					intersect_sphere.c \
 					intersect_utils.c
 
 FILES_RAYTRACING	=	ray.c \

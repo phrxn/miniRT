@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersect.h                                        :+:      :+:    :+:   */
+/*   intersect_sphere.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 21:14:20 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/06 20:28:14 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:23:30 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERSECT_H
-# define INTERSECT_H
+#ifndef INTERSECT_SPHERE_H
+# define INTERSECT_SPHERE_H
 
-# include "shape.h"
 # include "libft.h"
+# include "shape.h"
 # include "ray.h"
 
-# define MERR_INVALID_OBJ_TYPE	"The shape type doesn't exist"
+# define A	0
+# define B	1
+# define C	2
 
-typedef struct s_inter
-{
-	double	t;
-	t_shape	*shape;
-}			t_inter;
+# define T1 0
+# define T2 1
 
-t_list	*intersect(t_shape *shape, t_ray *ray_transformed);
+# define MERR_DETERMINANT_MALLOC "Error when allocating point and vector \
+matrices."
+# define MERR_INTER_MALLOC "Error when allocating intersections or list."
+
+t_list	*intersect_sphere(t_shape *shape, t_ray *ray_transformed);
 
 #endif
