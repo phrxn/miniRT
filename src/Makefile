@@ -14,6 +14,7 @@ DIR_ARRAY		= source/array/
 DIR_ERRORS		= source/errors/
 DIR_RAYTRACING	= source/raytracing/
 DIR_CANVAS		= source/raytracing/canvas/
+DIR_COLOR		= source/raytracing/color/
 DIR_INTERSECT	= source/raytracing/intersect/
 DIR_MATRIX		= source/raytracing/matrix/
 DIR_NORMAL		= source/raytracing/normal/
@@ -35,6 +36,9 @@ FILES_ERRORS =	matrix_errors.c
 
 FILES_ARRAY = array.c
 
+FILES_COLOR =	color_operations.c \
+				color.c
+
 FILES_MATRIX	=	matrix_alloc_2.c \
 					matrix_alloc_3.c \
 					matrix_alloc.c \
@@ -53,6 +57,7 @@ FILES_INTERSECT	=	intersect.c \
 
 FILES_RAYTRACING	=	ray.c \
 						hit.c \
+						lighting.c \
 						reflect.c \
 						transform.c \
 						world.c
@@ -78,15 +83,17 @@ INCLUDES =	includes/ \
 			includes/array/ \
 			includes/errors/ \
 			includes/raytracing/ \
-			includes/raytracing/canvas \
-			includes/raytracing/intersect \
-			includes/raytracing/normal \
+			includes/raytracing/canvas/ \
+			includes/raytracing/color/ \
+			includes/raytracing/intersect/ \
+			includes/raytracing/normal/ \
 			includes/raytracing/matrix/ \
 			includes/raytracing/shape/
 
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
 ARRAY_F			= $(addprefix $(DIR_ARRAY), $(FILES_ARRAY))
 CANVAS_F		= $(addprefix $(DIR_CANVAS), $(FILES_CANVAS))
+COLOR_F			= $(addprefix $(DIR_COLOR), $(FILES_COLOR))
 ERRORS_F		= $(addprefix $(DIR_ERRORS), $(FILES_ERRORS))
 MATRIX_F		= $(addprefix $(DIR_MATRIX), $(FILES_MATRIX))
 INTERSECT_F		= $(addprefix $(DIR_INTERSECT), $(FILES_INTERSECT))
@@ -98,10 +105,11 @@ SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
 # =============== INCLUDES FILES + ITS DIRECTORIES ===============
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
-SOURCES = $(ARRAY_F) $(ERRORS_F) $(MATRIX_F) $(INTERSECT_F) $(RAYTRACING_F)
-SOURCES += $(CANVAS_F) $(SHAPE_F) $(SOURCES_F) $(NORMAL_F)
-OBJECTS = $(SOURCES:.c=.o)
-DEPENDS = $(SOURCES:.c=.d)
+SOURCES =	$(ARRAY_F) $(CANVAS_F) $(COLOR_F) $(ERRORS_F) $(MATRIX_F) $(INTERSECT_F)
+SOURCES +=	$(RAYTRACING_F) $(SHAPE_F) $(NORMAL_F) $(SOURCES_F)
+OBJECTS =	$(SOURCES:.c=.o)
+DEPENDS =	$(SOURCES:.c=.d)
+
 
 
 

@@ -54,9 +54,11 @@ FILES_INTERSECT	=	intersect.c \
 
 FILES_RAYTRACING	=	ray.c \
 						hit.c \
+						lighting.c \
 						reflect.c \
 						transform.c \
 						world.c
+
 
 FILES_NORMAL	=	normal.c \
 					normal_sphere.c

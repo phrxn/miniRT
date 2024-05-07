@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   world.h                                            :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 21:32:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/06 21:48:39 by gacalaza         ###   ########.fr       */
+/*   Created: 2024/05/07 18:45:15 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/05/07 19:39:34 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WORLD_H
-# define WORLD_H
+#ifndef COLOR_H
+#define COLOR_H
 
-# include "matrix.h"
-# include "intersect.h"
-# include "libft.h"
-# include "canvas.h"
+# define COLOR_MAX 255
 
-typedef struct s_light
+typedef struct s_color
 {
-	t_color		*intensity;
-	t_matrix	*position;
-}	t_light;
+	double	red;
+	double	green;
+	double	blue;
+}		t_color;
 
-typedef struct s_world
-{
-	t_list	*intersections;
-	t_list	*lights;
-}	t_world;
+void	fill_color(t_color *color, double red, double green, double blue);
 
 #endif
