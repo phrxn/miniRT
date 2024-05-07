@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:34:47 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/06 20:01:37 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/06 21:39:45 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static t_matrix	*point_to_world(t_matrix *inv, t_matrix *local_norm, int *s)
 	return (world_normal);
 }
 
-void		start_vars(t_normal	*var)
+void	start_vars(t_normal	*var)
 {
 	var->inv = NULL;
 	var->local_point = NULL;
@@ -73,7 +73,7 @@ t_matrix	*normal_at(t_shape *shape, t_matrix *point)
 	start_vars(&var);
 	var.inv = matrix_create_inverse(shape->transformation);
 	if (!var.inv)
-		var.status = 1;		
+		var.status = 1;
 	if (var.status == 0)
 		var.local_point = point_to_obj(shape, point, var.inv, &var.status);
 	if (var.status == 0)

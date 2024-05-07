@@ -53,6 +53,7 @@ FILES_INTERSECT	=	intersect.c \
 
 FILES_RAYTRACING	=	ray.c \
 						hit.c \
+						reflect.c \
 						transform.c \
 						world.c
 
