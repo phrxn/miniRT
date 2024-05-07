@@ -266,9 +266,9 @@ static void matrix_dot_test()
 
 	//test 1 ERR_NOT_VECTOR
 	double a1_elements[4]; a1_elements[W] = 1;
-	t_matrix a1; a1.elements = a1_elements;
+	t_matrix a1; a1.elements = a1_elements; a1.rows = 4; a1.cols = 1;
 	double a2_elements[4]; a2_elements[W] = 0;
-	t_matrix a2; a2.elements = a2_elements;
+	t_matrix a2; a2.elements = a2_elements; a2.rows = 4; a2.cols = 1;
 	int return_1;
 	double a1_dot_value;
 	return_1 = matrix_dot(&a1, &a2, &a1_dot_value);
@@ -297,9 +297,9 @@ static void matrix_cross_test()
 
 	//test 1 ERR_NOT_VECTOR
 	double a1_elements[4]; a1_elements[W] = 1;
-	t_matrix a1; a1.elements = a1_elements;
+	t_matrix a1; a1.rows = 4; a1.cols = 1; a1.elements = a1_elements;
 	double a2_elements[4]; a2_elements[W] = 0;
-	t_matrix a2; a2.elements = a2_elements;
+	t_matrix a2; a2.rows = 4; a2.cols = 1; a2.elements = a2_elements;
 	int return_1;
 	double a1_dot_value;
 	return_1 = matrix_cross(&a1, &a2, NULL);
