@@ -161,7 +161,7 @@ D_SOURCES_DIR = ../debug/
 D_INCLUDE_DIR = ../debug/
 
 D_FILES =	compare.c \
-			print_matrix.c
+			print_object.c
 
 D_SOURCES = $(addprefix $(D_SOURCES_DIR), $(D_FILES))
 D_OBJECTS = $(D_SOURCES:.c=.o)

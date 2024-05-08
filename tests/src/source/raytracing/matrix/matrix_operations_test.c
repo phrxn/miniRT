@@ -10,7 +10,7 @@
 
 //debug
 #include "compare.h"
-#include "print_matrix.h"
+
 
 static void matrix_addition_test()
 {

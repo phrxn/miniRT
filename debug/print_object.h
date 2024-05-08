@@ -1,5 +1,5 @@
-#ifndef PRINT_MATRIX_H
-#define PRINT_MATRIX_H
+#ifndef PRINT_OBJECT_H
+#define PRINT_OBJECT_H
 
 #include "matrix.h"
 

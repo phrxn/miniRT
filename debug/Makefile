@@ -155,7 +155,7 @@ D_INCLUDE_DIR = ./
 
 D_FILES =	compare.c \
 			create_ppm.c \
-			print_matrix.c
+			print_object.c
 
 D_SOURCES = $(addprefix $(D_SOURCES_DIR), $(D_FILES))
 D_OBJECTS = $(D_SOURCES:.c=.o)

@@ -1,4 +1,4 @@
-#include "print_matrix.h"
+#include "print_object.h"
 #include <stdio.h>
 
 void print_matrix(t_matrix *to_print, int detalhed)
