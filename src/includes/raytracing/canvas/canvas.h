@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:00:15 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/07 19:39:29 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/07 21:05:32 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 # define WIN_WIDTH 500
 # define WIN_HEIGHT 500
-
 
 typedef struct s_canvas
 {

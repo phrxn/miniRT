@@ -19,6 +19,7 @@ DIR_INTERSECT	= source/raytracing/intersect/
 DIR_MATRIX		= source/raytracing/matrix/
 DIR_NORMAL		= source/raytracing/normal/
 DIR_SHAPE		= source/raytracing/shape/
+DIR_WORLD		= source/raytracing/world/
 
 # ++++++++++ LIBRARIES DIRECTORIES ++++++++++
 DIR_LIBS	= libs/
@@ -59,8 +60,8 @@ FILES_RAYTRACING	=	ray.c \
 						hit.c \
 						lighting.c \
 						reflect.c \
-						transform.c \
-						world.c
+						transform.c
+						
 
 FILES_NORMAL	=	normal.c \
 					normal_sphere.c
@@ -68,7 +69,8 @@ FILES_NORMAL	=	normal.c \
 FILES_CANVAS	=	canvas.c \
 					canvas_2.c
 
-FILES_SHAPE	=	shape_sphere.c \
+FILES_SHAPE	=	material.c \
+				shape_sphere.c \
 				shape.c
 
 FILES_SOURCES	=	check_params.c \
@@ -77,6 +79,9 @@ FILES_SOURCES	=	check_params.c \
 					messages.c \
 					minirt.c \
 					main.c
+
+FILES_WORLD		=	light.c \
+					world.c
 
 # =============== INCLUDES FILES ===============
 INCLUDES =	includes/ \
@@ -88,7 +93,8 @@ INCLUDES =	includes/ \
 			includes/raytracing/intersect/ \
 			includes/raytracing/normal/ \
 			includes/raytracing/matrix/ \
-			includes/raytracing/shape/
+			includes/raytracing/shape/  \
+			includes/raytracing/world/
 
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
 ARRAY_F			= $(addprefix $(DIR_ARRAY), $(FILES_ARRAY))
@@ -101,12 +107,13 @@ RAYTRACING_F	= $(addprefix $(DIR_RAYTRACING), $(FILES_RAYTRACING))
 SHAPE_F			= $(addprefix $(DIR_SHAPE), $(FILES_SHAPE))
 NORMAL_F		= $(addprefix $(DIR_NORMAL), $(FILES_NORMAL))
 SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
+WORLD_F			= $(addprefix $(DIR_WORLD), $(FILES_WORLD))
 
 # =============== INCLUDES FILES + ITS DIRECTORIES ===============
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
 SOURCES =	$(ARRAY_F) $(CANVAS_F) $(COLOR_F) $(ERRORS_F) $(MATRIX_F) $(INTERSECT_F)
-SOURCES +=	$(RAYTRACING_F) $(SHAPE_F) $(NORMAL_F) $(SOURCES_F)
+SOURCES +=	$(RAYTRACING_F) $(SHAPE_F) $(NORMAL_F) $(SOURCES_F) $(WORLD_F)
 OBJECTS =	$(SOURCES:.c=.o)
 DEPENDS =	$(SOURCES:.c=.d)
 

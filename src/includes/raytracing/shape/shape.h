@@ -22,15 +22,8 @@
 # define ERR_MALLOC_SHAPE 1
 
 # include "canvas.h"
+# include "material.h"
 
-typedef struct s_material
-{
-	t_color	color;
-	double	ambient;
-	double	diffuse;
-	double	specular;
-	double	shininess;
-}	t_material;
 
 typedef struct s_shape
 {

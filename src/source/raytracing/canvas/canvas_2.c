@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:00:21 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/07 19:33:16 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/07 21:07:46 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_canvas	*create_canvas(BOOL is_endian)
 void	destroy_canvas(t_canvas **canvas)
 {
 	t_canvas	*canvas_tmp;
-	
+
 	if (!canvas || !*canvas)
 		return ;
 	canvas_tmp = *canvas;

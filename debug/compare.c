@@ -1,5 +1,6 @@
 #include "compare.h"
 #include "matrix.h"
+#include "color.h"
 #include <math.h>
 
 int compare_double(double a, double b)
@@ -24,4 +25,15 @@ int	compare_matrix(t_matrix *a, t_matrix *b)
 			return(1);
 	}
 	return(0);
+}
+
+int	compare_color(t_color *a, t_color *b)
+{
+	if (compare_double(a->red, b->red))
+		return 1;
+	if (compare_double(a->green, b->green))
+		return 1;
+	if (compare_double(a->blue, b->blue))
+		return 1;
+	return 0;
 }

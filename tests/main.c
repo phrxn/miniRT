@@ -10,6 +10,7 @@
 #include "shape_test.h"
 #include "normal_test.h"
 #include "reflect_test.h"
+#include "lighting_test.h"
 
 int main(int argc, char *argv[])
 {
@@ -37,6 +38,8 @@ int main(int argc, char *argv[])
 	normal_test(argc, argv);
 
 	reflect_test(argc, argv);
+
+	lighting_test(argc, argv);
 
 	return 0;
 }

@@ -6,12 +6,12 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 18:45:15 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/07 19:39:34 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/07 21:06:05 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
-#define COLOR_H
+# define COLOR_H
 
 # define COLOR_MAX 255
 

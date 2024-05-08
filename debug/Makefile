@@ -15,10 +15,12 @@ DIR_ARRAY		= source/array/
 DIR_ERRORS		= source/errors/
 DIR_RAYTRACING	= source/raytracing/
 DIR_CANVAS		= source/raytracing/canvas/
+DIR_COLOR		= source/raytracing/color/
 DIR_INTERSECT	= source/raytracing/intersect/
 DIR_MATRIX		= source/raytracing/matrix/
 DIR_NORMAL		= source/raytracing/normal/
 DIR_SHAPE		= source/raytracing/shape/
+DIR_WORLD		= source/raytracing/world/
 
 # ++++++++++ LIBRARIES DIRECTORIES ++++++++++
 DIR_LIBS	= libs/
@@ -35,6 +37,9 @@ LIBS = $(LIBFT_A) $(LIBML_A)
 FILES_ERRORS =	matrix_errors.c
 
 FILES_ARRAY = array.c
+
+FILES_COLOR =	color_operations.c \
+				color.c
 
 FILES_MATRIX	=	matrix_alloc_2.c \
 					matrix_alloc_3.c \
@@ -56,9 +61,8 @@ FILES_RAYTRACING	=	ray.c \
 						hit.c \
 						lighting.c \
 						reflect.c \
-						transform.c \
-						world.c
-
+						transform.c
+						
 
 FILES_NORMAL	=	normal.c \
 					normal_sphere.c
@@ -66,29 +70,37 @@ FILES_NORMAL	=	normal.c \
 FILES_CANVAS	=	canvas.c \
 					canvas_2.c
 
-FILES_SHAPE	=	shape_sphere.c \
+FILES_SHAPE	=	material.c \
+				shape_sphere.c \
 				shape.c
 
 FILES_SOURCES	=	check_params.c \
 					exit.c \
 					file.c \
 					messages.c \
-					minirt.c
+					minirt.c \
+					main.c
+
+FILES_WORLD		=	light.c \ 
+					world.c
 
 # =============== INCLUDES FILES ===============
 INCLUDES =	includes/ \
 			includes/array/ \
 			includes/errors/ \
 			includes/raytracing/ \
-			includes/raytracing/canvas \
-			includes/raytracing/intersect \
+			includes/raytracing/canvas/ \
+			includes/raytracing/color/ \
+			includes/raytracing/intersect/ \
 			includes/raytracing/normal/ \
 			includes/raytracing/matrix/ \
-			includes/raytracing/shape/
+			includes/raytracing/shape/  \
+			includes/raytracing/world/
 
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
 ARRAY_F			= $(addprefix $(DIR_ARRAY), $(FILES_ARRAY))
 CANVAS_F		= $(addprefix $(DIR_CANVAS), $(FILES_CANVAS))
+COLOR_F			= $(addprefix $(DIR_COLOR), $(FILES_COLOR))
 ERRORS_F		= $(addprefix $(DIR_ERRORS), $(FILES_ERRORS))
 MATRIX_F		= $(addprefix $(DIR_MATRIX), $(FILES_MATRIX))
 INTERSECT_F		= $(addprefix $(DIR_INTERSECT), $(FILES_INTERSECT))
@@ -96,14 +108,15 @@ RAYTRACING_F	= $(addprefix $(DIR_RAYTRACING), $(FILES_RAYTRACING))
 SHAPE_F			= $(addprefix $(DIR_SHAPE), $(FILES_SHAPE))
 NORMAL_F		= $(addprefix $(DIR_NORMAL), $(FILES_NORMAL))
 SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
+WORLD_F			= $(addprefix $(DIR_WORLD), $(FILES_WORLD))
 
 # =============== INCLUDES FILES + ITS DIRECTORIES ===============
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
-SOURCES = $(ARRAY_F) $(ERRORS_F) $(MATRIX_F) $(INTERSECT_F) $(RAYTRACING_F)
-SOURCES += $(CANVAS_F) $(SHAPE_F) $(SOURCES_F) $(NORMAL_F)
-OBJECTS = $(SOURCES:.c=.o)
-DEPENDS = $(SOURCES:.c=.d)
+SOURCES =	$(ARRAY_F) $(CANVAS_F) $(COLOR_F) $(ERRORS_F) $(MATRIX_F) $(INTERSECT_F)
+SOURCES +=	$(RAYTRACING_F) $(SHAPE_F) $(NORMAL_F) $(SOURCES_F) $(WORLD_F)
+OBJECTS =	$(SOURCES:.c=.o)
+DEPENDS =	$(SOURCES:.c=.d)
 
 
 
@@ -152,7 +165,7 @@ D_INCLUDES_F =  $(addprefix -I, $(D_INCLUDE_DIR))
 
 # *** the test file things
 
-chapter5 : $(S_OBJECTS)  $(D_OBJECTS) $(LIBFT)
+chapter5.out : $(S_OBJECTS)  $(D_OBJECTS) $(LIBFT)
 	$(CC) $(S_INCLUDES_F) $(D_INCLUDES_F) -I$(LIBFT_DIR) $(S_OBJECTS) $(D_OBJECTS) chapter5.c -o $@ $(LIBFT) -lm
 
 
