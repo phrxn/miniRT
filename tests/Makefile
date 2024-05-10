@@ -22,10 +22,12 @@ DIR_ARRAY		= source/array/
 DIR_ERRORS		= source/errors/
 DIR_RAYTRACING	= source/raytracing/
 DIR_CANVAS		= source/raytracing/canvas/
+DIR_COLOR		= source/raytracing/color/
 DIR_INTERSECT	= source/raytracing/intersect/
 DIR_MATRIX		= source/raytracing/matrix/
 DIR_NORMAL		= source/raytracing/normal/
 DIR_SHAPE		= source/raytracing/shape/
+DIR_PARSER		= source/parser/
 
 # ++++++++++ LIBRARIES DIRECTORIES ++++++++++
 DIR_LIBS	= libs/
@@ -42,6 +44,9 @@ LIBS = $(LIBFT_A) $(LIBML_A)
 FILES_ERRORS =	matrix_errors.c
 
 FILES_ARRAY = array.c
+
+FILES_COLOR =	color_operations.c \
+				color.c
 
 FILES_MATRIX	=	matrix_alloc_2.c \
 					matrix_alloc_3.c \
@@ -73,32 +78,42 @@ FILES_CANVAS	=	canvas.c \
 
 FILES_SHAPE	=	shape_sphere.c \
 				shape.c
-				
+
 FILES_SOURCES	=	check_params.c \
 					exit.c \
 					file.c \
 					messages.c \
-					minirt.c 
-					
+					minirt.c
+
+FILES_PARSE		= 	lexer.c \
+					peek.c \
+					token_2.c \
+					token_3.c \
+					token.c
 
 # =============== INCLUDES FILES ===============
 INCLUDES =	includes/ \
 			includes/array/ \
 			includes/errors/ \
+			includes/parser/ \
 			includes/raytracing/ \
-			includes/raytracing/canvas \
-			includes/raytracing/intersect \
+			includes/raytracing/canvas/ \
+			includes/raytracing/color/ \
+			includes/raytracing/intersect/ \
 			includes/raytracing/normal/ \
 			includes/raytracing/matrix/ \
 			includes/raytracing/shape/
 
+
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
 ARRAY_F			= $(addprefix $(DIR_ARRAY), $(FILES_ARRAY))
 CANVAS_F		= $(addprefix $(DIR_CANVAS), $(FILES_CANVAS))
+COLOR_F			= $(addprefix $(DIR_COLOR), $(FILES_COLOR))
 ERRORS_F		= $(addprefix $(DIR_ERRORS), $(FILES_ERRORS))
 MATRIX_F		= $(addprefix $(DIR_MATRIX), $(FILES_MATRIX))
 INTERSECT_F		= $(addprefix $(DIR_INTERSECT), $(FILES_INTERSECT))
 RAYTRACING_F	= $(addprefix $(DIR_RAYTRACING), $(FILES_RAYTRACING))
+PARSER_F		= $(addprefix $(DIR_PARSER), $(FILES_PARSE))
 SHAPE_F			= $(addprefix $(DIR_SHAPE), $(FILES_SHAPE))
 NORMAL_F		= $(addprefix $(DIR_NORMAL), $(FILES_NORMAL))
 SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
@@ -106,11 +121,10 @@ SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
 # =============== INCLUDES FILES + ITS DIRECTORIES ===============
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
-SOURCES = $(ARRAY_F) $(ERRORS_F) $(MATRIX_F) $(INTERSECT_F) $(RAYTRACING_F)
-SOURCES += $(CANVAS_F) $(SHAPE_F) $(SOURCES_F) $(NORMAL_F)
-OBJECTS = $(SOURCES:.c=.o)
-DEPENDS = $(SOURCES:.c=.d)
-
+SOURCES =	$(ARRAY_F) $(CANVAS_F) $(COLOR_F) $(ERRORS_F) $(INTERSECT_F) $(MATRIX_F) $(NORMAL_F)
+SOURCES +=	$(RAYTRACING_F) $(PARSER_F) $(SHAPE_F) $(SOURCES_F)
+OBJECTS =	$(SOURCES:.c=.o)
+DEPENDS =	$(SOURCES:.c=.d)
 
 
 

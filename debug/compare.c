@@ -1,6 +1,21 @@
 #include "compare.h"
 #include "matrix.h"
+#include "token.h"
 #include <math.h>
+
+#include <string.h>
+#include <stdlib.h>
+
+static int compare_string(char *a, char *b)
+{
+	if (!a && b)
+		return 1;
+	if (a && !b)
+		return 1;
+	if (!a && !b)
+		return 0;
+	return strcmp(a, b);
+}
 
 int compare_double(double a, double b)
 {
@@ -24,4 +39,15 @@ int	compare_matrix(t_matrix *a, t_matrix *b)
 			return(1);
 	}
 	return(0);
+}
+
+int	compare_token(t_token *a, t_token *b)
+{
+	if (!a && b)
+		return 1;
+	if (a && !b)
+		return 1;
+	if(a->type != b->type)
+		return 1;
+	return compare_string(a->text, b->text);
 }

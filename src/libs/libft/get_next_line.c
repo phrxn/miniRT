@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 22:35:44 by dmanoel-          #+#    #+#             */
-/*   Updated: 2022/10/05 16:37:38 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/05/14 09:15:08 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/05/14 09:16:21 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "get_next_line.h"
 
 static void	delete_module(t_module *mod)
@@ -80,7 +81,7 @@ static char	*read_fd(int fd, t_module old, t_module *mod_new, int l_size)
 
 char	*get_next_line(int fd)
 {
-	static t_module	mod_list[1];	
+	static t_module	mod_list[1];
 	t_module		mod;
 	char			*line;
 
