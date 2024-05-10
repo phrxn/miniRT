@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_operations_3.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:25:52 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/06 19:39:50 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:28:26 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	matrix_mult(t_matrix *a, t_matrix *b, t_matrix *c)
 
 int	matrix_transpose(t_matrix *a, t_matrix *b)
 {
-	unsigned int	size_matrix;
 	int				count_rows;
 	int				count_cols;
 	double			temp_value;
@@ -73,7 +72,6 @@ int	matrix_transpose(t_matrix *a, t_matrix *b)
 	if (a->cols != b->cols)
 		return (ERR_MATRIX_TRANSP_COL);
 	count_rows = 0;
-	size_matrix = a->rows * a->cols;
 	while (count_rows < a->rows)
 	{
 		count_cols = 0;
@@ -96,7 +94,7 @@ int	matrix_inverse_4x4(t_matrix *matrix_4x4, t_matrix *result)
 	unsigned int	count_rows;
 	unsigned int	count_cols;
 
-	determinant = matrix_determinant_4x4(matrix_4x4, result);
+	determinant = matrix_determinant_4x4(matrix_4x4);
 	if (!determinant)
 		return (ERR_DETERMINANT_ZERO);
 	count_rows = 0;

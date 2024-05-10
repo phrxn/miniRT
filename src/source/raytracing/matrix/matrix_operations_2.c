@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_operations_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 15:04:27 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/22 13:31:25 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:25:12 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,6 @@ int	matrix_dot(t_matrix *a, t_matrix *b, double *c)
 
 int	matrix_cross(t_matrix *a, t_matrix *b, t_matrix *c)
 {
-	double	x;
-	double	y;
-	double	z;
-
 	if (matrix_is_vector(a) || matrix_is_vector(b))
 		return (ERR_NOT_VECTOR);
 	c->elements[X] = a->elements[Y] * b->elements[Z] \

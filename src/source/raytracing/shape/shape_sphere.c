@@ -15,59 +15,42 @@
 #include "libft.h"
 #include "messages.h"
 #include "matrix_alloc.h"
+#include "matrix_utils.h"
 #include "types.h"
 
-static int	create_center(t_sphere *sphere)
-{
-	t_matrix	*center;
-	int			status;
 
-	status = OK_MALLOC;
-	center = matrix_create_point(0, 0, 0);
-	if (!center)
-		status = ERR_MALLOC_SHAPE;
-	sphere->center = center;
-	return (status);
-}
-
-t_shape	*create_sphere(t_uint id)
+t_sphere	*create_sphere()
 {
-	t_shape		*shape;
 	t_sphere	*sphere;
-	int			status;
 
-	status = create_shape(&shape);
-	if (status != OK_MALLOC)
-		return (NULL);
 	sphere = ft_calloc(1, sizeof(*sphere));
 	if (!sphere)
-		status = ERR_MALLOC_SHAPE;
-	if (status == OK_MALLOC)
-		status = create_center(sphere);
-	if (status == OK_MALLOC)
-		sphere->radius = 1;
-	if (status == OK_MALLOC)
+		return (NULL);
+	sphere->center = matrix_create_point(0, 0, 0);
+	sphere->radius = 1;
+	if (!sphere->center)
 	{
-		shape->id = id;
-		shape->type = TYPE_SPHERE;
-		shape->shape = sphere;
+		destroy_sphere(&sphere);
+		return (NULL);
 	}
-	if (status != OK_MALLOC)
-		destroy_sphere(&shape);
-	return (shape);
+	return (sphere);
 }
 
-void	destroy_sphere(t_shape **shape)
+void	destroy_sphere(t_sphere **sphere)
 {
-	t_sphere	*sphere;
-	t_shape		*shape_tmp;
+	t_sphere	*sphere_tmp;
 
-	if (!shape || !*shape)
+	if (!sphere || !*sphere)
 		return ;
-	shape_tmp = *shape;
-	sphere = (t_sphere *)shape_tmp->shape;
-	if (sphere && sphere->center)
-		destroy_matrix(&(sphere->center));
-	free(sphere);
-	destroy_shape(shape);
+	sphere_tmp = *sphere;
+	if (sphere_tmp->center)
+		destroy_matrix(&sphere_tmp->center);
+	free(sphere_tmp);
+	*sphere = NULL;
+}
+
+void	copy_sphere(t_sphere *from, t_sphere *to)
+{
+	matrix_copy(from->center, to->center);
+	to->radius = from->radius;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_sphere.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 21:14:34 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/06 20:21:31 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:30:14 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static double	calc_disc(t_ray *ray, t_shape *sph, int *status, double abc[3])
 	return (discriminant);
 }
 
-static t_list	*make_lst(t_inter *i0, t_inter *i1, t_shape *shape, int *status)
+static t_list	*make_lst(t_inter *i0, t_inter *i1, int *status)
 {
 	t_list	*item1;
 	t_list	*item2;
@@ -93,7 +93,7 @@ static t_list	*make_inter(double t1, double t2, t_shape *shape, int *status)
 	if (!*status)
 		sort_intersection(&i0, &i1);
 	if (!*status)
-		item1 = make_lst(i0, i1, shape, status);
+		item1 = make_lst(i0, i1, status);
 	if (*status)
 	{
 		if (i0)

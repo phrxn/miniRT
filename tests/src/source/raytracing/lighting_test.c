@@ -113,7 +113,6 @@ static void lighting_test1()
 
 
     // test5
-    double test5Value = sqrt(2)/2;
     t_lighting_params test5lightParams;
     t_matrix *test5Eyev    = matrix_create_vector(0, 0, -1);
     t_matrix *test5normalv = matrix_create_vector(0, 0, -1);

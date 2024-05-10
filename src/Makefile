@@ -56,12 +56,12 @@ FILES_INTERSECT	=	intersect.c \
 					intersect_sphere.c \
 					intersect_utils.c
 
-FILES_RAYTRACING	=	ray.c \
-						hit.c \
+FILES_RAYTRACING	=	hit.c \
 						lighting.c \
+						prepare_computations.c \
 						reflect.c \
+						ray.c \
 						transform.c
-						
 
 FILES_NORMAL	=	normal.c \
 					normal_sphere.c
@@ -132,10 +132,10 @@ DEPENDS =	$(SOURCES:.c=.d)
 all : $(NAME)
 
 $(NAME) : $(LIBS) $(OBJECTS)
-	$(CC) $(FLAGS) $(OBJECTS) -o $@ $(LIBFT_A) $(LIBML_A) -lXext -lX11 -lm
+	$(CC) $(OBJECTS) -o $@ $(LIBFT_A) $(LIBML_A) -lXext -lX11 -lm
 
 %.o : %.c
-	$(CC) $(INCLUDES_F) -I$(DIR_LIBFT) -MMD -c $< -o $@
+	$(CC) $(FLAGS) $(INCLUDES_F) -I$(DIR_LIBFT) -MMD -c $< -o $@
 
 -include $(DEPENDS)
 

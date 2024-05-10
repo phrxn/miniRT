@@ -26,16 +26,16 @@ static void create_shape_test()
 {
 	create_subtitle("create_shape_test");
 
-	t_shape *shape;
-	create_shape(&shape);
-	if (shape)
+	t_shape *sphere = create_shape(TYPE_SPHERE);
+	if (sphere)
 	{
-		destroy_shape(&shape);
-		assert_utils_print_ok("create_shape and destroy_shape");
+		destroy_shape(&sphere);
+		assert_utils_print_ok("create_sphere and destroy_sphere");
 	}
 	else
 		assert_utils_print_error("fatal error malloc");
 }
+
 
 void shape_test(int argc, char **argv)
 {

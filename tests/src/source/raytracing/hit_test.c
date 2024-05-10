@@ -21,7 +21,7 @@ static void hit1_test()
 	t_list  *test2Item1  = ft_lstnew(test2Inter1);
 	t_inter *test2TheHit = hit(test2Item1);
 
-	assert_address(NULL, test1TheHit, "test2 one negative value");
+	assert_address(NULL, test2TheHit, "test2 one negative value");
 	ft_lstclear(&test2Item1, destroy_intersection2);
 	assert_utils_separator();
 
@@ -33,7 +33,7 @@ static void hit1_test()
 	test3Item1->next =test3Item2;
 	t_inter *test3TheHit = hit(test3Item1);
 
-	assert_address(NULL, test1TheHit, "test3 one negative value");
+	assert_address(NULL, test3TheHit, "test3 one negative value");
 	ft_lstclear(&test3Item1, destroy_intersection2);
 	assert_utils_separator();
 

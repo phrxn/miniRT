@@ -216,7 +216,8 @@ void destroy_matrix_test()
 
 void matrix_test(int argc, char **argv)
 {
-
+	(void)argc;
+	(void)argv;
 	create_title("matrix_test");
 
 	get_element_test();

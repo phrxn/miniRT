@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 18:42:59 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/07 21:07:07 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/09 19:59:42 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,11 @@ void	fill_color(t_color *color, double red, double green, double blue)
 	color->red = red;
 	color->green = green;
 	color->blue = blue;
+}
+
+void	color_copy(t_color *from, t_color* to)
+{
+	to->red = from->red;
+	to->green = from->green;
+	to->blue = from->blue;
 }

@@ -11,6 +11,7 @@
 #include "normal_test.h"
 #include "reflect_test.h"
 #include "lighting_test.h"
+#include "prepare_computations_test.h"
 
 int main(int argc, char *argv[])
 {
@@ -40,6 +41,8 @@ int main(int argc, char *argv[])
 	reflect_test(argc, argv);
 
 	lighting_test(argc, argv);
+
+	prepare_computations_test(argc, argv);
 
 	return 0;
 }

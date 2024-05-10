@@ -11,7 +11,7 @@ ASSERTZ = $(ASSERTZ_DIR)assertz.a
 CC = gcc
 
 
-
+FLAGS = -Wall -Werror -Wextra
 
 
 # ==================================================
@@ -64,12 +64,12 @@ FILES_INTERSECT	=	intersect.c \
 					intersect_sphere.c \
 					intersect_utils.c
 
-FILES_RAYTRACING	=	ray.c \
-						hit.c \
+FILES_RAYTRACING	=	hit.c \
 						lighting.c \
+						prepare_computations.c \
 						reflect.c \
+						ray.c \
 						transform.c
-						
 
 FILES_NORMAL	=	normal.c \
 					normal_sphere.c
@@ -185,7 +185,7 @@ $(NAME) : $(S_OBJECTS) $(T_OBJECTS) $(D_OBJECTS) $(ASSERTZ) $(LIBFT)
 	$(CC) $(S_OBJECTS) $(T_OBJECTS) $(D_OBJECTS) -o $@  $(ASSERTZ) $(LIBFT) -lm
 
 %.o : %.c
-	$(CC) $(T_INCLUDES_F) $(S_INCLUDES_F) $(D_INCLUDES_F) -I$(ASSERTZ_DIR) -I$(LIBFT_DIR) -DALL -DTEST -MMD -c $< -o $@
+	$(CC) $(FLAGS) $(T_INCLUDES_F) $(S_INCLUDES_F) $(D_INCLUDES_F) -I$(ASSERTZ_DIR) -I$(LIBFT_DIR) -DALL -DTEST -MMD -c $< -o $@
 
 fclean :
 	rm -rf $(NAME)

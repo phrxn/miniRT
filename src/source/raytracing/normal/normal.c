@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:34:47 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/06 21:39:45 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:33:43 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_matrix	*normal_select(t_shape *shape, t_matrix *point)
 	return (NULL);
 }
 
-static t_matrix	*point_to_obj(t_shape *sp, t_matrix *pnt, t_matrix *inv, int *s)
+static t_matrix	*point_to_obj(t_matrix *pnt, t_matrix *inv, int *s)
 {
 	t_matrix	*local_point;
 
@@ -75,7 +75,7 @@ t_matrix	*normal_at(t_shape *shape, t_matrix *point)
 	if (!var.inv)
 		var.status = 1;
 	if (var.status == 0)
-		var.local_point = point_to_obj(shape, point, var.inv, &var.status);
+		var.local_point = point_to_obj(point, var.inv, &var.status);
 	if (var.status == 0)
 		var.local_nml = normal_select(shape, var.local_point);
 	destroy_matrix(&var.local_point);

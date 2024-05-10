@@ -224,9 +224,6 @@ static void matrix_normalization_test()
 	assert_svalue(ERR_NOT_VECTOR, returnmatrix2, "invalid vector 2");
 
 	//test3 ERROR NOT_VECTOR invalid W value
-	double matrix3_elements[4];
-		matrix3_elements[X] = 1; matrix3_elements[Y] = 0;
-		matrix3_elements[Z] = 0; matrix3_elements[W] = 1;
 	t_matrix matrix3; matrix3.rows = 4; matrix3.cols = 2;
 	double returnmatrix3 = matrix_normalization(&matrix3, NULL);
 	assert_svalue(ERR_NOT_VECTOR, returnmatrix3, "invalid vector 3");
@@ -301,7 +298,6 @@ static void matrix_cross_test()
 	double a2_elements[4]; a2_elements[W] = 0;
 	t_matrix a2; a2.rows = 4; a2.cols = 1; a2.elements = a2_elements;
 	int return_1;
-	double a1_dot_value;
 	return_1 = matrix_cross(&a1, &a2, NULL);
 	assert_svalue(ERR_NOT_VECTOR, return_1, "not vector 1");
  	a1_elements[W] = 0; a2_elements[W] = 1;
@@ -521,7 +517,7 @@ static void matrix_inverse_4x4_test()
                                                  -0.52256, -0.81391, -0.30075,  0.30639};
 	t_matrix test2Matrix3;
 	test2Matrix3.rows = 4; test2Matrix3.cols = 4; test2Matrix3.elements = test2Matrix3Elements;
-	int test2Return = matrix_inverse_4x4(&test2Matrix1, &test2Matrix2);
+	matrix_inverse_4x4(&test2Matrix1, &test2Matrix2);
 	assert_svalue(0, compare_matrix(&test2Matrix2, &test2Matrix3), "test2: valid invert matrix");
 
 	//test 3 valid inverted matrix

@@ -18,12 +18,7 @@
 
 # define TYPE_SPHERE	1
 
-# define OK_MALLOC 0
-# define ERR_MALLOC_SHAPE 1
-
-# include "canvas.h"
 # include "material.h"
-
 
 typedef struct s_shape
 {
@@ -40,11 +35,14 @@ typedef struct s_sphere
 	double		radius;
 }	t_sphere;
 
-int		create_shape(t_shape **shape);
-void	destroy_shape(t_shape **shape);
+//the shapes
+t_shape		*create_shape(int type);
+void		destroy_shape(t_shape **shape);
+t_shape		*create_shape_copy(t_shape	*shape);
 
 //sphere
-t_shape	*create_sphere(t_uint id);
-void	destroy_sphere(t_shape **shape);
+t_sphere	*create_sphere();
+void		destroy_sphere(t_sphere **sphere);
+void		copy_sphere(t_sphere *from, t_sphere *to);
 
 #endif

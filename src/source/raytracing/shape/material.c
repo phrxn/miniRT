@@ -9,3 +9,12 @@ void    fill_material(t_material *material)
     material->specular = 0.9;
     material->shininess = 200;
 }
+
+void    material_copy(t_material *from, t_material *to)
+{
+    color_copy(&from->color, &to->color);
+    to->ambient = from->ambient;
+    to->diffuse = from->diffuse;
+    to->specular = from->specular;
+    to->shininess = from->shininess;
+}
