@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   array.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 23:13:02 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/30 17:28:31 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/12 00:41:07 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list	*ft_lstget(t_list *head, t_uint index)
 	return (head);
 }
 
-void	ft_lstsort(t_list *head, void sort_function(void *a, void *b))
+void	ft_lstsort(t_list *head, void sort_function(void **a, void **b))
 {
 	t_uint	list_size;
 	t_uint	count_i;
@@ -44,7 +44,7 @@ void	ft_lstsort(t_list *head, void sort_function(void *a, void *b))
 		while (count_j < list_size - count_i - 1)
 		{
 			aux = ft_lstget(head, count_j);
-			sort_function(aux->content, aux->next->content);
+			sort_function(&aux->content, &aux->next->content);
 			count_j++;
 		}
 		count_i++;
