@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chapter6.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:03:27 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/08 21:00:49 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/12 02:14:31 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int main(void)
 	t_color color;
 
 	//the sphere
-	t_shape *shape = create_sphere(1);
+	t_shape *shape = create_shape(TYPE_SPHERE);
 	fill_material(&shape->material);
 	fill_color(&shape->material.color, 1, 0.2, 1);
 	matrix_fill_scaling(shape->transformation, 0.5, 1, 1);
@@ -58,7 +58,7 @@ int main(void)
 	t_matrix *positionm = NULL;
 
 	t_ray *r = NULL;
-	
+
 	t_list *list;
 
 	t_lighting_params params;
@@ -109,11 +109,11 @@ int main(void)
 		}
 	}
 	destroy_matrix(&ray_origin);
-	destroy_sphere(&shape);
+	destroy_shape(&shape);
 	destroy_light(&light);
-	
+
 	save_ppm(canvas);
-	
+
 	destroy_canvas(&canvas);
 
 	return 0;
