@@ -4,8 +4,8 @@
 void print_matrix(t_matrix *to_print, int detalhed)
 {
 
-	unsigned int last_col = to_print->cols - 1;
-	size_t matrix_size = to_print->rows * to_print->cols;
+	int last_col = to_print->cols - 1;
+	int matrix_size = to_print->rows * to_print->cols;
 
 	printf("rows: %d, cols: %d\n", to_print->rows, to_print->cols);
 	for (int count = 0; count < matrix_size; count++)
