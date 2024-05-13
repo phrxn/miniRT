@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+         #
+#    By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/12 19:45:45 by gacalaza          #+#    #+#              #
-#    Updated: 2024/04/27 19:16:36 by gacalaza         ###   ########.fr        #
+#    Updated: 2024/05/13 14:30:41 by dmanoel-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS += ft_strchr.c ft_strrchr.c ft_strlen.c ft_bzero.c ft_strncmp.c ft_atoi.c
 SRCS += ft_strnstr.c ft_strlcpy.c ft_strlcat.c ft_calloc.c ft_strdup.c
 SRCS += ft_putnbr_fd.c ft_putendl_fd.c ft_putchar_fd.c ft_putstr_fd.c ft_itoa.c
 SRCS += ft_substr.c ft_strjoin.c ft_strmapi.c ft_striteri.c ft_strtrim.c ft_split.c
-SRCS += get_next_line.c get_next_line_utils.c ft_printf.c ft_printf_utils.c
+SRCS += get_next_line.c ft_printf.c ft_printf_utils.c
 
 BSRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c
 BSRCS += ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
