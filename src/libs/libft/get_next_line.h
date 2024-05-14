@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   canvas.h                                           :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 20:00:15 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/14 14:22:00 by dmanoel-         ###   ########.fr       */
+/*   Created: 2022/09/27 12:32:23 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/05/13 14:29:47 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CANVAS_H
-# define CANVAS_H
+# ifndef GET_NEXT_LINE_H
+# include <stdlib.h>
+# include <unistd.h>
 
-# include "types.h"
-# include "color.h"
-
-# define WIN_WIDTH 500
-# define WIN_HEIGHT 500
-
-typedef struct s_canvas
+typedef struct s_module
 {
-	int		width;
-	int		height;
-	int		*pixels;
-	int		size;
-	BOOL	is_endian;
-}		t_canvas;
+	char	*buf;
+	int		l_start;
+	int		l_end;
+	int		l_size;
+	int		readed;
+}	t_module;
 
-void		set_pixel(t_canvas *canvas, int row, int col, t_color *color);
-t_canvas	*create_canvas(BOOL is_endian);
-void		destroy_canvas(t_canvas **canvas);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
+
+char	*get_next_line(int fd);
 
 #endif

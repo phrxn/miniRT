@@ -5,6 +5,8 @@
 #include "color.h"
 #include "shape.h"
 #include "material.h"
+#include "compare.h"
+#include "token.h"
 
 #define EPSILON 0.00001
 
@@ -19,5 +21,7 @@ int compare_material(t_material *a, t_material *b);
 int	compare_shape(t_shape *a, t_shape *b);
 
 int compare_sphere(t_sphere *a, t_sphere *b);
+
+int	compare_token(t_token *a, t_token *b);
 
 #endif

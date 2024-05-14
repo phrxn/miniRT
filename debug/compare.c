@@ -1,9 +1,24 @@
 #include "compare.h"
 #include "matrix.h"
 #include "color.h"
+#include "token.h"
 #include <math.h>
 #include "shape.h"
 #include "matrix.h"
+
+#include <string.h>
+#include <stdlib.h>
+
+static int compare_string(char *a, char *b)
+{
+	if (!a && b)
+		return 1;
+	if (a && !b)
+		return 1;
+	if (!a && !b)
+		return 0;
+	return strcmp(a, b);
+}
 
 int compare_double(double a, double b)
 {
@@ -75,4 +90,15 @@ int compare_sphere(t_sphere *a, t_sphere *b)
 	if (compare_matrix(a->center, b->center))
 		return 1;
 	return (a->radius != b->radius);
+}
+
+int	compare_token(t_token *a, t_token *b)
+{
+	if (!a && b)
+		return 1;
+	if (a && !b)
+		return 1;
+	if(a->type != b->type)
+		return 1;
+	return compare_string(a->text, b->text);
 }
