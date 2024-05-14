@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 21:32:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/13 21:56:23 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/14 01:15:08 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "shape.h"
+# include "ray.h"
 
 typedef struct s_world
 {
@@ -24,5 +25,7 @@ typedef struct s_world
 }	t_world;
 
 void	destroy_world(t_world **world);
+
+t_color	color_at(t_world *world, t_ray *ray);
 
 #endif
