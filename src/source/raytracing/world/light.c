@@ -34,3 +34,13 @@ void	destroy_light(t_light **light)
     free(light_tmp);
     *light = NULL;
 }
+
+void	destroy_light2(void *del)
+{
+    t_light *light_tmp;
+
+	light_tmp = (t_light *)del;
+	if (!light_tmp)
+        return ;
+	destroy_light(&light_tmp);
+}

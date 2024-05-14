@@ -38,6 +38,7 @@ typedef struct s_sphere
 //the shapes
 t_shape		*create_shape(int type);
 void		destroy_shape(t_shape **shape);
+void		destroy_shape2(void *shape);
 t_shape		*create_shape_copy(t_shape	*shape);
 
 //sphere

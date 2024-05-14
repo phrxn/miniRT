@@ -15,4 +15,6 @@ t_light	*create_light(t_color *color, double x, double y, double z);
 
 void	destroy_light(t_light **light);
 
+void	destroy_light2(void *del);
+
 #endif

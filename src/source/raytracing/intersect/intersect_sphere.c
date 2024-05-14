@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 21:14:34 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/10 00:30:14 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/12 02:11:32 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static t_list	*make_inter(double t1, double t2, t_shape *shape, int *status)
 	if (!i1)
 		*status = 1;
 	if (!*status)
-		sort_intersection(&i0, &i1);
+		sort_intersection((void**)&i0, (void**)&i1);
 	if (!*status)
 		item1 = make_lst(i0, i1, status);
 	if (*status)

@@ -53,16 +53,17 @@ FILES_MATRIX	=	matrix_alloc_2.c \
 					matrix_utils.c \
 					matrix.c
 
-FILES_INTERSECT	=	intersect.c \
-					intersect_sphere.c \
-					intersect_utils.c
+FILES_INTERSECT	=	intersect_sphere.c \
+					intersect_utils.c \
+					intersect_world.c \
+					intersect.c
 
 FILES_RAYTRACING	=	ray.c \
 						hit.c \
 						lighting.c \
 						reflect.c \
 						transform.c
-						
+
 
 FILES_NORMAL	=	normal.c \
 					normal_sphere.c

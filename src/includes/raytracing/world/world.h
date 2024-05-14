@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 21:32:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/07 21:59:04 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:56:23 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 # define WORLD_H
 
 # include "libft.h"
+# include "shape.h"
 
 typedef struct s_world
 {
 	t_list	*intersections;
 	t_list	*lights;
+	t_list	*shapes;
 }	t_world;
+
+void	destroy_world(t_world **world);
 
 #endif

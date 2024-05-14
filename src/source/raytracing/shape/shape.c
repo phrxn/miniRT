@@ -57,6 +57,15 @@ void	destroy_shape(t_shape **shape)
 	*shape = NULL;
 }
 
+void	destroy_shape2(void *shape)
+{
+	t_shape	*shape_tmp;
+
+	shape_tmp = (t_shape *)shape;
+	destroy_shape(&shape_tmp);
+}
+
+
 t_shape	*create_shape_copy(t_shape	*shape)
 {
 	t_shape	*new_shape;
