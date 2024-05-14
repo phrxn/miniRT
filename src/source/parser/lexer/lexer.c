@@ -17,11 +17,6 @@
 #include "types.h"
 #include <stdlib.h>
 
-
-
-#include <stdio.h>
-
-
 /**
  * prepared_line - prepare line to tokenizer
  * @line_readed: line to prepare
