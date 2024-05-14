@@ -6,16 +6,21 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 21:32:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/13 21:21:02 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/14 01:16:00 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "world.h"
-# include "libft.h"
-# include "intersect_world.h"
-# include "intersect_utils.h"
-# include "shape.h"
-# include "light.h"
+#include "world.h"
+#include "color.h"
+#include "hit.h"
+#include "libft.h"
+#include "intersect_world.h"
+#include "intersect_utils.h"
+#include "shape.h"
+#include "shade_hit.h"
+#include "light.h"
+#include "prepare_computations.h"
+#include "ray.h"
 
 void	create_world(void)
 {
@@ -35,4 +40,23 @@ void	destroy_world(t_world **world)
 	if (world_tmp->shapes)
 		ft_lstclear(&world_tmp->shapes, destroy_shape2);
 	free(world_tmp);
+}
+
+t_color	color_at(t_world *world, t_ray *ray)
+{
+	t_color					color_hit;
+	t_list					*intersects;
+	t_inter					*inter;
+	t_prepare_computations	*pre;
+
+	fill_color(&color_hit, 0, 0, 0);
+	intersects = intersect_world(world, ray);
+	if (!intersects)
+		return (color_hit);
+	inter = hit(intersects);
+	pre = create_pre_computations(inter, ray);
+	color_hit = shade_hit(world, pre);
+	ft_lstclear(&intersects, destroy_intersection2);
+	destroy_pre_computations(&pre);
+	return (color_hit);
 }
