@@ -61,6 +61,7 @@ FILES_RAYTRACING	=	hit.c \
 						lighting.c \
 						prepare_computations.c \
 						reflect.c \
+						shade_hit.c \
 						ray.c \
 						transform.c
 

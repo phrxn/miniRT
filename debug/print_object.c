@@ -22,3 +22,13 @@ void print_matrix(t_matrix *to_print, int detalhed)
 			printf(" | ");
 	}
 }
+
+void print_color(t_color *color)
+{
+	if (!color)
+	{
+		printf("color == NULL");
+		return ;
+	}
+	printf("color: red:%f, green:%f, blue:%f\n", color->red, color->green, color->blue);
+}

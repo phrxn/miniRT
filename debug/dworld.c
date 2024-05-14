@@ -12,7 +12,9 @@ t_world	*dcreate_world()
 	t_world *world = ft_calloc(1, sizeof(*world));
 
 	t_shape *s1 = create_shape(TYPE_SPHERE);
+	fill_material(&s1->material);
 	t_shape *s2 = create_shape(TYPE_SPHERE);
+	fill_material(&s2->material);
 
 	t_color light_color; light_color.red = 1; light_color.green = 1; light_color.blue = 1;
 	t_light *light = create_light(&light_color, -10, 10, -10);
