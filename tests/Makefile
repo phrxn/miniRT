@@ -92,8 +92,8 @@ FILES_SOURCES	=	check_params.c \
 					messages.c \
 					minirt.c
 
-FILES_WORLD		=	camera.c \
-					light.c \
+FILES_WORLD		=	light.c \
+					view_transform.c \
 					world.c
 
 FILES_PARSE		= 	lexer.c \
