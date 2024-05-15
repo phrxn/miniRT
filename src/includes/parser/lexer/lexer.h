@@ -30,9 +30,10 @@ typedef struct s_stream
 
 # ifdef TEST
 char	*prepared_line(const char *line_readed);
-t_list	*line_create_tokens(const char *line_to_split);
 # endif
 
-t_list	*file_create_tokens(int fd);
+t_list	*line_create_tokens(const char *line_to_split);
+t_list	*create_line_list(int fd);
+void	destroy_line_list(t_list **line_list);
 
 #endif

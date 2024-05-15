@@ -97,11 +97,14 @@ FILES_SOURCES	=	check_params.c \
 FILES_WORLD		=	light.c \
 					world.c
 
-FILES_PARSE		= 	token_2.c \
+FILES_PARSE		= 	line.c \
+					token_2.c \
 					token_3.c \
 					token.c
 
-FILES_LEXER		=	lexer.c \
+FILES_LEXER		=	lexer_2.c \
+					lexer_3.c \
+					lexer.c \
 					peek.c
 
 FILES_GRAMMAR	=

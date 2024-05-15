@@ -1,6 +1,7 @@
 #define _GNU_SOURCE
 #include "lexer_test.h"
 #include "lexer.h"
+#include "line.h"
 #include "token.h"
 
 #include "libft.h"
@@ -124,7 +125,7 @@ static void	line_create_tokens_test()
 	ft_lstclear(&test2_2List, destroy_token2);
 	assert_utils_separator();
 
-	//test 2.3pos_int
+	//test 2.3 pos_int
 	char	*test2_3Line = "++123";
 	t_list 	*test2_3List = line_create_tokens(test2_3Line);
 	t_token	test2_3TokenExpected1; test2_3TokenExpected1.text = "++123"; test2_3TokenExpected1.type = identifier;
@@ -260,9 +261,12 @@ static void	line_create_tokens_test()
 	assert_utils_separator();
 }
 
-void file_create_tokens_test(void)
+void create_line_list_test(void)
 {
-	create_subtitle("file_create_tokens_test");
+	create_subtitle("create_line_list_test");
+
+
+
 
 	//test 1 (empty file)
 	int test1Fd = memfd_create("rt.rt", MFD_ALLOW_SEALING);
@@ -270,9 +274,9 @@ void file_create_tokens_test(void)
 		printf("memfd_create");
 	char *test1StringFakeFile = "";
 	write(test1Fd, test1StringFakeFile, strlen(test1StringFakeFile)); //the seek pointer is in the end;
-	t_list *test1List = file_create_tokens(test1Fd);
+	t_list *test1List = create_line_list(test1Fd);
 	assert_address(NULL, test1List, "test1 token NULL");
-	ft_lstclear(&test1List, destroy_token2);
+	destroy_line_list(&test1List);
 	close(test1Fd);
 	assert_utils_separator();
 
@@ -283,7 +287,7 @@ void file_create_tokens_test(void)
 	char *test2StringFakeFile = " ";
 	write(test2Fd, test2StringFakeFile, strlen(test2StringFakeFile));
 	lseek(test2Fd, 0, SEEK_SET);
-	t_list *test2List = file_create_tokens(test2Fd);
+	t_list *test2List = create_line_list(test2Fd);
 	assert_address(NULL, test2List, "test2 token NULL");
 	ft_lstclear(&test2List, destroy_token2);
 	close(test2Fd);
@@ -296,9 +300,9 @@ void file_create_tokens_test(void)
 	char *test2_1StringFakeFile = "     ";
 	write(test2_1Fd, test2_1StringFakeFile, strlen(test2_1StringFakeFile));
 	lseek(test2_1Fd, 0, SEEK_SET);
-	t_list *test2_1List = file_create_tokens(test2_1Fd);
+	t_list *test2_1List = create_line_list(test2_1Fd);
 	assert_address(NULL, test2_1List, "test2_1 token NULL");
-	ft_lstclear(&test2_1List, destroy_token2);
+	destroy_line_list(&test2_1List);
 	close(test2_1Fd);
 	assert_utils_separator();
 
@@ -309,9 +313,9 @@ void file_create_tokens_test(void)
 	char *test2_2StringFakeFile = "     \n";
 	write(test2_2Fd, test2_2StringFakeFile, strlen(test2_2StringFakeFile));
 	lseek(test2_2Fd, 0, SEEK_SET);
-	t_list *test2_2List = file_create_tokens(test2_2Fd);
+	t_list *test2_2List = create_line_list(test2_2Fd);
 	assert_address(NULL, test2_2List, "test2_2 token NULL");
-	ft_lstclear(&test2_2List, destroy_token2);
+	destroy_line_list(&test2_2List);
 	close(test2_2Fd);
 	assert_utils_separator();
 
@@ -322,9 +326,9 @@ void file_create_tokens_test(void)
 	char *test2_3StringFakeFile = "     \n ";
 	write(test2_3Fd, test2_3StringFakeFile, strlen(test2_3StringFakeFile));
 	lseek(test2_3Fd, 0, SEEK_SET);
-	t_list *test2_3List = file_create_tokens(test2_3Fd);
+	t_list *test2_3List = create_line_list(test2_3Fd);
 	assert_address(NULL, test2_3List, "test2_3 token NULL");
-	ft_lstclear(&test2_3List, destroy_token2);
+	destroy_line_list(&test2_3List);
 	close(test2_3Fd);
 	assert_utils_separator();
 
@@ -335,9 +339,9 @@ void file_create_tokens_test(void)
 	char *test2_4StringFakeFile = "     \n \n";
 	write(test2_4Fd, test2_4StringFakeFile, strlen(test2_4StringFakeFile));
 	lseek(test2_4Fd, 0, SEEK_SET);
-	t_list *test2_4List = file_create_tokens(test2_4Fd);
+	t_list *test2_4List = create_line_list(test2_4Fd);
 	assert_address(NULL, test2_4List, "test2_4 token NULL");
-	ft_lstclear(&test2_4List, destroy_token2);
+	destroy_line_list(&test2_4List);
 	close(test2_4Fd);
 	assert_utils_separator();
 
@@ -348,9 +352,9 @@ void file_create_tokens_test(void)
 	char *test2_5StringFakeFile = "     \n  \n";
 	write(test2_5Fd, test2_5StringFakeFile, strlen(test2_5StringFakeFile));
 	lseek(test2_5Fd, 0, SEEK_SET);
-	t_list *test2_5List = file_create_tokens(test2_5Fd);
+	t_list *test2_5List = create_line_list(test2_5Fd);
 	assert_address(NULL, test2_5List, "test2_5 token NULL");
-	ft_lstclear(&test2_5List, destroy_token2);
+	destroy_line_list(&test2_5List);
 	close(test2_5Fd);
 	assert_utils_separator();
 
@@ -361,14 +365,13 @@ void file_create_tokens_test(void)
 	char *test3_1StringFakeFile = "  abc  ";
 	write(test3_1Fd, test3_1StringFakeFile, strlen(test3_1StringFakeFile));
 	lseek(test3_1Fd, 0, SEEK_SET);
-	t_list *test3_1List = file_create_tokens(test3_1Fd);
-	t_token	test3_1TokenExpected1; test3_1TokenExpected1.text = "abc"; test3_1TokenExpected1.type = identifier;
-	t_token	test3_1TokenExpected2; test3_1TokenExpected2.text = NULL;  test3_1TokenExpected2.type = eol;
-	assert_svalue(0, compare_token(&test3_1TokenExpected1, (t_token*)test3_1List->content), 	  "test3_1 token identifier (abc)");
-	assert_svalue(0, compare_token(&test3_1TokenExpected2, (t_token*)test3_1List->next->content), "test3_1 token eol");
-	ft_lstclear(&test3_1List, destroy_token2);
+	t_list *test3_1LineList = create_line_list(test3_1Fd);
+	assert_uvalue(1, ((t_line*)test3_1LineList->content)->line_number,            "test3_1 line must be number 1");
+	assert_uvalue(2, ft_lstsize(((t_line*)test3_1LineList->content)->token_list), "test3_1 token size list must be 2");
+	destroy_line_list(&test3_1LineList);
 	close(test3_1Fd);
 	assert_utils_separator();
+
 
 	//test 3.2 (two lines [valid])
 	int test3_2Fd = memfd_create("rt.rt", MFD_ALLOW_SEALING);
@@ -377,59 +380,43 @@ void file_create_tokens_test(void)
 	char *test3_2StringFakeFile = "  abc  \ndef";
 	write(test3_2Fd, test3_2StringFakeFile, strlen(test3_2StringFakeFile));
 	lseek(test3_2Fd, 0, SEEK_SET);
-	t_list *test3_2List = file_create_tokens(test3_2Fd);
-	t_token	test3_2TokenExpected1; test3_2TokenExpected1.text = "abc"; test3_2TokenExpected1.type = identifier;
-	t_token	test3_2TokenExpected2; test3_2TokenExpected2.text = NULL;  test3_2TokenExpected2.type = eol;
-	t_token	test3_2TokenExpected3; test3_2TokenExpected3.text = "def"; test3_2TokenExpected3.type = identifier;
-	t_token	test3_2TokenExpected4; test3_2TokenExpected4.text = NULL;  test3_2TokenExpected4.type = eol;
-	assert_svalue(0, compare_token(&test3_2TokenExpected1, (t_token*)test3_2List->content), 	              "test3_2 token identifier (abc)");
-	assert_svalue(0, compare_token(&test3_2TokenExpected2, (t_token*)test3_2List->next->content),             "test3_2 token eol");
-	assert_svalue(0, compare_token(&test3_2TokenExpected3, (t_token*)test3_2List->next->next->content), 	  "test3_2 token identifier (def)");
-	assert_svalue(0, compare_token(&test3_2TokenExpected4, (t_token*)test3_2List->next->next->next->content), "test3_2 token eol");
-	ft_lstclear(&test3_2List, destroy_token2);
+	t_list *test3_2List = create_line_list(test3_2Fd);
+	assert_uvalue(1, ((t_line*)test3_2List->content)->line_number,       "test3_1 line must be number 1");
+	assert_uvalue(2, ((t_line*)test3_2List->next->content)->line_number, "test3_1 line must be number 2");
+	destroy_line_list(&test3_2List);
 	close(test3_2Fd);
 	assert_utils_separator();
 
-	//test 3.3 (two lines [valid])
+
+	//test 3.3 (three lines [valid])
 	int test3_3Fd = memfd_create("rt.rt", MFD_ALLOW_SEALING);
 	if (test3_3Fd == -1)
 		printf("memfd_create");
-	char *test3_3StringFakeFile = "  abc  \ndef";
+	char *test3_3StringFakeFile = "  abc1  \ndef2\n\nghi4";
 	write(test3_3Fd, test3_3StringFakeFile, strlen(test3_3StringFakeFile));
 	lseek(test3_3Fd, 0, SEEK_SET);
-	t_list *test3_3List = file_create_tokens(test3_3Fd);
-	t_token	test3_3TokenExpected1; test3_3TokenExpected1.text = "abc"; test3_3TokenExpected1.type = identifier;
-	t_token	test3_3TokenExpected2; test3_3TokenExpected2.text = NULL;  test3_3TokenExpected2.type = eol;
-	t_token	test3_3TokenExpected3; test3_3TokenExpected3.text = "def"; test3_3TokenExpected3.type = identifier;
-	t_token	test3_3TokenExpected4; test3_3TokenExpected4.text = NULL;  test3_3TokenExpected4.type = eol;
-	assert_svalue(0, compare_token(&test3_3TokenExpected1, (t_token*)test3_3List->content), 	              "test3_3 token identifier (abc)");
-	assert_svalue(0, compare_token(&test3_3TokenExpected2, (t_token*)test3_3List->next->content),             "test3_3 token eol");
-	assert_svalue(0, compare_token(&test3_3TokenExpected3, (t_token*)test3_3List->next->next->content), 	  "test3_3 token identifier (def)");
-	assert_svalue(0, compare_token(&test3_3TokenExpected4, (t_token*)test3_3List->next->next->next->content), "test3_3 token eol");
-	ft_lstclear(&test3_3List, destroy_token2);
+	t_list *test3_3List = create_line_list(test3_3Fd);
+	assert_uvalue(1, ((t_line*)test3_3List->content)->line_number,             "test3_1 line must be number 1");
+	assert_uvalue(2, ((t_line*)test3_3List->next->content)->line_number,       "test3_1 line must be number 2");
+	assert_uvalue(4, ((t_line*)test3_3List->next->next->content)->line_number, "test3_1 line must be number 4");
+	destroy_line_list(&test3_3List);
 	close(test3_3Fd);
 	assert_utils_separator();
 
-	//test 3.4 (two lines [valid])
+	//test 3.4 (three lines [valid]) other test
 	int test3_4Fd = memfd_create("rt.rt", MFD_ALLOW_SEALING);
 	if (test3_4Fd == -1)
 		printf("memfd_create");
-	char *test3_4StringFakeFile = "  abc  \ndef\n";
+	char *test3_4StringFakeFile = "  abc1,  \ndef2\n\nghi4";
 	write(test3_4Fd, test3_4StringFakeFile, strlen(test3_4StringFakeFile));
 	lseek(test3_4Fd, 0, SEEK_SET);
-	t_list *test3_4List = file_create_tokens(test3_4Fd);
-	t_token	test3_4TokenExpected1; test3_4TokenExpected1.text = "abc"; test3_4TokenExpected1.type = identifier;
-	t_token	test3_4TokenExpected2; test3_4TokenExpected2.text = NULL;  test3_4TokenExpected2.type = eol;
-	t_token	test3_4TokenExpected3; test3_4TokenExpected3.text = "def"; test3_4TokenExpected3.type = identifier;
-	t_token	test3_4TokenExpected4; test3_4TokenExpected4.text = NULL;  test3_4TokenExpected4.type = eol;
-	assert_svalue(0, compare_token(&test3_4TokenExpected1, (t_token*)test3_4List->content), 	              "test3_4 token identifier (abc)");
-	assert_svalue(0, compare_token(&test3_4TokenExpected2, (t_token*)test3_4List->next->content),             "test3_4 token eol");
-	assert_svalue(0, compare_token(&test3_4TokenExpected3, (t_token*)test3_4List->next->next->content), 	  "test3_4 token identifier (def)");
-	assert_svalue(0, compare_token(&test3_4TokenExpected4, (t_token*)test3_4List->next->next->next->content), "test3_4 token eol");
-	ft_lstclear(&test3_4List, destroy_token2);
+	t_list *test3_4List = create_line_list(test3_4Fd);
+	assert_uvalue(1, ((t_line*)test3_4List->content)->line_number,             "test3_1 line must be number 1");
+	assert_uvalue(2, ((t_line*)test3_4List->next->content)->line_number,       "test3_1 line must be number 2");
+	assert_uvalue(4, ((t_line*)test3_4List->next->next->content)->line_number, "test3_1 line must be number 4");
+	destroy_line_list(&test3_4List);
 	close(test3_4Fd);
 	assert_utils_separator();
-
 }
 
 
@@ -441,5 +428,5 @@ void	lexer_test(int argc, char **argv)
 
 	prepared_line_test();
 	line_create_tokens_test();
-	file_create_tokens_test();
+	create_line_list_test();
 }
