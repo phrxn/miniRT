@@ -16,6 +16,7 @@
 #include "prepare_computations_test.h"
 #include "shade_hit_test.h"
 #include "lexer_test.h"
+#include "camera_test.h"
 
 
 int main(int argc, char *argv[])
@@ -56,6 +57,8 @@ int main(int argc, char *argv[])
 	shade_hit_test(argc, argv);
 
 	lexer_test(argc, argv);
+
+	camera_test(argc, argv);
 
 	return 0;
 }

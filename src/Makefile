@@ -83,7 +83,8 @@ FILES_SOURCES	=	check_params.c \
 					minirt.c \
 					main.c
 
-FILES_WORLD		=	light.c \
+FILES_WORLD		=	camera.c \
+					light.c \
 					world.c
 
 FILES_PARSE		= 	lexer.c \
