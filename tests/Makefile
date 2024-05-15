@@ -71,6 +71,7 @@ FILES_INTERSECT	=	intersect_sphere.c \
 FILES_RAYTRACING	=	hit.c \
 						lighting.c \
 						prepare_computations.c \
+						ray_for_pixel.c \
 						ray.c \
 						reflect.c \
 						shade_hit.c \
