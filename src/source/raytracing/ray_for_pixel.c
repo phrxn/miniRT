@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 04:40:53 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/15 18:45:32 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/15 19:55:13 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_ray	*ray_for_pixel(t_camera *camera, int px, int py)
 		return (NULL);
 	matrix_mult(vars.inv_transformation, vars.point_pixel, vars.pixel);
 	matrix_mult(vars.inv_transformation, vars.point_origin, vars.origin);
-	matrix_subtraction(vars.origin, vars.direction, vars.direction);
+	matrix_subtraction(vars.pixel, vars.origin, vars.direction);
 	matrix_normalization(vars.direction, vars.direction);
 	ray = create_ray(vars.origin, vars.direction);
 	end_vars(&vars);

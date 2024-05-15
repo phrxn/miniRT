@@ -6,12 +6,14 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 21:32:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/14 01:16:00 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/15 20:27:01 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
 #include "color.h"
+#include "camera.h"
+#include "canvas.h"
 #include "hit.h"
 #include "libft.h"
 #include "intersect_world.h"
@@ -21,6 +23,7 @@
 #include "light.h"
 #include "prepare_computations.h"
 #include "ray.h"
+#include "ray_for_pixel.h"
 
 void	create_world(void)
 {
@@ -59,4 +62,29 @@ t_color	color_at(t_world *world, t_ray *ray)
 	ft_lstclear(&intersects, destroy_intersection2);
 	destroy_pre_computations(&pre);
 	return (color_hit);
+}
+
+void	render(t_camera *camera, t_world *world, t_canvas *canvas)
+{
+	int		count_y;
+	int		count_x;
+	t_ray	*ray;
+	t_color	color;
+
+	count_y = 0;
+	while(count_y < canvas->height)
+	{
+		count_x = 0;
+		while (count_x < canvas->width)
+		{
+			ray = ray_for_pixel(camera, count_x, count_y);
+			if (!ray)
+				continue ;
+			color = color_at(world, ray);
+			set_pixel(canvas, count_x, count_y, &color);
+			destroy_ray(&ray);
+			count_x++;
+		}
+		count_y++;
+	}
 }

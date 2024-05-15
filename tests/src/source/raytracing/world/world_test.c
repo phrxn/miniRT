@@ -2,6 +2,11 @@
 #include "world.h"
 #include "matrix_alloc.h"
 #include "ray.h"
+#include "camera.h"
+#include "canvas.h"
+#include "view_transform.h"
+#include "matrix_utils.h"
+#include <math.h>
 
 #include "assertz.h"
 #include <string.h>
@@ -55,6 +60,35 @@ void	colot_at_test()
 
 }
 
+static void render_test()
+{
+	create_subtitle("render_test");
+
+	//test 1
+	t_world		*test1World = dcreate_world();
+	t_camera	*test1Camera = create_camera(11, 11, M_PI/2);
+	t_canvas	*test1Canvas = create_canvas(11, 11, FALSE);
+
+	t_matrix	*test1From = matrix_create_point(0, 0, -5);
+	t_matrix	*test1To   = matrix_create_point(0, 0,  0);
+	t_matrix	*test1Up   = matrix_create_vector(0, 1, 0);
+
+	t_matrix	*transform = view_transform(test1From, test1To, test1Up);
+	matrix_copy(transform, test1Camera->transformation);
+
+	render(test1Camera, test1World, test1Canvas);
+
+	assert_svalue(1215914240, test1Canvas->pixels[11 *5 +5], "test1 pixel color");
+
+	destroy_world(&test1World);
+	destroy_camera(&test1Camera);
+	destroy_canvas(&test1Canvas);
+	destroy_matrix(&test1From);
+	destroy_matrix(&test1To);
+	destroy_matrix(&test1Up);
+	destroy_matrix(&transform);
+}
+
 void	world_test(int argc, char **argv)
 {
 	if (argc != 1 &&  strcmp(argv[1], "world_test") != 0)
@@ -63,4 +97,5 @@ void	world_test(int argc, char **argv)
 
 	create_world_test();
 	colot_at_test();
+	render_test();
 }

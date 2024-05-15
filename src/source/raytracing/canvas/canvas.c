@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:00:21 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/07 19:09:52 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/15 20:31:10 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "canvas.h"
 
-static int	get_position(int row, int col)
+static int	get_position(t_canvas *canvas, int row, int col)
 {
-	return (row * WIN_WIDTH + col);
+	return (row * canvas->width + col);
 }
 
 static int	create_pixel(int red, int green, int blue, char endian)
@@ -67,6 +67,6 @@ void	set_pixel(t_canvas *canvas, int row, int col, t_color *color)
 {
 	int	position;
 
-	position = get_position(row, col);
+	position = get_position(canvas, row, col);
 	canvas->pixels[position] = color_to_pixel(color, canvas->is_endian);
 }
