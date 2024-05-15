@@ -7,9 +7,12 @@
 #include "light.h"
 #include "matrix_fill.h"
 
-t_world	*dcreate_world()
+t_world	*dcreate_world(int empty_world)
 {
 	t_world *world = ft_calloc(1, sizeof(*world));
+
+	if (empty_world)
+		return (world);
 
 	t_shape *s1 = create_shape(TYPE_SPHERE);
 	fill_material(&s1->material);

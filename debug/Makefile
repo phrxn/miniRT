@@ -20,11 +20,8 @@ DIR_INTERSECT	= source/raytracing/intersect/
 DIR_MATRIX		= source/raytracing/matrix/
 DIR_NORMAL		= source/raytracing/normal/
 DIR_SHAPE		= source/raytracing/shape/
-<<<<<<< HEAD
 DIR_WORLD		= source/raytracing/world/
-=======
 DIR_PARSER		= source/parser/
->>>>>>> feat_parser
 
 # ++++++++++ LIBRARIES DIRECTORIES ++++++++++
 DIR_LIBS	= libs/
@@ -62,12 +59,14 @@ FILES_INTERSECT	=	intersect_sphere.c \
 					intersect_world.c \
 					intersect.c
 
-FILES_RAYTRACING	=	ray.c \
-						hit.c \
+FILES_RAYTRACING	=	hit.c \
 						lighting.c \
+						prepare_computations.c \
+						ray_for_pixel.c \
+						ray.c \
 						reflect.c \
+						shade_hit.c \
 						transform.c
-
 
 FILES_NORMAL	=	normal.c \
 					normal_sphere.c
@@ -86,14 +85,16 @@ FILES_SOURCES	=	check_params.c \
 					minirt.c \
 					main.c
 
+FILES_WORLD		=	camera.c \
+					light.c \
+					view_transform.c \
+					world.c
+
 FILES_PARSE		= 	lexer.c \
 					peek.c \
 					token_2.c \
 					token_3.c \
 					token.c
-
-FILES_WORLD		=	light.c \
-					world.c
 
 # =============== INCLUDES FILES ===============
 INCLUDES =	includes/ \
@@ -108,7 +109,6 @@ INCLUDES =	includes/ \
 			includes/raytracing/matrix/ \
 			includes/raytracing/shape/  \
 			includes/raytracing/world/
-
 
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
 ARRAY_F			= $(addprefix $(DIR_ARRAY), $(FILES_ARRAY))
@@ -127,15 +127,11 @@ WORLD_F			= $(addprefix $(DIR_WORLD), $(FILES_WORLD))
 # =============== INCLUDES FILES + ITS DIRECTORIES ===============
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
-<<<<<<< HEAD
-SOURCES =	$(ARRAY_F) $(CANVAS_F) $(COLOR_F) $(ERRORS_F) $(MATRIX_F) $(INTERSECT_F)
-SOURCES +=	$(RAYTRACING_F) $(SHAPE_F) $(NORMAL_F) $(SOURCES_F) $(WORLD_F)
-=======
 SOURCES =	$(ARRAY_F) $(CANVAS_F) $(COLOR_F) $(ERRORS_F) $(INTERSECT_F) $(MATRIX_F) $(NORMAL_F)
-SOURCES +=	$(RAYTRACING_F) $(PARSER_F) $(SHAPE_F) $(SOURCES_F)
->>>>>>> feat_parser
+SOURCES +=	$(PARSER_F) $(RAYTRACING_F) $(SHAPE_F) $(SOURCES_F) $(WORLD_F)
 OBJECTS =	$(SOURCES:.c=.o)
 DEPENDS =	$(SOURCES:.c=.d)
+
 
 
 

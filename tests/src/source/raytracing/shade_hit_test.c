@@ -18,7 +18,7 @@ static void	shade_hit_test1()
 	create_subtitle("shade_hit_test1");
 
 	//test1
-	t_world *test1World = dcreate_world();
+	t_world *test1World = dcreate_world(0);
 	t_matrix	*test1Origin = matrix_create_point(0, 0, -5);
 	t_matrix	*test1Direct = matrix_create_vector(0, 0, 1);
 	t_ray		*test1Ray  = create_ray(test1Origin, test1Direct);
@@ -37,7 +37,7 @@ static void	shade_hit_test1()
 	destroy_pre_computations(&test1Pre);
 
 	//test2
-	t_world		*test2World = dcreate_world();
+	t_world		*test2World = dcreate_world(0);
 	ft_lstclear(&test2World->lights, destroy_light2);
 	t_color test2light_color;  test2light_color.red = 1;  test2light_color.green = 1;  test2light_color.blue = 1;
 	t_light *test2light = create_light(&test2light_color, 0, 0.25, 0);

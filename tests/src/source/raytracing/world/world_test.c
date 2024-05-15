@@ -19,7 +19,7 @@ void 	create_world_test()
 {
 	create_subtitle("create_world_test");
 
-	t_world *world = dcreate_world();
+	t_world *world = dcreate_world(0);
 	destroy_world(&world);
 	assert_utils_print_ok("create and destroy");
 }
@@ -29,7 +29,7 @@ void	colot_at_test()
 	create_subtitle("colot_at_test");
 
 	//test1
-	t_world		*test1World = dcreate_world();
+	t_world		*test1World = dcreate_world(0);
 	t_matrix	*test1Origin = matrix_create_point(0,0,-5);
 	t_matrix	*test1Direct = matrix_create_vector(0,1,0);
 	t_ray		*test1Ray = create_ray(test1Origin, test1Direct);
@@ -44,7 +44,7 @@ void	colot_at_test()
 	destroy_ray(&test1Ray);
 
 	//test2
-	t_world		*test2World = dcreate_world();
+	t_world		*test2World = dcreate_world(0);
 	t_matrix	*test2Origin = matrix_create_point(0, 0, -5);
 	t_matrix	*test2Direct = matrix_create_vector(0, 0, 1);
 	t_ray		*test2Ray = create_ray(test2Origin, test2Direct);
@@ -65,7 +65,7 @@ static void render_test()
 	create_subtitle("render_test");
 
 	//test 1
-	t_world		*test1World = dcreate_world();
+	t_world		*test1World = dcreate_world(0);
 	t_camera	*test1Camera = create_camera(11, 11, M_PI/2);
 	t_canvas	*test1Canvas = create_canvas(11, 11, FALSE);
 

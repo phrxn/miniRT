@@ -15,7 +15,7 @@ static void intersect_world_test1()
 
 
 	// test1
-	t_world *world = dcreate_world();
+	t_world *world = dcreate_world(0);
 	t_matrix *test1Center = matrix_create_point(0, 0, -5);
 	t_matrix *test1Direct = matrix_create_vector(0, 0, 1);
 	t_ray    *test1Ray = create_ray(test1Center, test1Direct);
