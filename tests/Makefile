@@ -92,7 +92,8 @@ FILES_SOURCES	=	check_params.c \
 					messages.c \
 					minirt.c
 
-FILES_WORLD		=	light.c \
+FILES_WORLD		=	camera.c \
+					light.c \
 					view_transform.c \
 					world.c
 

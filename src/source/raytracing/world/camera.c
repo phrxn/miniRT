@@ -6,67 +6,59 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 01:28:55 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/15 03:31:33 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/15 04:30:40 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "camera.h"
-#include "matrix.h"
+#include "libft.h"
 #include "matrix_alloc.h"
-#include "matrix_operations.h"
+#include <math.h>
 
-static void end_vars(t_view_transf_vars *vars)
+void		set_aspect(t_camera *new_camera, int hsize, int vsize)
 {
-		destroy_matrix(&vars->forward);
-		destroy_matrix(&vars->upn);
-		destroy_matrix(&vars->left);
-		destroy_matrix(&vars->true_up);
-		destroy_matrix(&vars->orientation);
-		destroy_matrix(&vars->translation);
-}
+	double		aspect;
 
-static int start_vars(t_view_transf_vars *vars, t_matrix *from, t_matrix *to)
-{
-
-	vars->forward =	matrix_create_subtraction(to, from);
-	vars->upn = matrix_create_vector(0,0,0);
-	vars->left = matrix_create_point(0,0,0);
-	vars->true_up = matrix_create_point(0,0,0);
-	vars->orientation = matrix_create_identity_4x4();
-	vars->translation = matrix_create_identity_4x4();
-	if (!vars->forward || !vars->upn || !vars->left || !vars->true_up
-		|| !vars->orientation || !vars->translation)
+	aspect = (double) hsize / vsize;
+	new_camera->half_width = new_camera->half_view * aspect;
+	new_camera->half_height = new_camera->half_view;
+	if (aspect >= 1)
 	{
-		end_vars(vars);
-		return (1);
+		new_camera->half_width = new_camera->half_view;
+		new_camera->half_height = new_camera->half_view / aspect;
 	}
-	return (0);
 }
 
-t_matrix	*view_transform(t_matrix *from_p, t_matrix *to_p, t_matrix *up_v)
+t_camera	*create_camera(int hsize, int vsize, double field_of_view)
 {
-	t_view_transf_vars	vars;
-	t_matrix			*view_matrix;
+	t_camera	*new_camera;
 
-	if (start_vars(&vars, from_p, to_p))
+	new_camera = ft_calloc(1, sizeof(*new_camera));
+	if (!new_camera)
 		return (NULL);
-	matrix_normalization(vars.forward, vars.forward);
-	matrix_normalization(up_v, vars.upn);
-	matrix_cross(vars.forward, vars.upn, vars.left);
-	matrix_cross(vars.left, vars.forward, vars.true_up);
-	set_element(vars.orientation, 0, 0, vars.left->elements[X]);
-	set_element(vars.orientation, 0, 1, vars.left->elements[Y]);
-	set_element(vars.orientation, 0, 2, vars.left->elements[Z]);
-	set_element(vars.orientation, 1, 0, vars.true_up->elements[X]);
-	set_element(vars.orientation, 1, 1, vars.true_up->elements[Y]);
-	set_element(vars.orientation, 1, 2, vars.true_up->elements[Z]);
-	set_element(vars.orientation, 2, 0, -vars.forward->elements[X]);
-	set_element(vars.orientation, 2, 1, -vars.forward->elements[Y]);
-	set_element(vars.orientation, 2, 2, -vars.forward->elements[Z]);
-	matrix_fill_translation(vars.translation, -from_p->elements[X],
-		-from_p->elements[Y],
-		-from_p->elements[Z]);
-	view_matrix = matrix_create_mult(vars.orientation, vars.translation);
-	end_vars(&vars);
-	return (view_matrix);
+	new_camera->hsize = hsize;
+	new_camera->vsize = vsize;
+	new_camera->field_of_view = field_of_view;
+	new_camera->transformation = matrix_create_identity_4x4();
+	if (!new_camera->transformation)
+	{
+		destroy_camera(&new_camera);
+		return (NULL);
+	}
+	new_camera->half_view = tan(field_of_view / 2);
+	set_aspect(new_camera, hsize, vsize);
+	new_camera->pixel_size = (new_camera->half_width * 2) / hsize;
+	return (new_camera);
+}
+
+void		destroy_camera(t_camera **camera)
+{
+	t_camera	*camera_tmp;
+	if (!camera || !*camera)
+		return ;
+	camera_tmp = *camera;
+	if (camera_tmp->transformation)
+		destroy_matrix(&camera_tmp->transformation);
+	free(camera_tmp);
+	*camera = NULL;
 }
