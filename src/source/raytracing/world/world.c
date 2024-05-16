@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 21:32:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/15 20:27:01 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/16 01:23:26 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,13 @@ t_color	color_at(t_world *world, t_ray *ray)
 	if (!intersects)
 		return (color_hit);
 	inter = hit(intersects);
-	pre = create_pre_computations(inter, ray);
-	color_hit = shade_hit(world, pre);
+	if (inter)
+	{
+		pre = create_pre_computations(inter, ray);
+		color_hit = shade_hit(world, pre);
+		destroy_pre_computations(&pre);
+	}
 	ft_lstclear(&intersects, destroy_intersection2);
-	destroy_pre_computations(&pre);
 	return (color_hit);
 }
 
