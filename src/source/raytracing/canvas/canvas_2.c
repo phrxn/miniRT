@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:00:21 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/15 19:21:25 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/16 01:46:14 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			canvas_start(t_canvas *canvas, int w, int h, BOOL is_endian)
 	canvas->width = w;
 	canvas->height = h;
 	canvas->is_endian = is_endian;
-	canvas->size = WIN_WIDTH * WIN_HEIGHT;
+	canvas->size = w * h;
 	canvas->pixels = ft_calloc(canvas->size, sizeof(*(canvas->pixels)));
 	if (!canvas->pixels)
 		return (1);
@@ -36,7 +36,7 @@ t_canvas	*create_canvas(int w, int h, BOOL is_endian)
 	canvas->width = w;
 	canvas->height = h;
 	canvas->is_endian = is_endian;
-	canvas->size = WIN_WIDTH * WIN_HEIGHT;
+	canvas->size =  w * h;
 	canvas->pixels = ft_calloc(canvas->size, sizeof(*(canvas->pixels)));
 	if (!canvas->pixels)
 		destroy_canvas(&canvas);
