@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 21:32:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/16 01:23:26 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/16 01:57:27 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	render(t_camera *camera, t_world *world, t_canvas *canvas)
 			if (!ray)
 				continue ;
 			color = color_at(world, ray);
-			set_pixel(canvas, count_x, count_y, &color);
+			set_pixel(canvas, count_y, count_x, &color);
 			destroy_ray(&ray);
 			count_x++;
 		}
