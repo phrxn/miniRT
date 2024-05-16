@@ -3,6 +3,7 @@
 #include "libft.h"
 #include "token.h"
 #include "array.h"
+#include "camera.h"
 
 static void print_token_type(int type)
 {
@@ -75,4 +76,17 @@ void print_list_token(t_list *list)
 		printf("]");
 	}
 	printf("]\n");
+}
+
+void print_camera(t_camera *camera)
+{
+	printf("hsize=%d, vsize=%d, half_view=%f, fov=%f, pixel_size=%f, half_width=%f, half_height=%f\n",
+			camera->hsize,
+			camera->vsize,
+			camera->half_view,
+			camera->field_of_view,
+			camera->pixel_size,
+			camera->half_width,
+			camera->half_height);
+	print_matrix(camera->transformation, 0);
 }
