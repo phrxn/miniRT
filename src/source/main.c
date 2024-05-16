@@ -6,17 +6,31 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:09:42 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/13 21:27:09 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/21 23:20:29 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "check_params.h"
 #include "minirt.h"
 
+
+#include "file.h"
+#include "libft.h"
+#include "parser.h"
+
 int	main(int argc, char *argv[])
 {
 	t_minirt	minirt;
+	(void) minirt;
 
 	check_params(argc, argv);
+
+	int fd = open_file(argv[1]);
+	if (fd == -1)
+		return 1;
+	t_world *line_list = parser(fd);
+	(void) line_list;
+
+
 	return (0);
 }

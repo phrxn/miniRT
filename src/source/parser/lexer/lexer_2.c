@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:05:27 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/15 11:12:36 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:40:40 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
  * Return:
  * 	On failure:
  * 		return NULL (if the line is empty or totally filled with spaces)
- *  On sucessfull:
+ *  On successful:
  * 		a malloced line with \n and "trimed"
 */
 STATIC char	*prepared_line(const char *line_readed)
@@ -108,7 +108,15 @@ static int	add_line_to_list(t_list **line_list, char *line_prep, t_uint numb)
 }
 
 /**
- * file_line_list - create a line's list
+ * creat_line_list - create a list of lines
+ *
+ * @fd:	the open and valid fd
+ *
+ * Return:
+ * 	On successful:
+ * 		the list of lines
+ *  On failure:
+ * 		NULL is retorned (malloc)
 */
 t_list	*create_line_list(int fd)
 {

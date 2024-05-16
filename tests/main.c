@@ -16,7 +16,11 @@
 #include "prepare_computations_test.h"
 #include "shade_hit_test.h"
 #include "lexer_test.h"
-
+#include "syntax_elements_test.h"
+#include "select_element_test.h"
+#include "ft_atoi_2_test.h"
+#include "ft_atof_test.h"
+#include "matrix_rotation_convert_test.h"
 
 int main(int argc, char *argv[])
 {
@@ -56,6 +60,22 @@ int main(int argc, char *argv[])
 	shade_hit_test(argc, argv);
 
 	lexer_test(argc, argv);
+
+	//syntax_elements_test.
+	syntax_ambient_test(argc, argv);
+	syntax_camera_test(argc, argv);
+	syntax_cylinder_test(argc, argv);
+	syntax_light_test(argc, argv);
+	syntax_plane_test(argc, argv);
+	syntax_sphere_test(argc, argv);
+
+	select_element_test(argc, argv);
+
+	ft_atoi_2_test(argc, argv);
+
+	ft_atof_test(argc, argv);
+
+	matrix_rotation_convert_test(argc, argv);
 
 	return 0;
 }
