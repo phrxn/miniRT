@@ -6,13 +6,14 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 04:40:53 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/15 19:55:13 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/16 01:50:54 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray_for_pixel.h"
 #include "matrix_alloc.h"
 #include "matrix_operations.h"
+#include "matrix_errors.h"
 
 static void end_vars(t_ray_for_pixel_vars *vars)
 {
@@ -51,13 +52,23 @@ t_ray	*ray_for_pixel(t_camera *camera, int px, int py)
 {
 	t_ray_for_pixel_vars	vars;
 	t_ray					*ray;
+	int						status;
 
 	if(start_vars(&vars, camera, px, py))
 		return (NULL);
-	matrix_mult(vars.inv_transformation, vars.point_pixel, vars.pixel);
-	matrix_mult(vars.inv_transformation, vars.point_origin, vars.origin);
-	matrix_subtraction(vars.pixel, vars.origin, vars.direction);
-	matrix_normalization(vars.direction, vars.direction);
+	status = 0 ;
+	status = matrix_mult(vars.inv_transformation, vars.point_pixel, vars.pixel);
+	if (status != OK_OPERATION)
+		show_error_matrix("ray_for_pixel", status);
+	status = matrix_mult(vars.inv_transformation, vars.point_origin, vars.origin);
+	if (status != OK_OPERATION)
+		show_error_matrix("ray_for_pixel", status);
+	status = matrix_subtraction(vars.pixel, vars.origin, vars.direction);
+	if (status != OK_OPERATION)
+		show_error_matrix("ray_for_pixel", status);
+	status = matrix_normalization(vars.direction, vars.direction);
+	if (status != OK_OPERATION)
+		show_error_matrix("ray_for_pixel", status);
 	ray = create_ray(vars.origin, vars.direction);
 	end_vars(&vars);
 	return (ray);
