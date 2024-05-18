@@ -82,8 +82,7 @@ FILES_SOURCES	=	check_params.c \
 					exit.c \
 					file.c \
 					messages.c \
-					minirt.c \
-					main.c
+					minirt.c
 
 FILES_WORLD		=	camera.c \
 					light.c \
@@ -170,7 +169,8 @@ D_INCLUDE_DIR = ./
 
 D_FILES =	compare.c \
 			create_ppm.c \
-			print_object.c
+			print_object.c \
+			dworld.c
 
 D_SOURCES = $(addprefix $(D_SOURCES_DIR), $(D_FILES))
 D_OBJECTS = $(D_SOURCES:.c=.o)
@@ -186,6 +186,8 @@ chapter5.out : $(S_OBJECTS)  $(D_OBJECTS) $(LIBFT)
 chapter6.out : $(S_OBJECTS)  $(D_OBJECTS) $(LIBFT)
 	$(CC) $(S_INCLUDES_F) $(D_INCLUDES_F) -I$(LIBFT_DIR) $(S_OBJECTS) $(D_OBJECTS) chapter6.c -o $@ $(LIBFT) -lm
 
+chapter7.out : $(S_OBJECTS)  $(D_OBJECTS) $(LIBFT)
+	$(CC) $(S_INCLUDES_F) $(D_INCLUDES_F) -I$(LIBFT_DIR) $(S_OBJECTS) $(D_OBJECTS) chapter7.c -o $@ $(LIBFT) -lm
 
 %.o : %.c
 	$(CC) $(S_INCLUDES_F) $(D_INCLUDES_F) -I$(LIBFT_DIR) -MMD -c $< -o $@

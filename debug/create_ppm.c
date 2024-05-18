@@ -8,7 +8,7 @@ static void    save_one_color(FILE *file_ppm, t_canvas *canvas, int color)
 {
 	int r;
 	int g;
-	int b; 
+	int b;
 	if (canvas->is_endian)
 	{
 		r = ((color >> 16) & 0xFF); //r
@@ -27,9 +27,9 @@ static void    save_one_color(FILE *file_ppm, t_canvas *canvas, int color)
 void    save_ppm(t_canvas *canvas)
 {
 	FILE *file_ppm;
-	file_ppm = fopen("image.ppm", "w+");
+	file_ppm = fopen("image_debug.ppm", "w+");
 	if(!file_ppm)
-		printf("error when open image.ppm");
+		printf("error when open image_debug.ppm");
 
 	size_t count = 0;
 	size_t  colum_size = canvas->width - 1;
