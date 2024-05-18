@@ -6,17 +6,18 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 15:04:27 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/10 00:25:12 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/18 15:52:37 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix_operations.h"
 #include "matrix.h"
+#include "types.h"
 #include <math.h>
 
 static int	matrix_is_vector(t_matrix *a)
 {
-	if (a->rows != 4 || a->cols != 1 || a->elements[W] != VECTOR)
+	if (a->rows != 4 || a->cols != 1 || equals_double(a->elements[W], VECTOR))
 		return (ERR_NOT_VECTOR);
 	return (OK_OPERATION);
 }
