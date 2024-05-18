@@ -6,12 +6,13 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:34:47 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/18 16:28:04 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/19 01:54:26 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "normal.h"
 #include "normal_sphere.h"
+#include "normal_plane.h"
 #include "matrix.h"
 #include "shape.h"
 #include "matrix_alloc.h"
@@ -22,6 +23,8 @@ static t_matrix	*normal_select(t_shape *shape, t_matrix *point)
 {
 	if (shape->type == TYPE_SPHERE)
 		return (normal_at_sphere(shape, point));
+	if (shape->type == TYPE_PLANE)
+		return (normal_at_plane(shape, point));
 	else
 		show_error_method("normal_select", MERR_INVALID_OBJ_TYPE);
 	return (NULL);

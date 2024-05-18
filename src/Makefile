@@ -53,7 +53,8 @@ FILES_MATRIX	=	matrix_alloc_2.c \
 					matrix_utils.c \
 					matrix.c
 
-FILES_INTERSECT	=	intersect_sphere.c \
+FILES_INTERSECT	=	intersect_plane.c \
+					intersect_sphere.c \
 					intersect_utils.c \
 					intersect_world.c \
 					intersect.c
@@ -67,8 +68,9 @@ FILES_RAYTRACING	=	hit.c \
 						shade_hit.c \
 						transform.c
 
-FILES_NORMAL	=	normal.c \
-					normal_sphere.c
+FILES_NORMAL	=	normal_plane.c \
+					normal_sphere.c \
+					normal.c
 
 FILES_CANVAS	=	canvas.c \
 					canvas_2.c
