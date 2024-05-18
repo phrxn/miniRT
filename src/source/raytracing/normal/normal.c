@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:34:47 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/18 16:28:04 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/18 20:09:32 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static t_matrix	*point_to_world(t_matrix *inv, t_matrix *local_norm, int *s)
 	t_matrix	*transpose;
 	t_matrix	*world_normal;
 
+	world_normal = NULL;
 	transpose = matrix_create_transpose(inv);
 	if (!transpose)
 		*s = 1;
