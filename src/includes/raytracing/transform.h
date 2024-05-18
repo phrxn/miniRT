@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:20:03 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/01 21:03:24 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/18 16:30:26 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define MERR_MALLOC_NEW_RAY	"Error when allocating new_ray"
 # define MERR_MULT_ORIGIN		"Error when multipling matrix * ray->origin"
 # define MERR_MULT_DIRECTION	"Error when multipling matrix * ray->direction"
-# define MERR_INVERSE_MATRIX "Error when inversing the transformation matrix"
 # define MERR_CREATE_RAY_TRANS "Error when creating the transformed ray"
 
 t_ray	*transform(t_ray *ray, t_matrix *matrix);

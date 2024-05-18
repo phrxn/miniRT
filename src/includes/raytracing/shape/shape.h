@@ -26,6 +26,7 @@ typedef struct s_shape
 	void		*shape;
 	t_uint		id;
 	t_matrix	*transformation;
+	t_matrix	*transformation_inv;
 	t_material	material;
 }	t_shape;
 

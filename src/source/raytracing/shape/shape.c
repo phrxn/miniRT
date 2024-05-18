@@ -27,6 +27,7 @@ t_shape	*create_shape(int type)
 		return (NULL);
 	shape->type = type;
 	shape->transformation = matrix_create_identity_4x4();
+	shape->transformation_inv = matrix_create_identity_4x4();
 	if (!shape->transformation)
 	{
 		free(shape);
@@ -48,6 +49,8 @@ void	destroy_shape(t_shape **shape)
 	shape_tmp = *shape;
 	if (shape_tmp->transformation)
 		destroy_matrix(&shape_tmp->transformation);
+	if (shape_tmp->transformation_inv)
+		destroy_matrix(&shape_tmp->transformation_inv);
 	if (shape_tmp->shape)
 	{
 		if (shape_tmp->type == TYPE_SPHERE)

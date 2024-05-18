@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 04:40:53 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/16 01:50:54 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/18 16:28:49 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 static void end_vars(t_ray_for_pixel_vars *vars)
 {
-	destroy_matrix(&vars->inv_transformation);
 	destroy_matrix(&vars->pixel);
 	destroy_matrix(&vars->origin);
 	destroy_matrix(&vars->direction);
@@ -31,7 +30,7 @@ static int start_vars(t_ray_for_pixel_vars *vars, t_camera *cam, int px, int py)
 	vars->yoffset = (py + 0.5) * cam->pixel_size;
 	vars->world_x = cam->half_width - vars->xoffset;
 	vars->world_y = cam->half_height - vars->yoffset;
-	vars->inv_transformation = matrix_create_inverse(cam->transformation);
+	vars->inv_transformation = cam->transformation_inv;
 	vars->pixel = matrix_create_point(0,0,0);
 	vars->origin = matrix_create_point(0,0,0);
 	vars->direction = matrix_create_vector(0,0,0);

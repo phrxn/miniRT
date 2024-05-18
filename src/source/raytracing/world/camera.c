@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 01:28:55 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/15 04:30:40 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/18 16:20:43 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_camera	*create_camera(int hsize, int vsize, double field_of_view)
 	new_camera->vsize = vsize;
 	new_camera->field_of_view = field_of_view;
 	new_camera->transformation = matrix_create_identity_4x4();
+	new_camera->transformation_inv = matrix_create_identity_4x4();
 	if (!new_camera->transformation)
 	{
 		destroy_camera(&new_camera);
@@ -59,6 +60,8 @@ void		destroy_camera(t_camera **camera)
 	camera_tmp = *camera;
 	if (camera_tmp->transformation)
 		destroy_matrix(&camera_tmp->transformation);
+	if (camera_tmp->transformation_inv)
+		destroy_matrix(&camera_tmp->transformation_inv);
 	free(camera_tmp);
 	*camera = NULL;
 }

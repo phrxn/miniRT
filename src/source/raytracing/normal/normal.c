@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:34:47 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/10 00:33:43 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/18 16:28:04 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,7 @@ t_matrix	*normal_at(t_shape *shape, t_matrix *point)
 	t_normal	var;
 
 	start_vars(&var);
-	var.inv = matrix_create_inverse(shape->transformation);
-	if (!var.inv)
-		var.status = 1;
+	var.inv = shape->transformation_inv;
 	if (var.status == 0)
 		var.local_point = point_to_obj(point, var.inv, &var.status);
 	if (var.status == 0)
@@ -84,7 +82,6 @@ t_matrix	*normal_at(t_shape *shape, t_matrix *point)
 	if (var.status == 0)
 		var.world_normal = point_to_world(var.inv, var.local_nml, &var.status);
 	destroy_matrix(&var.local_nml);
-	destroy_matrix(&var.inv);
 	if (var.status == 0)
 		var.status = matrix_normalization(var.world_normal, var.world_normal);
 	if (var.status != OK_OPERATION)
