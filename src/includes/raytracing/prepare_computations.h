@@ -13,7 +13,7 @@ typedef struct  s_prepare_computations
     t_matrix    *point;
     t_matrix    *eyev;
     t_matrix    *normalv;
-	BOOL		inside;
+	char		inside;
 }   t_prepare_computations;
 
 t_prepare_computations	*create_pre_computations(t_inter *inter, t_ray *ray);

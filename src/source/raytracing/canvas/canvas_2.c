@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:00:21 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/16 01:46:14 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/18 15:59:13 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "types.h"
 #include "libft.h"
 
-int			canvas_start(t_canvas *canvas, int w, int h, BOOL is_endian)
+int			canvas_start(t_canvas *canvas, int w, int h, char is_endian)
 {
 	canvas->width = w;
 	canvas->height = h;
@@ -26,7 +26,7 @@ int			canvas_start(t_canvas *canvas, int w, int h, BOOL is_endian)
 	return (0);
 }
 
-t_canvas	*create_canvas(int w, int h, BOOL is_endian)
+t_canvas	*create_canvas(int w, int h, char is_endian)
 {
 	t_canvas	*canvas;
 
