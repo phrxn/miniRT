@@ -34,7 +34,7 @@ void    save_ppm(t_canvas *canvas)
 	size_t count = 0;
 	size_t  colum_size = canvas->width - 1;
 	unsigned int canvas_size = canvas->height * canvas->width;
-	fprintf(file_ppm, "P3\n%d %d\n255\n", canvas->width, canvas->width);
+	fprintf(file_ppm, "P3\n%d %d\n255\n", canvas->width, canvas->height);
 
 	for(unsigned int count = 0; count < canvas_size; count++)
 	{
