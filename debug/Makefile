@@ -54,7 +54,8 @@ FILES_MATRIX	=	matrix_alloc_2.c \
 					matrix_utils.c \
 					matrix.c
 
-FILES_INTERSECT	=	intersect_sphere.c \
+FILES_INTERSECT	=	intersect_plane.c \
+					intersect_sphere.c \
 					intersect_utils.c \
 					intersect_world.c \
 					intersect.c
@@ -68,8 +69,9 @@ FILES_RAYTRACING	=	hit.c \
 						shade_hit.c \
 						transform.c
 
-FILES_NORMAL	=	normal.c \
-					normal_sphere.c
+FILES_NORMAL	=	normal_plane.c \
+					normal_sphere.c \
+					normal.c
 
 FILES_CANVAS	=	canvas.c \
 					canvas_2.c
@@ -188,6 +190,9 @@ chapter6.out : $(S_OBJECTS)  $(D_OBJECTS) $(LIBFT)
 
 chapter7.out : $(S_OBJECTS)  $(D_OBJECTS) $(LIBFT)
 	$(CC) $(S_INCLUDES_F) $(D_INCLUDES_F) -I$(LIBFT_DIR) $(S_OBJECTS) $(D_OBJECTS) chapter7.c -o $@ $(LIBFT) -lm
+
+chapter9.out : $(S_OBJECTS)  $(D_OBJECTS) $(LIBFT)
+	$(CC) $(S_INCLUDES_F) $(D_INCLUDES_F) -I$(LIBFT_DIR) $(S_OBJECTS) $(D_OBJECTS) chapter9.c -o $@ $(LIBFT) -lm
 
 %.o : %.c
 	$(CC) $(S_INCLUDES_F) $(D_INCLUDES_F) -I$(LIBFT_DIR) -MMD -c $< -o $@
