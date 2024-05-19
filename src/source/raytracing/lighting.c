@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 21:56:19 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/18 20:37:11 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/19 15:51:39 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_color	lighting(t_lighting_params *params)
 	color_mult_scalar(&vars.effective_color, params->material->ambient, \
 							&vars.ambient);
 	matrix_dot(vars.lightv, params->normalv, &vars.light_dot_normal);
-	if (vars.light_dot_normal > 0 || !params->in_shadow)
+	if (vars.light_dot_normal >= 0 || !params->in_shadow)
 		status = calc_color(params, &vars);
 	if (!status)
 	{
