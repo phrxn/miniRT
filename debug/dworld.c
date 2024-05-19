@@ -6,6 +6,8 @@
 #include "libft.h"
 #include "light.h"
 #include "matrix_fill.h"
+#include "matrix_alloc.h"
+#include "matrix_utils.h"
 
 t_world	*dcreate_world(int empty_world)
 {
@@ -48,6 +50,9 @@ t_world	*dcreate_world(int empty_world)
 
 	//s2
 	matrix_fill_scaling(s2->transformation, 0.5, 0.5, 0.5);
+	t_matrix *inv = matrix_create_inverse(s2->transformation);
+	matrix_copy(inv, s2->transformation_inv);
+	destroy_matrix(&inv);
 
 	//the list
 	itemShape1->content = s1;

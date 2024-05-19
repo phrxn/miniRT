@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_sphere_test.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 21:14:34 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/06 20:24:01 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/18 23:55:41 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "matrix.h"
 #include "matrix_alloc.h"
 #include "ray.h"
+#include "transform.h"
 
 #include <string.h>
 
@@ -40,9 +41,10 @@ static void intersect_sphere_test1()
 
         t_shape test1Shape; test1Shape.id = 1;
                 test1Shape.transformation = identity;
+				test1Shape.transformation_inv = identity;
                 test1Shape.type = TYPE_SPHERE;
                 test1Shape.shape = &test1Sphere;
-        
+
         // t_list
         t_list *test1List = intersect_sphere(&test1Shape, test1Ray1);
 
@@ -55,10 +57,13 @@ static void intersect_sphere_test1()
         ft_lstclear(&test1List, destroy_intersection2);
 
         destroy_matrix(&test1Point1);
+
         destroy_matrix(&test1Vector1);
+
         destroy_ray(&test1Ray1);
         destroy_matrix(&test1CenterSphere);
         assert_utils_separator();
+
 
     //test2
         // ray
@@ -72,9 +77,10 @@ static void intersect_sphere_test1()
 
         t_shape test2Shape; test2Shape.id = 3;
                 test2Shape.transformation = identity;
+				test2Shape.transformation_inv = identity;
                 test2Shape.type = TYPE_SPHERE;
                 test2Shape.shape = &test2Sphere;
-        
+
         // t_list
         t_list *test2List = intersect_sphere(&test2Shape, test2Ray1);
 
@@ -104,9 +110,10 @@ static void intersect_sphere_test1()
 
         t_shape test3Shape; test3Shape.id = 3;
                 test3Shape.transformation = identity;
+				test3Shape.transformation_inv = identity;
                 test3Shape.type = TYPE_SPHERE;
                 test3Shape.shape = &test3Sphere;
-        
+
         // t_list
         t_list *test3List = intersect_sphere(&test3Shape, test3Ray1);
 
@@ -136,9 +143,10 @@ static void intersect_sphere_test1()
 
         t_shape test4Shape; test4Shape.id = 3;
                 test4Shape.transformation = identity;
+				test4Shape.transformation_inv = identity;
                 test4Shape.type = TYPE_SPHERE;
                 test4Shape.shape = &test4Sphere;
-        
+
         // t_list
         t_list *test4List = intersect_sphere(&test4Shape, test4Ray1);
 
@@ -163,9 +171,10 @@ static void intersect_sphere_test1()
 
         t_shape test5Shape; test5Shape.id = 7;
                 test5Shape.transformation = identity;
+				test5Shape.transformation_inv = identity;
                 test5Shape.type = TYPE_SPHERE;
                 test5Shape.shape = &test5Sphere;
-        
+
         // t_list
         t_list *test5List = intersect_sphere(&test5Shape, test5Ray1);
 
@@ -183,7 +192,7 @@ static void intersect_sphere_test1()
         destroy_matrix(&test5CenterSphere);
         assert_utils_separator();
 
-    //test6
+    	//test6
         // ray
         t_matrix    *test6Point1 = matrix_create_point(0, 0, -5);
         t_matrix    *test6Vector1 = matrix_create_vector(0,0,1);
@@ -196,11 +205,14 @@ static void intersect_sphere_test1()
 
         t_shape test6Shape; test6Shape.id = 63;
                 test6Shape.transformation = test6Transf;
+				test6Shape.transformation_inv = matrix_create_inverse(test6Shape.transformation);
                 test6Shape.type = TYPE_SPHERE;
                 test6Shape.shape = &test6Sphere;
-        
+
+		t_ray	*test6RayTransformed = transform_ray(&test6Shape, test6Ray1);
+
         // t_list
-        t_list *test6List = intersect_sphere(&test6Shape, test6Ray1);
+        t_list *test6List = intersect_sphere(&test6Shape, test6RayTransformed);
 
         assert_svalue(2, ft_lstsize(test6List), "test6List size");
         assert_svalue(63, ((t_inter*)test6List->content)->shape->id       , "test6 intersection 1 shape id");
@@ -210,16 +222,14 @@ static void intersect_sphere_test1()
 
         ft_lstclear(&test6List, destroy_intersection2);
 
+		destroy_ray(&test6RayTransformed);
+		destroy_matrix(&test6Shape.transformation_inv);
         destroy_matrix(&test6Point1);
         destroy_matrix(&test6Vector1);
         destroy_ray(&test6Ray1);
         destroy_matrix(&test6Transf);
         destroy_matrix(&test6CenterSphere);
         assert_utils_separator();
-
-
-
-
 
     destroy_matrix(&identity);
 }
