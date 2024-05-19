@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prepare_computations.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:36:45 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/11 02:38:18 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/19 16:59:29 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "shape.h"
 #include "matrix_utils.h"
 #include "matrix_operations.h"
+#include "matrix_alloc.h"
 #include "normal.h"
 
 static void	check_hit_inside(t_prepare_computations *pre)
@@ -29,6 +30,23 @@ static void	check_hit_inside(t_prepare_computations *pre)
 		pre->inside = TRUE;
 		matrix_negation(pre->normalv);
 	}
+}
+
+static void	create_over_point(t_prepare_computations *pre)
+{
+	t_matrix	*temp_normal_v;
+
+	temp_normal_v = matrix_create_vector(0, 0, 0);
+	pre->over_point = matrix_create_point(0, 0, 0);
+	if (!temp_normal_v || !pre->over_point)
+	{
+		destroy_pre_computations(&pre);
+		return ;
+	}
+	matrix_copy(pre->normalv, temp_normal_v);
+	matrix_mult_scalar(temp_normal_v, EPSILON);
+	matrix_addition(pre->point, temp_normal_v, pre->over_point);
+	destroy_matrix(&temp_normal_v);
 }
 
 t_prepare_computations	*create_pre_computations(t_inter *inter, t_ray *ray)
@@ -56,6 +74,7 @@ t_prepare_computations	*create_pre_computations(t_inter *inter, t_ray *ray)
 		return (NULL);
 	}
 	check_hit_inside(pre);
+	create_over_point(pre);
 	return (pre);
 }
 
@@ -74,6 +93,8 @@ void	destroy_pre_computations(t_prepare_computations **pre)
 		destroy_matrix(&pre_tmp->eyev);
 	if (pre_tmp->normalv)
 		destroy_matrix(&pre_tmp->normalv);
+	if (pre_tmp->over_point)
+		destroy_matrix(&pre_tmp->over_point);
 	free(pre_tmp);
 	*pre = NULL;
 }

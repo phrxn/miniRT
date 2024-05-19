@@ -8,11 +8,12 @@
 
 typedef struct  s_prepare_computations
 {
-    double      t;
-    t_shape     *shape;
-    t_matrix    *point;
-    t_matrix    *eyev;
-    t_matrix    *normalv;
+	double		t;
+	t_shape		*shape;
+	t_matrix	*point;
+	t_matrix	*eyev;
+	t_matrix	*normalv;
+	t_matrix	*over_point;
 	char		inside;
 }   t_prepare_computations;
 
