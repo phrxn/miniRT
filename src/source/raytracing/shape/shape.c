@@ -28,6 +28,11 @@ static void	specification(t_shape **shape, int type)
 		(*shape)->shape = create_sphere();
 		has_specification = TRUE;
 	}
+	if (type == TYPE_CYLINDER)
+	{
+		(*shape)->shape = create_cylinder();
+		has_specification = TRUE;
+	}
 	if (has_specification && !(*shape)->shape)
 		destroy_shape(shape);
 }
@@ -65,7 +70,9 @@ void	destroy_shape(t_shape **shape)
 	if (shape_tmp->shape)
 	{
 		if (shape_tmp->type == TYPE_SPHERE)
-			destroy_sphere((t_sphere**)&shape_tmp->shape);
+			destroy_sphere((t_sphere **)&shape_tmp->shape);
+		if (shape_tmp->type == TYPE_CYLINDER)
+			destroy_cylinder((t_cylinder **)&shape_tmp->shape);
 	}
 	free(shape_tmp);
 	*shape = NULL;
@@ -78,7 +85,6 @@ void	destroy_shape2(void *shape)
 	shape_tmp = (t_shape *)shape;
 	destroy_shape(&shape_tmp);
 }
-
 
 t_shape	*create_shape_copy(t_shape	*shape)
 {
@@ -93,5 +99,7 @@ t_shape	*create_shape_copy(t_shape	*shape)
 	new_shape->type = shape->type;
 	if (shape->type == TYPE_SPHERE)
 		copy_sphere(shape->shape, new_shape->shape);
+	if (shape->type == TYPE_CYLINDER)
+		copy_cylinder(shape->shape, new_shape->shape);
 	return (new_shape);
 }

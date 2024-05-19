@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   intersect_cylinder2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/20 12:50:52 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/19 18:42:42 by gacalaza         ###   ########.fr       */
+/*   Created: 2024/05/19 19:40:31 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/05/19 19:52:17 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
-# include <math.h>
+#include "intersect_cylinder.h"
+#include "ray.h"
+#include <math.h>
 
-# define TRUE 1
-# define FALSE 0
-
-# define EPSILON 0.00001
-
-static inline int	equals_double(double a, double b)
+char	check_cap_cylinder(t_ray *ray, double t)
 {
-	return (fabs(a - b) > EPSILON);
+	double	x;
+	double	z;
+
+	x = ray->origin->elements[X] + t * ray->direction->elements[X];
+	z = ray->origin->elements[Z] + t * ray->direction->elements[Z];
+	return ((pow(x, 2) + pow(z, 2)) <= 1);
 }
-
-static inline int	nearly_zero(double a)
-{
-	return (fabs(a) < EPSILON);
-}
-
-typedef unsigned int	t_uint;
-
-#endif

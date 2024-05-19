@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 20:07:24 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/19 02:39:09 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/19 20:29:39 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersect.h"
+#include "intersect_cylinder.h"
 #include "intersect_sphere.h"
 #include "intersect_plane.h"
 #include "messages.h"
@@ -22,6 +23,8 @@ static	t_list	*select_intersect(t_shape *shape, t_ray *ray_transformed)
 		return (intersect_sphere(shape, ray_transformed));
 	if (shape->type == TYPE_PLANE)
 		return (intersect_plane(shape, ray_transformed));
+	if (shape->type == TYPE_CYLINDER)
+		return (intersect_cylinder(shape, ray_transformed));
 	else
 		show_error_method("intersect", MERR_INVALID_OBJ_TYPE);
 	return (NULL);

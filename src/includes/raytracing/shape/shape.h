@@ -18,6 +18,7 @@
 
 # define TYPE_SPHERE	1
 # define TYPE_PLANE		2
+# define TYPE_CYLINDER  3
 
 # include "material.h"
 
@@ -37,6 +38,13 @@ typedef struct s_sphere
 	double		radius;
 }	t_sphere;
 
+typedef struct s_cylinder
+{
+	char	is_closed;
+	double	minimum;
+	double	maximum;
+}	t_cylinder;
+
 //the shapes
 t_shape		*create_shape(int type);
 void		destroy_shape(t_shape **shape);
@@ -47,5 +55,11 @@ t_shape		*create_shape_copy(t_shape	*shape);
 t_sphere	*create_sphere();
 void		destroy_sphere(t_sphere **sphere);
 void		copy_sphere(t_sphere *from, t_sphere *to);
+
+//cylinder
+t_cylinder	*create_cylinder(void);
+void		destroy_cylinder(t_cylinder **cylinder);
+void		copy_cylinder(t_cylinder *from, t_cylinder *to);
+
 
 #endif

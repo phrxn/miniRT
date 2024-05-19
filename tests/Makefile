@@ -63,7 +63,9 @@ FILES_MATRIX	=	matrix_alloc_2.c \
 					matrix_utils.c \
 					matrix.c
 
-FILES_INTERSECT	=	intersect_plane.c \
+FILES_INTERSECT	=	intersect_cylinder.c \
+					intersect_cylinder_2.c \
+					intersect_plane.c \
 					intersect_sphere.c \
 					intersect_utils.c \
 					intersect_world.c \
@@ -80,6 +82,7 @@ FILES_RAYTRACING	=	hit.c \
 						transform.c
 
 FILES_NORMAL	=	normal_plane.c \
+					normal_cylinder.c \
 					normal_sphere.c \
 					normal.c
 
@@ -88,6 +91,7 @@ FILES_CANVAS	=	canvas.c \
 
 FILES_SHAPE	=	material.c \
 				shape_sphere.c \
+				shape_cylinder.c \
 				shape.c
 
 FILES_SOURCES	=	check_params.c \

@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   normal_cylinder.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/20 12:50:52 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/19 18:42:42 by gacalaza         ###   ########.fr       */
+/*   Created: 2024/05/19 19:59:50 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/05/19 20:13:13 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
-# include <math.h>
+#ifndef NORMAL_CYLINDER_H
+# define NORMAL_CYLINDER_H
 
-# define TRUE 1
-# define FALSE 0
+# include "matrix.h"
+# include "shape.h"
 
-# define EPSILON 0.00001
-
-static inline int	equals_double(double a, double b)
-{
-	return (fabs(a - b) > EPSILON);
-}
-
-static inline int	nearly_zero(double a)
-{
-	return (fabs(a) < EPSILON);
-}
-
-typedef unsigned int	t_uint;
+t_matrix	*normal_at_cylinder(t_shape *shape, t_matrix *point);
 
 #endif
