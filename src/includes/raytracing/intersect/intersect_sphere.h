@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_sphere.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 21:14:20 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/06 20:23:30 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/18 19:27:15 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 
 # define MERR_DETERMINANT_MALLOC "Error when allocating point and vector \
 matrices."
-# define MERR_INTER_MALLOC "Error when allocating intersections or list."
 
 t_list	*intersect_sphere(t_shape *shape, t_ray *ray_transformed);
 

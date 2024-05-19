@@ -17,6 +17,7 @@
 # include "types.h"
 
 # define TYPE_SPHERE	1
+# define TYPE_PLANE		2
 
 # include "material.h"
 
