@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersect.h                                        :+:      :+:    :+:   */
+/*   intersect_plane.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 21:14:20 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/18 19:27:20 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/05/18 19:16:50 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/05/19 01:51:33 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERSECT_H
-# define INTERSECT_H
+#ifndef INTERSECT_PLANE_H
+# define INTERSECT_PLANE_H
 
-# include "shape.h"
 # include "libft.h"
+# include "shape.h"
 # include "ray.h"
 
-# define MERR_INVALID_OBJ_TYPE	"The shape type doesn't exist"
-
-# define MERR_INTER_MALLOC "Error when allocating intersections or list."
-
-typedef struct s_inter
-{
-	double	t;
-	t_shape	*shape;
-}			t_inter;
-
-t_list	*intersect(t_shape *shape, t_ray *ray_transformed);
+t_list	*intersect_plane(t_shape *shape, t_ray *ray_transformed);
 
 #endif

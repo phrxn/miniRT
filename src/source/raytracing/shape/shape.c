@@ -18,6 +18,20 @@
 #include "matrix_utils.h"
 #include "types.h"
 
+static void	specification(t_shape **shape, int type)
+{
+	int	has_specification;
+
+	has_specification = FALSE;
+	if (type == TYPE_SPHERE)
+	{
+		(*shape)->shape = create_sphere();
+		has_specification = TRUE;
+	}
+	if (has_specification && !(*shape)->shape)
+		destroy_shape(shape);
+}
+
 t_shape	*create_shape(int type)
 {
 	t_shape	*shape;
@@ -33,10 +47,7 @@ t_shape	*create_shape(int type)
 		free(shape);
 		return (NULL);
 	}
-	if (type == TYPE_SPHERE)
-		shape->shape = create_sphere();
-	if (!shape->shape)
-		destroy_shape(&shape);
+	specification(&shape, type);
 	return (shape);
 }
 

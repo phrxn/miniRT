@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 21:14:34 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/12 02:11:32 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/19 04:03:29 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,11 +116,7 @@ t_list	*intersect_sphere(t_shape *shape, t_ray *ray_transformed)
 	double	abc[3];
 	double	ts[2];
 
-	ray_transformed = transform_ray(shape, ray_transformed);
-	if (!ray_transformed)
-		return (NULL);
 	discriminant = calc_disc(ray_transformed, shape, &status, abc);
-	destroy_ray(&ray_transformed);
 	if (status)
 	{
 		show_error_method("intersect_sphere", MERR_DETERMINANT_MALLOC);
