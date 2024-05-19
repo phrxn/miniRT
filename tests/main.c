@@ -18,6 +18,7 @@
 #include "lexer_test.h"
 #include "view_transform_test.h"
 #include "intersect_plane_test.h"
+#include "shadow_test.h"
 
 
 int main(int argc, char *argv[])
@@ -62,6 +63,8 @@ int main(int argc, char *argv[])
 	view_transform_test(argc, argv);
 
 	intersect_plane_test(argc, argv);
+	
+	shadow_test(argc, argv);
 
 	return 0;
 }

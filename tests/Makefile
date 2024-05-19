@@ -76,6 +76,7 @@ FILES_RAYTRACING	=	hit.c \
 						ray.c \
 						reflect.c \
 						shade_hit.c \
+						shadow.c \
 						transform.c
 
 FILES_NORMAL	=	normal_plane.c \

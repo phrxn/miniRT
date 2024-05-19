@@ -5,6 +5,7 @@
 #include "ray.h"
 #include "matrix_alloc.h"
 #include "prepare_computations.h"
+#include "matrix_utils.h"
 
 #include "assertz.h"
 #include <string.h>
@@ -60,6 +61,48 @@ static void	shade_hit_test1()
 	destroy_matrix(&test2Direct);
 	destroy_ray(&test2Ray);
 	destroy_pre_computations(&test2pre);
+
+	//test 3
+	t_world *test3World = dcreate_world(1);
+
+	t_color test3ColorLight; fill_color(&test3ColorLight, 1, 1, 1);
+	t_light	*test3Light = create_light(&test3ColorLight, 0, 0, -10);
+	t_list	*test3ItemLight = ft_lstnew(test3Light);
+	test3World->lights = test3ItemLight;
+
+	t_shape	*test3Sphere1 = create_shape(TYPE_SPHERE);
+	fill_material(&test3Sphere1->material);
+	t_list	*test3ItemSphere1 = ft_lstnew(test3Sphere1);
+	
+	t_shape	*test3Sphere2 = create_shape(TYPE_SPHERE);
+	fill_material(&test3Sphere2->material);
+	matrix_fill_translation(test3Sphere2->transformation, 0, 0, 10);
+	t_matrix	*temp_inv_matrix = matrix_create_inverse(test3Sphere2->transformation);
+	matrix_copy(temp_inv_matrix, test3Sphere2->transformation_inv);
+	destroy_matrix(&temp_inv_matrix);
+	t_list	*test3ItemSphere2 = ft_lstnew(test3Sphere2);
+
+	test3ItemSphere1->next = test3ItemSphere2;
+	test3World->shapes = test3ItemSphere1;
+
+	t_matrix *test3Origin = matrix_create_point(0, 0, 5);
+	t_matrix *test3Direct = matrix_create_vector(0, 0, 1);
+	t_ray	*test3Ray = create_ray(test3Origin, test3Direct);
+	t_inter	test3Inter; test3Inter.t = 4; test3Inter.shape = test3Sphere2;
+	
+	t_prepare_computations *test3Pre = create_pre_computations(&test3Inter, test3Ray);
+	t_color	test3ColorReturn = shade_hit(test3World, test3Pre);
+
+	t_color test3ColorExpected; fill_color(&test3ColorExpected, 0.1, 0.1, 0.1);
+	print_color(&test3ColorReturn);
+	assert_svalue(0, compare_color(&test3ColorExpected, &test3ColorReturn), "test 3");
+	destroy_matrix(&test3Origin);
+	destroy_matrix(&test3Direct);
+	destroy_ray(&test3Ray);
+	destroy_pre_computations(&test3Pre);
+	destroy_world(&test3World);
+
+
 }
 
 void	shade_hit_test(int argc, char **argv)

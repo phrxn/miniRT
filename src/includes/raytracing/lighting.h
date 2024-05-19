@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 21:56:26 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/07 22:19:13 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/18 20:32:37 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_lighting_params
 	t_matrix	*point;
 	t_matrix	*eyev;
 	t_matrix	*normalv;
+	char		in_shadow;
 
 }			t_lighting_params;
 

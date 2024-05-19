@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light.h                                            :+:      :+:    :+:   */
+/*   shadow.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 20:37:31 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/18 20:37:58 by gacalaza         ###   ########.fr       */
+/*   Created: 2024/05/18 20:41:35 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/05/18 21:43:37 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHT_H
-# define LIGHT_H
+#ifndef SHADOW_H
+# define SHADOW_H
 
-# include "color.h"
+# include "world.h"
 # include "matrix.h"
+# include "ray.h"
+# include "libft.h"
+# include "light.h"
 
-typedef struct s_light
+# define MEER_START_VARS	"Start vars"
+
+typedef struct s_is_shadowed_vars
 {
-	t_color		intensity;
-	t_matrix	*position;
-}	t_light;
+	t_matrix	*v;
+	t_matrix	*direction_v;
+	t_list		*intersections;
+	t_ray		*shadow_ray;
+	double		distance;
+}			t_is_shadowed_vars;
 
-t_light	*create_light(t_color *color, double x, double y, double z);
-void	destroy_light(t_light **light);
-void	destroy_light2(void *del);
+char	is_shadowed(t_world *world, t_light *light, t_matrix *point);
 
 #endif

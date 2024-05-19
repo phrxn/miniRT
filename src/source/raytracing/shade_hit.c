@@ -4,6 +4,7 @@
 #include "types.h"
 #include "lighting.h"
 #include "array.h"
+#include "shadow.h"
 #include <stdio.h>
 
 static void	start_params(t_shade_vars *vars, t_world *world)
@@ -27,9 +28,10 @@ t_color	shade_hit(t_world *world, t_prepare_computations *pre)
 	{
 		item = ft_lstget(world->lights, vars.count);
 		vars.light = (t_light *)item->content;
+		lgt_params.in_shadow = is_shadowed(world, vars.light, pre->over_point);
 		lgt_params.material = &pre->shape->material;
 		lgt_params.light = vars.light;
-		lgt_params.point = pre->point;
+		lgt_params.point = pre->over_point;
 		lgt_params.eyev = pre->eyev;
 		lgt_params.normalv = pre->normalv;
 		vars.color_tmp = lighting(&lgt_params);

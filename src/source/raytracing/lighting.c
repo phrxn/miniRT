@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 21:56:19 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/08 19:25:12 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/19 16:20:23 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static void	end_vars(t_lighting_vars *vars)
 
 static int	calc_color(t_lighting_params *params, t_lighting_vars *vars)
 {
-	color_mult_scalar(&vars->effective_color, params->material->diffuse, &vars->diffuse);
+	color_mult_scalar(&vars->effective_color, params->material->diffuse, \
+								&vars->diffuse);
 	color_mult_scalar(&vars->diffuse, vars->light_dot_normal, &vars->diffuse);
 	matrix_negation(vars->lightv);
 	vars->reflectv = reflect(vars->lightv, params->normalv);
@@ -60,7 +61,8 @@ static int	calc_color(t_lighting_params *params, t_lighting_vars *vars)
 	else
 	{
 		vars->factor = pow(vars->reflect_dot_eye, params->material->shininess);
-		color_mult_scalar(&params->light->intensity, params->material->specular, &vars->specular);
+		color_mult_scalar(&params->light->intensity, \
+						params->material->specular, &vars->specular);
 		color_mult_scalar(&vars->specular, vars->factor, &vars->specular);
 	}
 	return (0);
@@ -77,12 +79,14 @@ t_color	lighting(t_lighting_params *params)
 		show_error_method("lighting", MERR_MALLOC_LIGHTV);
 		return (vars.return_color);
 	}
-	color_mult(&params->material->color, &params->light->intensity, &vars.effective_color);
+	color_mult(&params->material->color, &params->light->intensity, \
+						&vars.effective_color);
 	matrix_subtraction(params->light->position, params->point, vars.lightv);
 	matrix_normalization(vars.lightv, vars.lightv);
-	color_mult_scalar(&vars.effective_color, params->material->ambient, &vars.ambient);
+	color_mult_scalar(&vars.effective_color, params->material->ambient, \
+							&vars.ambient);
 	matrix_dot(vars.lightv, params->normalv, &vars.light_dot_normal);
-	if (vars.light_dot_normal > 0)
+	if (vars.light_dot_normal >= 0 && !params->in_shadow)
 		status = calc_color(params, &vars);
 	if (!status)
 	{
