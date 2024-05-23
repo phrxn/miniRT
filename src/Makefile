@@ -100,7 +100,8 @@ FILES_SOURCES		=	check_params.c \
 						exit.c \
 						file.c \
 						messages.c \
-						minirt.c
+						minirt.c \
+						main.c
 
 FILES_WORLD			=	light.c \
 						world.c
