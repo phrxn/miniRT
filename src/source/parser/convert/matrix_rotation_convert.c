@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 00:25:58 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/23 11:48:48 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 00:15:26 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ void cr(t_transformation *tt, double vec3d[4], double ref[4], double cross[4])
 	t_matrix reference_vector;            //(0,1,0);
 	t_matrix cross_product;
 
-	matrix_normalization(&v3d_normalized, &v3d_normalized);
 	start_rot_auxiliar(&v3d_normalized, &reference_vector, &cross_product);
 	v3d_normalized.elements = vec3d;
 	reference_vector.elements = ref;
 	cross_product.elements = cross;
+	matrix_normalization(&v3d_normalized, &v3d_normalized);
 	matrix_normalization(&v3d_normalized, &v3d_normalized);
 	if (is_vector_parallel_y(&v3d_normalized, TRUE))
 		return ;

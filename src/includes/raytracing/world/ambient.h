@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build_world_errors.h                               :+:      :+:    :+:   */
+/*   ambient.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 13:09:15 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/23 21:01:29 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/05/23 19:38:06 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/05/23 19:47:28 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILD_WORLD_ERRORS_H
-# define BUILD_WORLD_ERRORS_H
+#ifndef AMBIENT_H
+# define AMBIENT_H
+# include "color.h"
+# include <stdio.h>
+# include <stdlib.h>
 
-# include "line.h"
+typedef struct s_ambient
+{
+	double	radio;
+	t_color	color;
+}	t_ambient;
 
-void	show_error_build_world(int error_code);
+t_ambient	*create_ambient();
 
-void 	show_error_build_element(int error_code, t_line *line);
+void		destroy_ambient(t_ambient **ambient);
 
 #endif

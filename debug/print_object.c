@@ -6,6 +6,8 @@
 #include "camera.h"
 #include "array.h"
 #include "line.h"
+#include "world.h"
+#include "light.h"
 
 static char *tokens_type_string[8] =
 {
@@ -121,4 +123,104 @@ void print_camera(t_camera *camera)
 			camera->half_width,
 			camera->half_height);
 	print_matrix(camera->transformation, 0);
+}
+
+//================= print world ===========================
+
+
+static void	print_world_ambient(const t_world *world)
+{
+	if (!world->ambient)
+	{
+		printf("ambient: NULL\n");
+		return ;
+	}
+	printf("ambient: radio:%f, [color: red:%f, green:%f, blue:%f]\n",
+		world->ambient->radio,
+		world->ambient->color.red,
+		world->ambient->color.green,
+		world->ambient->color.blue
+	);
+}
+
+static void	print_world_camera(const t_world *world)
+{
+	t_camera *camera;
+	if (!world->camera)
+		return ;
+	camera = world->camera;
+	printf("camera: hsize=%d, vsize=%d, half_view=%f, fov=%f, pixel_size=%f, half_width=%f, half_height=%f\n",
+			camera->hsize,
+			camera->vsize,
+			camera->half_view,
+			camera->field_of_view,
+			camera->pixel_size,
+			camera->half_width,
+			camera->half_height);
+	printf("transformation matrix: ");
+	print_matrix(camera->transformation, 0);
+	printf("transformation matrix inverted: ");
+	print_matrix(camera->transformation_inv, 0);
+}
+
+static void print_world_color(t_color *color)
+{
+	printf("[color[red:%f, green:%f, blue:%f]]", color->red, color->green, color->blue);
+}
+
+static void print_world_coordanates(t_matrix *coordenates)
+{
+	printf("[coor[x=%f, y=%f, z=%f]]", coordenates->elements[X], coordenates->elements[Y],coordenates->elements[Z]);
+}
+
+static void print_world_light(const t_world *world)
+{
+	if (!world->lights)
+	{
+		printf("ligths == NULL\n");
+		return ;
+	}
+	t_uint	size_list = ft_lstsize(world->lights);
+	printf("lights: [");
+	for(t_uint count = 0; count < size_list; count++)
+	{
+		t_light *temp_light = (t_light *)ft_lstget(world->lights, count)->content;
+		printf("[light: ");
+		print_world_coordanates(temp_light->position);
+		printf(", ");
+		print_world_color(&(temp_light->intensity));
+		printf("]");
+		if (size_list - 1 > count)
+			printf(",");
+	}
+	printf("]\n");
+}
+
+void	print_world_shapes(const t_world *world)
+{
+	t_list	*list_shapes = world->shapes;
+
+	if (!list_shapes)
+	{
+		printf("shapes == NULL");
+		return ;
+	}
+	t_uint	size_list = ft_lstsize(world->shapes);
+	printf("shapes: [");
+	for(t_uint count = 0; count < size_list; count++)
+	{
+		printf("shape");
+		if (size_list - count > 1)
+			printf(", ");
+	}
+	printf("]\n");
+}
+
+void	print_world(const t_world *world)
+{
+	printf("world:\n");
+	print_world_ambient(world);
+	print_world_camera(world);
+	print_world_light(world);
+	print_world_shapes(world);
 }

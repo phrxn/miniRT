@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build_world_errors.h                               :+:      :+:    :+:   */
+/*   build_shape.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 13:09:15 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/23 21:01:29 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/05/24 21:10:20 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/05/24 22:22:09 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILD_WORLD_ERRORS_H
-# define BUILD_WORLD_ERRORS_H
+#ifndef BUILD_SHAPE_H
+# define BUILD_SHAPE_H
 
-# include "line.h"
+# include "world.h"
+# include "libft.h"
+# include "transformation.h"
 
-void	show_error_build_world(int error_code);
+int	build_shape_cylinder(t_world *wrl, t_list *token_list, t_transformation *t);
 
-void 	show_error_build_element(int error_code, t_line *line);
+int	build_shape_plane(t_world *wrl, t_list *token_list, t_transformation *t);
+
+int	build_shape_sphere(t_world *wrl, t_list *token_list, t_transformation *t);
 
 #endif

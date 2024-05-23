@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:20:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/20 13:06:58 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/24 19:55:02 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,12 @@ t_element_type	select_element_type(t_token* token_identifier)
 	if (ft_strncmp("cy", token_identifier->text, ft_strlen("cy")) == 0)
 		return (cylinder);
 	return (not_exist);
+}
+
+t_element_type	get_element_type(t_list *token_list)
+{
+	t_token	*token_identifier;
+
+	token_identifier = (t_token *)token_list->content;
+	return (select_element_type(token_identifier));
 }

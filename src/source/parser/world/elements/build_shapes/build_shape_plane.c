@@ -1,0 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   build_shape_plane.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/23 17:00:29 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/05/25 00:12:49 by dmanoel-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "build_shape.h"
+#include "build_element.h"
+#include "build_world.h"
+#include "property_convert.h"
+#include "convert_errors.h"
+#include "array.h"
+#include "matrix_fill.h"
+#include "material.h"
+#include "matrix_rotation_convert.h"
+#include "matrix_operations.h"
+#include "matrix_utils.h"
+
+static int fill_struct(t_element_plane	*pla, t_list *token_list)
+{
+	//t_token	*token_tmp;
+	int		status;
+
+	status = property_xyz_to_number(ft_lstget(token_list, 2), pla->coordenates);
+	if (status != OK_CONVERT)
+		return (status);
+	status = property_xyz_to_number(ft_lstget(token_list, 8), pla->direction);
+	if (status != OK_CONVERT)
+		return (status);
+	status = property_xyz_to_number(ft_lstget(token_list, 14), pla->color);
+	return (status);
+}
+
+static void	fill_transformation(t_element_plane *pla, t_transformation *t)
+{
+	tokens_to_rotation(t, pla->direction);
+	matrix_fill_translation(t->transformation, pla->coordenates[X], pla->coordenates[Y], pla->coordenates[Z]);
+}
+
+static int	put_in_world(t_shape *shape, t_world *world)
+{
+	t_list	*item_shape;
+
+	item_shape = ft_lstnew(shape);
+	if (!item_shape)
+	{
+		destroy_shape2(shape);
+		return (ERR_BUILD_ELEMENT_MALLOC);
+	}
+	ft_lstadd_back(&world->shapes, item_shape);
+	return (OK_BUILD_ELEMENT);
+}
+
+int	build_shape_plane(t_world *world, t_list *token_list, t_transformation *t)
+{
+	t_element_plane		plane;
+	int					status;
+	t_shape				*shape;
+
+	status = fill_struct(&plane, token_list);
+	if (status != OK_BUILD_ELEMENT)
+		return (ERR_BUILD_CONVERT_TOKENS);
+	shape = create_shape(TYPE_PLANE);
+	if (!shape)
+		return (ERR_BUILD_ELEMENT_MALLOC);
+	fill_transformation(&plane, t);
+	fill_material(&shape->material);
+	fill_color(&shape->material.color, plane.color[RED], plane.color[GREEN], plane.color[BLUE]);
+	status = make_transformation(t);
+	if (status != OK_OPERATION)
+	{
+		destroy_shape(&shape);
+		return (ERR_BUILD_ELEMENT_MAKE_TRANSF_MATRIX);
+	}
+	matrix_copy(t->transformation, shape->transformation);
+	matrix_copy(t->transformation_inv, shape->transformation_inv);
+	return (put_in_world(shape, world));
+}

@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build_world_errors.h                               :+:      :+:    :+:   */
+/*   ambient.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 13:09:15 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/23 21:01:29 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/05/23 19:37:49 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/05/23 21:10:16 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILD_WORLD_ERRORS_H
-# define BUILD_WORLD_ERRORS_H
+#include "ambient.h"
+#include "libft.h"
+#include <stdlib.h>
 
-# include "line.h"
+t_ambient	*create_ambient()
+{
+	t_ambient	*new_ambient;
 
-void	show_error_build_world(int error_code);
+	new_ambient = ft_calloc(1, sizeof(*new_ambient));
+	if (!new_ambient)
+		return (NULL);
+	return (new_ambient);
+}
 
-void 	show_error_build_element(int error_code, t_line *line);
+void		destroy_ambient(t_ambient **ambient)
+{
+	t_ambient	*ambient_tmp;
 
-#endif
+	if (!ambient || !*ambient)
+		return ;
+	ambient_tmp = *ambient;
+	free(ambient_tmp);
+	*ambient = NULL;
+}

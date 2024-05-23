@@ -37,6 +37,7 @@ DIR_VALUES			= source/parser/grammar/values/
 DIR_V_ELEMENTS		= source/parser/grammar/values/elements/
 DIR_CONVERT			= source/parser/convert/
 DIR_PARSER_WORLD	= source/parser/world/
+DIR_BUILD_ELEMENTS	= source/parser/world/elements/
 
 # ++++++++++ LIBRARIES DIRECTORIES ++++++++++
 DIR_LIBS	= libs/
@@ -52,6 +53,7 @@ LIBS = $(LIBFT_A) $(LIBML_A)
 # =============== SOURCES FILES ===============
 
 FILES_ERRORS 		=	build_world_errors.c \
+						count_elements_errors.c \
 						matrix_errors.c \
 						parser_errors.c
 
@@ -108,10 +110,14 @@ FILES_SOURCES		=	check_params.c \
 						messages.c \
 						minirt.c
 
-FILES_WORLD			=	light.c \
+FILES_WORLD			=	ambient.c \
+						camera.c \
+						light.c \
+						view_transform.c \
 						world.c
 
-FILES_PARSE			= 	line.c \
+FILES_PARSE			= 	count_elements.c \
+						line.c \
 						parser.c \
 						token_2.c \
 						token_3.c \
@@ -161,12 +167,21 @@ FILES_V_ELEMENTS	=	values_ambient.c \
 						values_plane.c \
 						values_sphere.c
 
-FILES_PARSER_WORLD	=	build_world.c
-
-FILES_WORLD			=	camera.c \
+FILES_WORLD			=	ambient.c \
+						camera.c \
 						light.c \
 						view_transform.c \
 						world.c
+
+FILES_PARSER_WORLD	=	build_world.c
+
+FILES_BUILD_ELEMENTS	=	build_element_ambient.c \
+							build_element_camera.c \
+							build_element_cylinder.c \
+							build_element_light.c \
+							build_element_plane.c \
+							build_element_sphere.c \
+							build_element.c
 
 
 # =============== INCLUDES FILES ===============
@@ -189,7 +204,9 @@ INCLUDES =	includes/ \
 			includes/raytracing/normal/ \
 			includes/raytracing/matrix/ \
 			includes/raytracing/shape/  \
-			includes/raytracing/world/
+			includes/raytracing/world/ \
+			includes/parser/world/ \
+			includes/parser/world/elements/
 
 
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
@@ -213,12 +230,13 @@ VALUES_F		= $(addprefix $(DIR_VALUES), $(FILES_VALUES))
 ELEMENTS_V_F	= $(addprefix $(DIR_V_ELEMENTS), $(FILES_V_ELEMENTS))
 CONVERT_F		= $(addprefix $(DIR_CONVERT), $(FILES_CONVERT))
 PARSER_WORLD_F	= $(addprefix $(DIR_PARSER_WORLD), $(FILES_PARSER_WORLD))
+BUILD_ELEMENTS  = $(addprefix $(DIR_BUILD_ELEMENTS), $(FILES_BUILD_ELEMENTS))
 
 
 # =============== INCLUDES FILES + ITS DIRECTORIES ===============
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
-SOURCES =	$(ARRAY_F) $(CANVAS_F) $(COLOR_F) $(CONVERT_F) $(ELEMENTS_S_F) $(ELEMENTS_V_F) $(ERRORS_F) $(GRAMMAR_F)
+SOURCES =	$(ARRAY_F) $(BUILD_ELEMENTS) $(CANVAS_F) $(COLOR_F) $(CONVERT_F) $(ELEMENTS_S_F) $(ELEMENTS_V_F) $(ERRORS_F) $(GRAMMAR_F)
 SOURCES +=	$(LEXER_F) $(INTERSECT_F) $(MATRIX_F) $(NORMAL_F) $(PARSER_F) $(PARSER_WORLD_F) $(RAYTRACING_F) $(VALUES_F)
 SOURCES +=	$(SHAPE_F) $(SOURCES_F) $(SYNTAX_F) $(WORLD_F)
 OBJECTS =	$(SOURCES:.c=.o)

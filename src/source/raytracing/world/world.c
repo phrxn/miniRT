@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 21:32:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/16 01:57:27 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/24 17:16:34 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,12 @@ void	destroy_world(t_world **world)
 		ft_lstclear(&world_tmp->lights, destroy_light2);
 	if (world_tmp->shapes)
 		ft_lstclear(&world_tmp->shapes, destroy_shape2);
+	if (world_tmp->ambient)
+		destroy_ambient(&world_tmp->ambient);
+	if (world_tmp->camera)
+		destroy_camera(&world_tmp->camera);
 	free(world_tmp);
+	*world = NULL;
 }
 
 t_color	color_at(t_world *world, t_ray *ray)

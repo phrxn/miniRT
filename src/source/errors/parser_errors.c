@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:49:58 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/22 23:02:42 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:25:09 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,41 @@
 static void	printf_property2(int error_code)
 {
 	if (error_code == ERR_PROPERTY_VALUES_HEIGHT_INVALID)
-		ft_putstr_fd("height (the value must be greather than zero)", 2);
+		ft_putstr_fd("property height (the value must be greather than zero)", 2);
 	if (error_code == ERR_PROPERTY_VALUES_COOR_CAMERA)
-		ft_putstr_fd("coornenates (all values are 0's)", 2);
+		ft_putstr_fd("property coornenates (all values are 0's)", 2);
+	if (error_code == ERR_PROPERTY_CAMERA_AXIX_Y)
+		ft_putstr_fd("3D vector property cannot be in parallel with "\
+		"coordinates on the Y. Coordenates (0, Y/-Y, 0) "\
+		"and 3D vector (0, Y/-Y, 0)", 2);
 }
 
 static void	printf_property(int error_code)
 {
 	if (error_code == ERR_PROPERTY_VALUES_COOR)
-		ft_putstr_fd("coordenates", 2);
+		ft_putstr_fd("property coordenates", 2);
 	if (error_code == ERR_PROPERTY_VALUES_DIRECTION_CONVERT)
-		ft_putstr_fd("direction", 2);
+		ft_putstr_fd("property direction", 2);
 	if (error_code == ERR_PROPERTY_VALUES_DIRECTION_ALL_ZEROS)
-		ft_putstr_fd("direction (all values are 0's)", 2);
+		ft_putstr_fd("property direction (all values are 0's)", 2);
 	if (error_code == ERR_PROPERTY_VALUES_COLOR)
-		ft_putstr_fd("color", 2);
+		ft_putstr_fd("property color", 2);
 	if (error_code == ERR_PROPERTY_VALUES_COLOR_INVALID)
-		ft_putstr_fd("color (values must be between 0-255)", 2);
+		ft_putstr_fd("property color (values must be between 0-255)", 2);
 	if (error_code == ERR_PROPERTY_VALUES_FOV)
-		ft_putstr_fd("fov", 2);
+		ft_putstr_fd("property fov", 2);
 	if (error_code == ERR_PROPERTY_VALUES_FOV_INVALID)
-		ft_putstr_fd("fov (value must be between 0-180)", 2);
+		ft_putstr_fd("property fov (value must be between 0-180)", 2);
 	if (error_code == ERR_PROPERTY_VALUES_RADIO)
-		ft_putstr_fd("radio", 2);
+		ft_putstr_fd("property radio", 2);
 	if (error_code == ERR_PROPERTY_VALUES_RADIO_INVALID)
-		ft_putstr_fd("radio (value must be between 0.0-1.0)", 2);
+		ft_putstr_fd("property radio (value must be between 0.0-1.0)", 2);
 	if (error_code == ERR_PROPERTY_VALUES_DIAM)
-		ft_putstr_fd("diameter", 2);
+		ft_putstr_fd("property diameter", 2);
 	if (error_code ==  ERR_PROPERTY_VALUES_DIAM_INVALID)
-		ft_putstr_fd("diameter (the value must be greather than zero)", 2);
+		ft_putstr_fd("property diameter (the value must be greather than zero)", 2);
 	if (error_code == ERR_PROPERTY_VALUES_HEIGHT)
-		ft_putstr_fd("height", 2);
+		ft_putstr_fd("property height", 2);
 	return printf_property2(error_code);
 }
 
@@ -89,7 +93,7 @@ void	show_error_grammar_value(int error, t_line *line)
 	if (error == OK_SYNTAX)
 		return ;
 	printf_default_text(line->line_number);
-	ft_putstr_fd("the value(s) of property ", 2);
+	ft_putstr_fd("the value(s) of ", 2);
 	printf_property(error);
 	ft_putstr_fd(" of element ", 2);
 	ft_putstr_fd(token_identifier->text, 2);

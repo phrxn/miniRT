@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:20:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/15 14:30:15 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/24 19:55:28 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ typedef enum	e_element_type
 }	t_element_type;
 
 t_element_type	select_element_type(t_token *token_identifier);
+
+t_element_type	get_element_type(t_list *token_list);
 
 #endif

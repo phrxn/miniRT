@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:42:28 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/23 04:07:48 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/24 19:55:22 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,6 @@
 #include "select_element.h"
 #include "syntax_errors.h"
 #include "line.h"
-
-static t_element_type	get_element_type(t_list *token_list)
-{
-	t_token	*token_identifier;
-
-	token_identifier = (t_token *)token_list->content;
-	return (select_element_type(token_identifier));
-}
 
 /**
  * check_line_syntax - check the syntax of a struct t_line

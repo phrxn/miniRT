@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:03:20 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/22 19:05:50 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:59:57 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@
 # define ERR_PROPERTY_VALUES_HEIGHT 14
 # define ERR_PROPERTY_VALUES_HEIGHT_INVALID 15
 # define ERR_PROPERTY_VALUES_COOR_CAMERA 16
+# define ERR_PROPERTY_CAMERA_AXIX_Y 17
 
 #endif
