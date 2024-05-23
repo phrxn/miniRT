@@ -19,7 +19,11 @@
 #include "view_transform_test.h"
 #include "intersect_plane_test.h"
 #include "shadow_test.h"
-
+#include "syntax_elements_test.h"
+#include "select_element_test.h"
+#include "ft_atoi_2_test.h"
+#include "ft_atof_test.h"
+#include "matrix_rotation_convert_test.h"
 
 int main(int argc, char *argv[])
 {
@@ -63,8 +67,24 @@ int main(int argc, char *argv[])
 	view_transform_test(argc, argv);
 
 	intersect_plane_test(argc, argv);
-	
+
 	shadow_test(argc, argv);
+
+	//syntax_elements_test.
+	syntax_ambient_test(argc, argv);
+	syntax_camera_test(argc, argv);
+	syntax_cylinder_test(argc, argv);
+	syntax_light_test(argc, argv);
+	syntax_plane_test(argc, argv);
+	syntax_sphere_test(argc, argv);
+
+	select_element_test(argc, argv);
+
+	ft_atoi_2_test(argc, argv);
+
+	ft_atof_test(argc, argv);
+
+	matrix_rotation_convert_test(argc, argv);
 
 	return 0;
 }

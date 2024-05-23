@@ -4,26 +4,20 @@
 #include "token.h"
 #include "array.h"
 #include "camera.h"
+#include "array.h"
+#include "line.h"
 
-static void print_token_type(int type)
+static char *tokens_type_string[8] =
 {
-	if(type == identifier)
-		printf("identifier");
-	if(type == pos_int)
-		printf("pos_int");
-	if(type == neg_int)
-		printf("neg_int");
-	if(type == pos_double)
-		printf("pos_double");
-	if(type == neg_double)
-		printf("neg_double");
-	if(type == separator_value)
-		printf("separator_value");
-	if(type == separator_property)
-		printf("separator_property");
-	if(type == eol)
-		printf("eol");
-}
+	"identifier",
+	"pos_int",
+	"neg_int",
+	"pos_double",
+	"neg_double",
+	"separator_value",
+	"separator_property",
+	"eol"
+};
 
 void print_matrix(t_matrix *to_print, int detalhed)
 {
@@ -57,13 +51,21 @@ void print_color(t_color *color)
 	printf("color: red:%f, green:%f, blue:%f\n", color->red, color->green, color->blue);
 }
 
-void print_list_token(t_list *list)
+
+// =========================== list lines print
+
+static char *print_token_type(t_token_type type)
+{
+	return tokens_type_string[type - 1];
+}
+
+void print_token_list(t_list *list, int print_new_line)
 {
 	size_t	size_list;
 
 	if (!list)
 	{
-		printf("list == NULL");
+		printf("[list == NULL]");
 		return ;
 	}
 	size_list = ft_lstsize(list);
@@ -71,11 +73,41 @@ void print_list_token(t_list *list)
 	for(unsigned int count=0; count < size_list; count++)
 	{
 		t_token *token = (t_token *) ft_lstget(list, count)->content;
-		printf("[text: \"%s\", type: ", token->text);
-		print_token_type(token->type);
-		printf("]");
+		printf("[type: %s, text: \"%s\"]", print_token_type(token->type), token->text);
+		if ((size_list - count) > 1)
+			printf(",");
 	}
-	printf("]\n");
+	printf("]");
+	if (print_new_line)
+		printf("\n");
+}
+
+
+static void print_line(t_line *line)
+{
+	printf("{number: %d, ", line->line_number);
+	print_token_list(line->token_list, 0);
+	printf("}");
+}
+
+void print_line_list(t_list *line_list)
+{
+	if (line_list == NULL)
+	{
+		printf("line_list == NULL");
+		return ;
+	}
+	size_t	list_size = ft_lstsize(line_list);
+
+	printf("line_list(");
+	for(size_t count = 0; count < list_size; count++)
+	{
+		t_line *tmp_line = (t_line*) ft_lstget(line_list, count)->content;
+		print_line(tmp_line);
+		if (list_size - count > 1)
+			printf(",");
+	}
+	printf(")\n");
 }
 
 void print_camera(t_camera *camera)

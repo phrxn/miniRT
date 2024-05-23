@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 12:50:52 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/19 18:42:42 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:47:29 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ static inline int	nearly_zero(double a)
 {
 	return (fabs(a) < EPSILON);
 }
+
+# define X 0
+# define Y 1
+# define Z 2
 
 typedef unsigned int	t_uint;
 

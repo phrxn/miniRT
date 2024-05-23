@@ -17,50 +17,6 @@
 #include "types.h"
 #include <stdlib.h>
 
-
-
-#include <stdio.h>
-
-
-/**
- * prepared_line - prepare line to tokenizer
- * @line_readed: line to prepare
- *
- * 1) Remove initial and final spaces
- * 2) change \n to \0 (if exist) in the line
- *
- * Return:
- * 	On failure:
- * 		return NULL (if the line is empty or totally filled with spaces)
- *  On sucessfull:
- * 		a malloced line with \n and "trimed"
-*/
-STATIC char	*prepared_line(const char *line_readed)
-{
-	char	*line_prepared;
-	char	*line_readed_cpy;
-	size_t	line_size;
-
-	if (!line_readed)
-		return (NULL);
-	line_size = ft_strlen(line_readed);
-	if (line_size == 0)
-		return (NULL);
-	line_readed_cpy = ft_strdup(line_readed);
-	if (!line_readed_cpy)
-		return (NULL);
-	if (line_readed_cpy[line_size - 1] == '\n')
-		line_readed_cpy[line_size - 1] = '\0';
-	line_prepared = ft_strtrim(line_readed_cpy, " ");
-	free(line_readed_cpy);
-	if (line_prepared[0] == '\0')
-	{
-		free(line_prepared);
-		return (NULL);
-	}
-	return (line_prepared);
-}
-
 /**
  * get_token - create a token
  * @stream:	a structure with the list of tokens and other information that will
@@ -123,7 +79,7 @@ static int	tokenizer(t_stream *stream, t_list **token_list, char c)
  * @line_to_split:	line that will be used to create the tokens
  * 					(cannot be empty)
  *
- * Create a token list to a not
+ * Create a token list for a non-empty, non-blank and already trimmed line.
  *
  * Return:
  *	On success:
@@ -131,7 +87,7 @@ static int	tokenizer(t_stream *stream, t_list **token_list, char c)
  *	On failure:
  *		NULL (memory alloc error!)
  */
-STATIC t_list	*line_create_tokens(const char *line_to_split)
+t_list	*line_create_tokens(const char *line_to_split)
 {
 	t_stream	characters_stream;
 	char		current_char;
@@ -154,32 +110,6 @@ STATIC t_list	*line_create_tokens(const char *line_to_split)
 	{
 		ft_lstclear(&token_list, destroy_token2);
 		return (NULL);
-	}
-	return (token_list);
-}
-
-t_list	*file_create_tokens(int fd)
-{
-	t_list	*token_list;
-	t_list	*token_tmp;
-	char	*line_readed;
-	char	*line_treated;
-
-	token_list = NULL;
-	line_treated = NULL;
-	while (1)
-	{
-		if (line_treated)
-			free(line_treated);
-		line_readed = get_next_line(fd);
-		if (!line_readed)
-			break ;
-		line_treated = prepared_line(line_readed);
-		free(line_readed);
-		if (!line_treated)
-			continue ;
-		token_tmp = line_create_tokens(line_treated);
-		ft_lstadd_back(&token_list, token_tmp);
 	}
 	return (token_list);
 }
