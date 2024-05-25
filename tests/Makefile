@@ -111,7 +111,7 @@ FILES_SOURCES		=	check_params.c \
 						exit.c \
 						file.c \
 						messages.c \
-						minirt.c
+						minirt_utils.c
 
 FILES_WORLD			=	ambient.c \
 						camera.c \
@@ -208,7 +208,7 @@ INCLUDES =	includes/ \
 			includes/parser/lexer/ \
 			includes/parser/world/ \
 			includes/parser/world/elements/ \
-			includes/parser/world/elements/build_shapes/
+			includes/parser/world/elements/build_shapes/ \
 			includes/raytracing/ \
 			includes/raytracing/canvas/ \
 			includes/raytracing/color/ \
