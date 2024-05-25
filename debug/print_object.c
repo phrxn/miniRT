@@ -199,6 +199,7 @@ static void print_world_light(const t_world *world)
 void	print_world_shapes(const t_world *world)
 {
 	t_list	*list_shapes = world->shapes;
+	//t_shape	*tmp_shape;
 
 	if (!list_shapes)
 	{
@@ -209,7 +210,8 @@ void	print_world_shapes(const t_world *world)
 	printf("shapes: [");
 	for(t_uint count = 0; count < size_list; count++)
 	{
-		printf("shape");
+		t_shape *line = (t_shape *)ft_lstget(list_shapes, count)->content;
+		printf("shape type: %d", line->type);
 		if (size_list - count > 1)
 			printf(", ");
 	}

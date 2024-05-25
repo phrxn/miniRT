@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:00:29 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 00:12:49 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 05:30:51 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include "matrix_rotation_convert.h"
 #include "matrix_operations.h"
 #include "matrix_utils.h"
+#include "commons_build.h"
 
 static int fill_struct(t_element_plane	*pla, t_list *token_list)
 {
@@ -40,7 +41,7 @@ static int fill_struct(t_element_plane	*pla, t_list *token_list)
 static void	fill_transformation(t_element_plane *pla, t_transformation *t)
 {
 	tokens_to_rotation(t, pla->direction);
-	matrix_fill_translation(t->transformation, pla->coordenates[X], pla->coordenates[Y], pla->coordenates[Z]);
+	matrix_fill_translation(t->translation, pla->coordenates[X], pla->coordenates[Y], pla->coordenates[Z]);
 }
 
 static int	put_in_world(t_shape *shape, t_world *world)
@@ -70,15 +71,8 @@ int	build_shape_plane(t_world *world, t_list *token_list, t_transformation *t)
 	if (!shape)
 		return (ERR_BUILD_ELEMENT_MALLOC);
 	fill_transformation(&plane, t);
-	fill_material(&shape->material);
-	fill_color(&shape->material.color, plane.color[RED], plane.color[GREEN], plane.color[BLUE]);
-	status = make_transformation(t);
-	if (status != OK_OPERATION)
-	{
-		destroy_shape(&shape);
-		return (ERR_BUILD_ELEMENT_MAKE_TRANSF_MATRIX);
-	}
-	matrix_copy(t->transformation, shape->transformation);
-	matrix_copy(t->transformation_inv, shape->transformation_inv);
+	status = start_shape(shape, t, plane.color);
+	if (status != OK_BUILD_ELEMENT)
+		return (status);
 	return (put_in_world(shape, world));
 }

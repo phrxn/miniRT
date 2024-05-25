@@ -195,7 +195,7 @@ int main(void)
 	add_sphere(w);
 
 	t_camera *camera = start_camera();
-	t_canvas *canvas = create_canvas(WIDHT, HEIGHT, FALSE);
+	t_canvas *canvas = create_canvas(WIDHT, HEIGHT, TRUE);
 	w->camera = camera;
 
 

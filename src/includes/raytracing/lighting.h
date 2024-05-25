@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 21:56:26 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/18 20:32:37 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/25 04:48:41 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ typedef struct s_lighting_vars
 	double		light_dot_normal;
 	double		reflect_dot_eye;
 	double		factor;
+	int			status;
 
 }			t_lighting_vars;
 
-t_color	lighting(t_lighting_params *params);
+t_color	lighting(t_lighting_params *params, t_world *world);
 
 #endif

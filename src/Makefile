@@ -179,7 +179,8 @@ FILES_BUILD_ELEMENTS	=	build_element_ambient.c \
 
 FILES_BUILD_SHAPE		=	build_shape_cylinder.c \
 							build_shape_plane.c \
-							build_shape_sphere.c
+							build_shape_sphere.c \
+							commons_build.c
 
 # =============== INCLUDES FILES ===============
 INCLUDES =	includes/ \

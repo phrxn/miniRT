@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:00:19 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/24 17:18:10 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 02:09:29 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include "matrix_alloc.h"
 #include "matrix_operations.h"
 #include "matrix_utils.h"
+#include <math.h>
 
 static int fill_struct(t_element_camera *cam, t_list *token_list)
 {
@@ -72,8 +73,10 @@ static int	create_element(t_world *w, t_element_camera *cam_element)
 	t_camera	*cam;
 	t_matrix	*view_transf;
 	int			status;
+	double		fov;
 
-	cam = create_camera(WIDTH, HEIGHT, cam_element->fov);
+	fov = cam_element->fov * (M_PI/180);
+	cam = create_camera(WIDTH, HEIGHT, fov);
 	view_transf = create_transf(cam_element);
 	if (!cam || !view_transf)
 	{

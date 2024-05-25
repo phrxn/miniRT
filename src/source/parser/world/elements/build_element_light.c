@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:00:26 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/24 19:49:26 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 03:42:13 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int fill_struct(t_element_light *lig, t_list *token_list)
 	if (status != OK_CONVERT)
 		return (status);
 	token_tmp = (t_token *)ft_lstget(token_list, 8)->content;
-	status = property_to_double(token_tmp, &lig->radio);
+	status = property_to_number(token_tmp, &lig->radio);
 	if (status != OK_CONVERT)
 		return (status);
 	if (BONUS == TRUE)

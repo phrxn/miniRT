@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 21:56:19 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/19 16:20:23 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/25 04:50:15 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static int	start_vars(t_lighting_vars *vars)
 		destroy_matrix(&vars->lightv);
 		return (1);
 	}
+	vars->status = 0;
 	return (0);
 }
 
@@ -68,13 +69,11 @@ static int	calc_color(t_lighting_params *params, t_lighting_vars *vars)
 	return (0);
 }
 
-t_color	lighting(t_lighting_params *params)
+t_color	lighting(t_lighting_params *params, t_world *world)
 {
 	t_lighting_vars	vars;
-	int				status;
 
-	status = start_vars(&vars);
-	if (status)
+	if (start_vars(&vars))
 	{
 		show_error_method("lighting", MERR_MALLOC_LIGHTV);
 		return (vars.return_color);
@@ -87,12 +86,14 @@ t_color	lighting(t_lighting_params *params)
 							&vars.ambient);
 	matrix_dot(vars.lightv, params->normalv, &vars.light_dot_normal);
 	if (vars.light_dot_normal >= 0 && !params->in_shadow)
-		status = calc_color(params, &vars);
-	if (!status)
+		vars.status = calc_color(params, &vars);
+	if (!vars.status)
 	{
 		color_addition(&vars.diffuse, &vars.ambient, &vars.return_color);
 		color_addition(&vars.return_color, &vars.specular, &vars.return_color);
 	}
 	end_vars(&vars);
+	color_addition(&world->ambient->color, &vars.return_color, \
+		&vars.return_color);
 	return (vars.return_color);
 }

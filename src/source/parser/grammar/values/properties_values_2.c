@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:59:12 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/22 19:08:46 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 04:10:55 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_property_values_radio(t_list *token_list)
 	int		status;
 
 	token_tmp = (t_token*)ft_lstget(token_list, 0)->content;
-	status = property_to_double(token_tmp, &radio_value);
+	status = property_to_number(token_tmp, &radio_value);
 	if (status != OK_PROPERTY_VALUES)
 		return (ERR_PROPERTY_VALUES_RADIO);
 	if (radio_value < 0 || radio_value > 1)
@@ -56,7 +56,7 @@ int check_property_values_height(t_list *token_list)
 	double	height;
 
 	token_tmp = (t_token*)ft_lstget(token_list, 0)->content;
-	status = property_to_double(token_tmp, &height);
+	status = property_to_number(token_tmp, &height);
 	if (status != OK_PROPERTY_VALUES)
 		return (ERR_PROPERTY_VALUES_HEIGHT);
 	if (height <= 0.0)

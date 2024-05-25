@@ -34,7 +34,7 @@ t_color	shade_hit(t_world *world, t_prepare_computations *pre)
 		lgt_params.point = pre->over_point;
 		lgt_params.eyev = pre->eyev;
 		lgt_params.normalv = pre->normalv;
-		vars.color_tmp = lighting(&lgt_params);
+		vars.color_tmp = lighting(&lgt_params, world);
 		color_addition(&vars.color, &vars.color_tmp, &vars.color);
 		(vars.count)++;
 	}
