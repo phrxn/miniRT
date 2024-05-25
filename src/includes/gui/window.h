@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.h                                             :+:      :+:    :+:   */
+/*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 18:14:15 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 18:19:24 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/05/19 22:00:09 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/05/25 18:40:26 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXIT_H
-# define EXIT_H
+#ifndef WINDOW_H
+# define WINDOW_H
 
 # include "minirt.h"
 
-void	exit_program(t_minirt *ptr, int exit_code, char *message);
+# define MERR_INIT_MLX "Mlx_init error."
+# define MERR_MALLOC_MLX "Window mlx malloc error."
+# define MERR_MALLOC_MLX_IMAGE "Window image malloc error."
 
-int	terminate(void *minirt);
+
+enum	e_events
+{
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
+
+void	start_event_handlers(t_minirt *minirt);
+
+void	create_window(t_minirt *minirt);
 
 #endif

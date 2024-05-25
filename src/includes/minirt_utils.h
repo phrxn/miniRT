@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   minirt_utils.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 17:58:06 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 18:57:01 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 18:33:45 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef MINIRT_UTILS_H
+# define MINIRT_UTILS_H
 
-# define WIDTH 800
-# define HEIGHT 600
-# define WIN_TIT "miniRT"
+# include "minirt.h"
 
-typedef struct s_window
-{
-	void	*mlx;
-	void	*window;
-	void	*image;
-	char	*addr;
-	int		line_length;
-	int		bits_per_pixel;
-	int		endian;
-}	t_window;
+void	start_minirt(t_minirt *minirt);
 
-typedef struct s_minirt
-{
-	t_window	window;
-
-}	t_minirt;
+void	destroy_minirt(t_minirt *minirt);
 
 #endif

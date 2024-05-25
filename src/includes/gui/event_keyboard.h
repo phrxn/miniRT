@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.h                                             :+:      :+:    :+:   */
+/*   event_keyboard.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 18:14:15 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 18:19:24 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/05/19 22:00:00 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/05/25 10:51:44 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXIT_H
-# define EXIT_H
 
-# include "minirt.h"
 
-void	exit_program(t_minirt *ptr, int exit_code, char *message);
+#ifndef EVENT_KEYBOARD_H
+# define EVENT_KEYBOARD_H
 
-int	terminate(void *minirt);
+# define VK_ESC 65307
+
+int	key_pressed(int key, void *param);
+
 
 #endif

@@ -11,6 +11,7 @@ CC = gcc
 # **************************** SOURCES ****************************
 
 # ++++++++++ SOURCES DIRECTORIES ++++++++++
+
 DIR_SOURCE			= source/
 DIR_ARRAY			= source/array/
 DIR_ERRORS			= source/errors/
@@ -33,6 +34,7 @@ DIR_CONVERT			= source/parser/convert/
 DIR_PARSER_WORLD	= source/parser/world/
 DIR_BUILD_ELEMENTS	= source/parser/world/elements/
 DIR_BUILD_SHAPES	= source/parser/world/elements/build_shapes/
+DIR_GUI				= source/gui/
 
 # ++++++++++ LIBRARIES DIRECTORIES ++++++++++
 DIR_LIBS	= libs/
@@ -178,7 +180,13 @@ FILES_BUILD_ELEMENTS	=	build_element_ambient.c \
 
 FILES_BUILD_SHAPE		=	build_shape_cylinder.c \
 							build_shape_plane.c \
-							build_shape_sphere.c
+							build_shape_sphere.c \
+							commons_build.c
+
+FILES_GUI		=	event_keyboard.c \
+					event_window.c	\
+					frame.c \
+					window.c
 
 # =============== INCLUDES FILES ===============
 INCLUDES =	includes/ \
@@ -193,6 +201,8 @@ INCLUDES =	includes/ \
 			includes/parser/grammar/values/elements/ \
 			includes/parser/lexer/ \
 			includes/parser/world/ \
+			includes/parser/world/elements/ \
+			includes/parser/world/elements/build_shapes/
 			includes/raytracing/ \
 			includes/raytracing/canvas/ \
 			includes/raytracing/color/ \
@@ -201,10 +211,7 @@ INCLUDES =	includes/ \
 			includes/raytracing/matrix/ \
 			includes/raytracing/shape/  \
 			includes/raytracing/world/ \
-			includes/parser/world/ \
-			includes/parser/world/elements/ \
-			includes/parser/world/elements/build_shapes/
-
+			includes/gui/
 
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
 ARRAY_F			= $(addprefix $(DIR_ARRAY), $(FILES_ARRAY))
@@ -229,12 +236,13 @@ CONVERT_F		= $(addprefix $(DIR_CONVERT), $(FILES_CONVERT))
 PARSER_WORLD_F	= $(addprefix $(DIR_PARSER_WORLD), $(FILES_PARSER_WORLD))
 BUILD_ELEMENTS  = $(addprefix $(DIR_BUILD_ELEMENTS), $(FILES_BUILD_ELEMENTS))
 BUILD_SHAPES	= $(addprefix $(DIR_BUILD_SHAPES), $(FILES_BUILD_SHAPE))
+GUI_F			= $(addprefix $(DIR_GUI), $(FILES_GUI))
 
 # =============== INCLUDES FILES + ITS DIRECTORIES ===============
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
 SOURCES =	$(ARRAY_F) $(BUILD_SHAPES) $(BUILD_ELEMENTS) $(CANVAS_F) $(COLOR_F) $(CONVERT_F) $(ELEMENTS_S_F) $(ELEMENTS_V_F) $(ERRORS_F) $(GRAMMAR_F)
-SOURCES +=	$(LEXER_F) $(INTERSECT_F) $(MATRIX_F) $(NORMAL_F) $(PARSER_F) $(PARSER_WORLD_F) $(RAYTRACING_F) $(VALUES_F)
+SOURCES +=	$(GUI_F) $(LEXER_F) $(INTERSECT_F) $(MATRIX_F) $(NORMAL_F) $(PARSER_F) $(PARSER_WORLD_F) $(RAYTRACING_F) $(VALUES_F)
 SOURCES +=	$(SHAPE_F) $(SOURCES_F) $(SYNTAX_F) $(WORLD_F)
 OBJECTS =	$(SOURCES:.c=.o)
 DEPENDS =	$(SOURCES:.c=.d)

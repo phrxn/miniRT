@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   frame.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 18:14:41 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 18:41:33 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/05/19 22:00:28 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/05/25 18:15:26 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exit.h"
+#include "mlx.h"
 #include "minirt.h"
-#include "messages.h"
-#include "minirt_utils.h"
-#include <stdlib.h>
 
-void	exit_program(t_minirt *ptr, int exit_code, char *message)
+void	draw_frame(t_minirt *minirt)
 {
-	if (ptr)
-		terminate(ptr);
 
-	if (message)
-		show_error_message(message);
-	exit(exit_code);
-}
+	char	*address_image;
 
-int	terminate(void *minirt)
-{
-	t_minirt	*minirt_tmp;
+	address_image = (char *)minirt->window.addr;
 
-	if (!minirt)
-		return (1);
-	minirt_tmp = (t_minirt *) minirt;
-	destroy_minirt(minirt);
-	exit(0);
+	// percoorer o canvas .... passar o seu array de pixeis para o window.addrs
+	// e chamar o
+
+    //mlx_put_image_to_window
+
+	mlx_put_image_to_window(minirt->window.mlx, minirt->window.window, minirt->window.image, 0, 0);
 }
