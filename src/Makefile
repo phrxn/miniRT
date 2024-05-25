@@ -21,6 +21,7 @@ DIR_NORMAL		= source/raytracing/normal/
 DIR_SHAPE		= source/raytracing/shape/
 DIR_WORLD		= source/raytracing/world/
 DIR_PARSER		= source/parser/
+DIR_GUI			= source/gui/
 
 # ++++++++++ LIBRARIES DIRECTORIES ++++++++++
 DIR_LIBS	= libs/
@@ -88,7 +89,7 @@ FILES_SOURCES	=	check_params.c \
 					exit.c \
 					file.c \
 					messages.c \
-					minirt.c \
+					minirt_utils.c \
 					main.c
 
 FILES_WORLD		=	camera.c \
@@ -102,6 +103,11 @@ FILES_PARSE		= 	lexer.c \
 					token_3.c \
 					token.c
 
+FILES_GUI		=	event_keyboard.c \
+					event_window.c	\
+					frame.c \
+					window.c
+
 # =============== INCLUDES FILES ===============
 INCLUDES =	includes/ \
 			includes/array/ \
@@ -114,7 +120,8 @@ INCLUDES =	includes/ \
 			includes/raytracing/normal/ \
 			includes/raytracing/matrix/ \
 			includes/raytracing/shape/  \
-			includes/raytracing/world/
+			includes/raytracing/world/ \
+			includes/gui/
 
 # =============== SOURCES FILES + ITS DIRECTORIES ===============
 ARRAY_F			= $(addprefix $(DIR_ARRAY), $(FILES_ARRAY))
@@ -129,11 +136,12 @@ SHAPE_F			= $(addprefix $(DIR_SHAPE), $(FILES_SHAPE))
 NORMAL_F		= $(addprefix $(DIR_NORMAL), $(FILES_NORMAL))
 SOURCES_F		= $(addprefix $(DIR_SOURCE), $(FILES_SOURCES))
 WORLD_F			= $(addprefix $(DIR_WORLD), $(FILES_WORLD))
+GUI_F			= $(addprefix $(DIR_GUI), $(FILES_GUI))
 
 # =============== INCLUDES FILES + ITS DIRECTORIES ===============
 INCLUDES_F = $(addprefix -I, $(INCLUDES))
 
-SOURCES =	$(ARRAY_F) $(CANVAS_F) $(COLOR_F) $(ERRORS_F) $(INTERSECT_F) $(MATRIX_F) $(NORMAL_F)
+SOURCES =	$(ARRAY_F) $(CANVAS_F) $(COLOR_F) $(ERRORS_F) $(GUI_F) $(INTERSECT_F) $(MATRIX_F) $(NORMAL_F)
 SOURCES +=	$(PARSER_F) $(RAYTRACING_F) $(SHAPE_F) $(SOURCES_F) $(WORLD_F)
 OBJECTS =	$(SOURCES:.c=.o)
 DEPENDS =	$(SOURCES:.c=.d)
@@ -166,7 +174,7 @@ $(LIBS) :
 
 clean :
 	$(MAKE) -C $(DIR_LIBFT) clean
-	$(MAKE) -C $(DIR_MLX) clean
+	# $(MAKE) -C $(DIR_MLX) clean
 	$(RM) $(OBJECTS)
 	$(RM) $(DEPENDS)
 #$(RM) $(OBJECTS_BONUS)
@@ -179,6 +187,10 @@ fclean : clean
 re : fclean all
 
 # bonus : $(LIBS) $(OBJECTS_BONUS)
+# define WIDTH 800
+# define HEIGHT 600
+# define WIN_TIT "miniRT"
+
 # 	$(CC) $(FLAGS) $(OBJECTS_BONUS) -o $(NAME) $(LIBFT_A) $(LIBML_A) -lXext -lX11 -lm -DBONUS
 
 .PHONY : all clean fclean re bonus

@@ -38,7 +38,7 @@ static t_camera *start_camera()
 	t_camera *camera = create_camera(WIDHT, HEIGHT, M_PI/2);
 	t_matrix	*tmp_inverted_matrix;
 
-	t_matrix *from = matrix_create_point(0, 38, -38);
+	t_matrix *from = matrix_create_point(0, 10, -30);
 	t_matrix *to   = matrix_create_point(0, 1, 0);
 	t_matrix *up   = matrix_create_vector(0, 1, 0);
 
@@ -128,7 +128,7 @@ static void add_sphere(t_world *w)
 
 	//middle sphere
 	t_shape	*middle = create_shape(TYPE_SPHERE);
-	matrix_fill_translation(middle->transformation, -0.5, 1, 0.5);
+	matrix_fill_translation(middle->transformation, 0, 0, 0);
 	create_inverted(middle->transformation, middle->transformation_inv);
 
 	fill_material(&middle->material);

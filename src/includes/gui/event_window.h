@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.h                                             :+:      :+:    :+:   */
+/*   event_window.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 18:14:15 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 18:19:24 by dmanoel-         ###   ########.fr       */
+/*   Created: 2024/05/19 22:00:04 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/05/19 22:00:05 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXIT_H
-# define EXIT_H
 
-# include "minirt.h"
+#ifndef EVENT_WINDOW_H
+# define EVENT_WINDOW_H
 
-void	exit_program(t_minirt *ptr, int exit_code, char *message);
+int	window_destroy(void *param);
 
-int	terminate(void *minirt);
+int	window_expose(void *param);
+
+int	window_visibly(void *param);
 
 #endif
