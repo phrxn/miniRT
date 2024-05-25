@@ -196,16 +196,16 @@ int main(void)
 
 	t_camera *camera = start_camera();
 	t_canvas *canvas = create_canvas(WIDHT, HEIGHT, FALSE);
+	w->camera = camera;
 
 
 	//process the raytracing
-	render(camera, w, canvas);
+	render(w, canvas);
 	save_ppm(canvas);
 
 
 	//destroy all things
 	destroy_world(&w);
-	destroy_camera(&camera);
 	destroy_canvas(&canvas);
 
 	return 0;
