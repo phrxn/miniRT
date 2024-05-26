@@ -29,6 +29,4 @@ int	check_property_values_diam(t_list *token_list);
 
 int	check_property_values_height(t_list *token_list);
 
-int	check_property_values_coor_camera(t_list *token_list);
-
 #endif

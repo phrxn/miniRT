@@ -20,7 +20,7 @@ int	values_camera(t_list *token_list)
 {
 	int	status;
 
-	status = check_property_values_coor_camera(ft_lstget(token_list, 2));
+	status = check_property_values_coor(ft_lstget(token_list, 2));
 	if (status != OK_PROPERTY_VALUES)
 		return (status);
 	status = check_property_values_direction(ft_lstget(token_list, 8));

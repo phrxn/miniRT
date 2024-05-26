@@ -26,8 +26,6 @@ static void	printf_property2(int error_code)
 	if (error_code == ERR_PROPERTY_VALUES_HEIGHT_INVALID)
 		ft_putstr_fd("property height (the value must be greather than zero)",
 			2);
-	if (error_code == ERR_PROPERTY_VALUES_COOR_CAMERA)
-		ft_putstr_fd("property coornenates (all values are 0's)", 2);
 }
 
 static void	printf_property(int error_code)

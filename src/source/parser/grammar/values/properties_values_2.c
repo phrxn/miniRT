@@ -63,16 +63,3 @@ int	check_property_values_height(t_list *token_list)
 		return (ERR_PROPERTY_VALUES_HEIGHT_INVALID);
 	return (OK_PROPERTY_VALUES);
 }
-
-int	check_property_values_coor_camera(t_list *token_list)
-{
-	double	xyz[3];
-	int		status;
-
-	status = property_xyz_to_number(token_list, xyz);
-	if (status != OK_CONVERT)
-		return (ERR_PROPERTY_VALUES_COOR);
-	if (xyz[X] == 0.0 && xyz[Y] == 0.0 && xyz[Z] == 0.0)
-		return (ERR_PROPERTY_VALUES_COOR_CAMERA);
-	return (OK_PROPERTY_VALUES);
-}
