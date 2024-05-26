@@ -246,23 +246,6 @@ SOURCES +=	$(SHAPE_F) $(SOURCES_F) $(SYNTAX_F) $(WORLD_F)
 OBJECTS =	$(SOURCES:.c=.o)
 DEPENDS =	$(SOURCES:.c=.d)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # =============== RECIPES ===============
 
 all : $(NAME)
@@ -273,7 +256,6 @@ $(NAME) : $(LIBS) $(OBJECTS)
 %.o : %.c
 	$(CC) $(FLAGS) $(DEFINES) $(INCLUDES_F) -I$(DIR_LIBFT) -MMD -c $< -o $@
 
-
 $(LIBS) :
 	$(MAKE) -C $(DIR_LIBFT) rebonus
 
@@ -281,21 +263,12 @@ clean :
 	$(MAKE) -C $(DIR_LIBFT) clean
 	$(RM) $(OBJECTS)
 	$(RM) $(DEPENDS)
-#$(RM) $(OBJECTS_BONUS)
-#$(RM) $(DEPENDS_BONUS)
 
 fclean : clean
 	$(RM) $(NAME)
 	$(MAKE) -C $(DIR_LIBFT) fclean
 
 re : fclean all
-
-# bonus : $(LIBS) $(OBJECTS_BONUS)
-# define WIDTH 800
-# define HEIGHT 600
-# define WIN_TIT "miniRT"
-
-# 	$(CC) $(FLAGS) $(OBJECTS_BONUS) -o $(NAME) $(LIBFT_A) $(LIBML_A) -lXext -lX11 -lm -DBONUS
 
 -include $(DEPENDS)
 
