@@ -282,7 +282,6 @@ $(LIBS) :
 
 clean :
 	$(MAKE) -C $(DIR_LIBFT) clean
-	# $(MAKE) -C $(DIR_MLX) clean
 	$(RM) $(OBJECTS)
 	$(RM) $(DEPENDS)
 #$(RM) $(OBJECTS_BONUS)
