@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_fill.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:56:46 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/04/20 18:24:31 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/26 02:49:37 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	matrix_fill_zero(t_matrix *matrix)
 
 void	matrix_fill_identity(t_matrix *matrix)
 {
+	matrix_fill_zero(matrix);
 	set_element(matrix, 0, 0, 1);
 	set_element(matrix, 1, 1, 1);
 	set_element(matrix, 2, 2, 1);
@@ -39,7 +40,6 @@ void	matrix_fill_identity(t_matrix *matrix)
 
 void	matrix_fill_rot_x(t_matrix *matrix, double radian)
 {
-	matrix_fill_zero(matrix);
 	matrix_fill_identity(matrix);
 	set_element(matrix, 1, 1, cos(radian));
 	set_element(matrix, 1, 2, -sin(radian));
@@ -49,7 +49,6 @@ void	matrix_fill_rot_x(t_matrix *matrix, double radian)
 
 void	matrix_fill_rot_y(t_matrix *matrix, double radian)
 {
-	matrix_fill_zero(matrix);
 	matrix_fill_identity(matrix);
 	set_element(matrix, 0, 0, cos(radian));
 	set_element(matrix, 0, 2, sin(radian));
@@ -59,7 +58,6 @@ void	matrix_fill_rot_y(t_matrix *matrix, double radian)
 
 void	matrix_fill_rot_z(t_matrix *matrix, double radian)
 {
-	matrix_fill_zero(matrix);
 	matrix_fill_identity(matrix);
 	set_element(matrix, 0, 0, cos(radian));
 	set_element(matrix, 0, 1, -sin(radian));
