@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:00:19 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 02:09:29 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 22:47:19 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,30 @@ static int fill_struct(t_element_camera *cam, t_list *token_list)
 	return (status);
 }
 
+static void	set_up(t_matrix *from, t_matrix *to, t_matrix *up)
+{
+	up->elements[X] = 0;
+	up->elements[Y] = 1;
+	up->elements[Z] = 0;
+
+	if (from->elements[X] - to->elements[X] == 0
+		&& from->elements[Z] - to->elements[Z] == 0
+		&& from->elements[Y] - to->elements[Y] < 0)
+	{
+		up->elements[Y] = 0;
+		up->elements[Z] = -1;
+		return ;
+	}
+	if (from->elements[X] - to->elements[X] == 0
+		&& from->elements[Z] - to->elements[Z] == 0
+		&& from->elements[Y] - to->elements[Y] > 0)
+	{
+		up->elements[Y] = 0;
+		up->elements[Z] = 1;
+		return ;
+	}
+}
+
 static t_matrix *create_transf(t_element_camera *cam)
 {
 	t_matrix	*from_p;
@@ -48,14 +72,13 @@ static t_matrix *create_transf(t_element_camera *cam)
 	int			status;
 
 	status = 0;
-	from_p = matrix_create_point(cam->coordenates[X], cam->coordenates[Y], \
-			cam->coordenates[Z]);
-	to_p = matrix_create_point(0, 0, 0);
-	up_v = matrix_create_vector(cam->direction[X], cam->direction[Y], \
-			cam->direction[Z]);
+	from_p = matrix_create_point(cam->coordenates[X], cam->coordenates[Y], cam->coordenates[Z]);
+	to_p = matrix_create_point(cam->coordenates[X] + cam->direction[X] , cam->coordenates[Y] + cam->direction[Y], cam->coordenates[Z] + cam->direction[Z]);
+	up_v = matrix_create_vector(0,0,0);
 	view_transf = NULL;
 	if (!from_p || !to_p || !up_v)
 		status  = 1;
+	set_up(from_p, to_p, up_v);
 	if (!status)
 		view_transf = view_transform(from_p, to_p, up_v);
 	if(!view_transf)

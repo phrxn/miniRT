@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 22:55:53 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 15:43:59 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 22:27:49 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,35 +227,6 @@ t_world *parser(int fd)
 		return (NULL);
 	}
 	world = build_a_world(list_line);
-
-	//ft_lstclear(&world->shapes, destroy_shape2);
-	//add_wall_and_floor(world);
-	//add_sphere(world);
-
-#include "array.h"
-
-
-	t_list *shapes_list = world->shapes;
-	t_list *line_0 = (t_list *)ft_lstget(shapes_list, 0);
-	//t_list *line_1 = (t_list *)ft_lstget(shapes_list, 1);
-	t_list *line_2 = (t_list *)ft_lstget(shapes_list, 2);
-	t_list *line_3 = (t_list *)ft_lstget(shapes_list, 3);
-	//t_list *line_4 = (t_list *)ft_lstget(shapes_list, 4);
-	t_list *line_5 = (t_list *)ft_lstget(shapes_list, 5);
-
-	world->shapes = line_3;
-
-	line_5->next = line_0;
-	line_2->next = NULL;
-
-
-#include <print_object.h>
-	print_world(world);
-
-	//t_list *line_cylinder = (t_list *)ft_lstget(shapes_list, 1);
-	//t_list *line_plane    = (t_list *)ft_lstget(shapes_list, 4);
-
-
 	destroy_line_list(&list_line);
 	return (world);
 }

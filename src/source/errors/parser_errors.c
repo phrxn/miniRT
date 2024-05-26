@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:49:58 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/24 16:25:09 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 22:44:27 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ static void	printf_property2(int error_code)
 		ft_putstr_fd("property height (the value must be greather than zero)", 2);
 	if (error_code == ERR_PROPERTY_VALUES_COOR_CAMERA)
 		ft_putstr_fd("property coornenates (all values are 0's)", 2);
-	if (error_code == ERR_PROPERTY_CAMERA_AXIX_Y)
-		ft_putstr_fd("3D vector property cannot be in parallel with "\
-		"coordinates on the Y. Coordenates (0, Y/-Y, 0) "\
-		"and 3D vector (0, Y/-Y, 0)", 2);
 }
 
 static void	printf_property(int error_code)
