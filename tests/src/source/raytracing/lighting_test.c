@@ -35,7 +35,7 @@ static void lighting_test1()
     test1lightParams.material = &material;
     test1lightParams.normalv = test1normalv;
     test1lightParams.point = position;
-    t_color   test1Result = lighting(&test1lightParams);
+    t_color   test1Result = lighting(&test1lightParams, NULL); //passar um mundo bom ambient
     t_color   test1Expected; fill_color(&test1Expected, 1.9, 1.9, 1.9);
 
     assert_svalue(0, compare_color(&test1Expected, &test1Result), "test1 1.9, 1.9, 1.9");
@@ -57,7 +57,7 @@ static void lighting_test1()
     test2lightParams.material = &material;
     test2lightParams.normalv = test2normalv;
     test2lightParams.point = position;
-    t_color   test2Result = lighting(&test2lightParams);
+    t_color   test2Result = lighting(&test2lightParams, NULL); //passar um mundo bom ambient
     t_color   test2Expected; fill_color(&test2Expected, 1, 1, 1);
 
     assert_svalue(0, compare_color(&test2Expected, &test2Result), "test2 1.0, 1.0, 1.0");
@@ -78,7 +78,7 @@ static void lighting_test1()
     test3lightParams.material = &material;
     test3lightParams.normalv = test3normalv;
     test3lightParams.point = position;
-    t_color   test3Result = lighting(&test3lightParams);
+    t_color   test3Result = lighting(&test3lightParams, NULL); //passar um mundo bom ambient
     t_color   test3Expected; fill_color(&test3Expected, 0.7364, 0.7364, 0.7364);
 
     assert_svalue(0, compare_color(&test3Expected, &test3Result), "test3 0.7364, 0.7364, 0.7364");
@@ -101,7 +101,7 @@ static void lighting_test1()
     test4lightParams.material = &material;
     test4lightParams.normalv = test4normalv;
     test4lightParams.point = position;
-    t_color   test4Result = lighting(&test4lightParams);
+    t_color   test4Result = lighting(&test4lightParams, NULL); //passar um mundo bom ambient
     t_color   test4Expected; fill_color(&test4Expected, 1.6364, 1.6364, 1.6364);
 
     assert_svalue(0, compare_color(&test4Expected, &test4Result), "test4 1.6364, 1.6364, 1.6364");
@@ -123,7 +123,7 @@ static void lighting_test1()
     test5lightParams.material = &material;
     test5lightParams.normalv = test5normalv;
     test5lightParams.point = position;
-    t_color   test5Result = lighting(&test5lightParams);
+    t_color   test5Result = lighting(&test5lightParams, NULL); //passar um mundo bom ambient
     t_color   test5Expected; fill_color(&test5Expected, 0.1, 0.1, 0.1);
 
     assert_svalue(0, compare_color(&test5Expected, &test5Result), "test5 0.1, 0.1, 0.1");

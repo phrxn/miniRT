@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:05:20 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/21 16:27:22 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 00:17:57 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -369,6 +369,7 @@ void	ft_atof_test1()
  assert_svalue(0, compare_double(+22.11, ft_atof("+22.11")), "test: +22.11");
  assert_svalue(0, compare_double(+22.12, ft_atof("+22.12")), "test: +22.12");
 
+ assert_svalue(0, compare_double(-0.7071, ft_atof("-0.7071")), "test: -0.7071");
 
 }
 

@@ -1,10 +1,12 @@
 NAME = test.out
 
 LIBFT_DIR = ../src/libs/libft/
+LIBMLX_DIR = ../src/libs/minilibx-linux/
 ASSERTZ_DIR = assertz/
 
 
 LIBFT   = $(LIBFT_DIR)libft.a
+LIBMLX  = $(LIBMLX_DIR)libmlx.a
 ASSERTZ = $(ASSERTZ_DIR)assertz.a
 
 CC = gcc
@@ -311,8 +313,8 @@ T_INCLUDES_F = $(addprefix -Isrc/, $(INCLUDES))
 
 all : $(NAME)
 
-$(NAME) : $(S_OBJECTS) $(T_OBJECTS) $(D_OBJECTS) $(ASSERTZ) $(LIBFT)
-	$(CC) $(S_OBJECTS) $(T_OBJECTS) $(D_OBJECTS) -o $@  $(ASSERTZ) $(LIBFT) -lm
+$(NAME) : $(S_OBJECTS) $(T_OBJECTS) $(D_OBJECTS) $(ASSERTZ) $(LIBMLX) $(LIBFT)
+	$(CC) $(S_OBJECTS) $(T_OBJECTS) $(D_OBJECTS) -o $@  $(ASSERTZ) $(LIBMLX) $(LIBFT) -lm -lXext -lX11 -lm
 
 %.o : %.c
 	$(CC) $(DEFINES) $(FLAGS) $(T_INCLUDES_F) $(S_INCLUDES_F) $(D_INCLUDES_F) -I$(ASSERTZ_DIR) -I$(LIBFT_DIR) -DALL -DTEST -MMD -c $< -o $@
@@ -328,6 +330,9 @@ fclean :
 
 $(LIBFT) :
 	make -C $(LIBFT_DIR) bonus
+
+$(LIBMLX) :
+	make -C $(LIBMLX_DIR)
 
 $(ASSERTZ) :
 	make -C $(ASSERTZ_DIR)

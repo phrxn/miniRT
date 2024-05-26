@@ -76,7 +76,8 @@ static void render_test()
 	t_matrix	*transform = view_transform(test1From, test1To, test1Up);
 	matrix_copy(transform, test1Camera->transformation);
 
-	render(test1Camera, test1World, test1Canvas);
+	test1World->camera = test1Camera;
+	render(test1World,test1Canvas);
 
 	assert_svalue(1215914240, test1Canvas->pixels[11 *5 +5], "test1 pixel color");
 

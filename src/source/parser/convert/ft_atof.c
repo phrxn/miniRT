@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:02:06 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/21 16:02:05 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 00:35:48 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ double ft_atof(const char *str)
     fraction = 0.1;
     sign = 1;
     result = ft_atoi(str);
-    if (result < 0)
+    if (str[0] == '-')
     {
         sign = -1;
 		result *= sign;
