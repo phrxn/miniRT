@@ -24,7 +24,7 @@ t_char_type	peek(char character)
 		return (dot);
 	if (character == ',')
 		return (comma);
-	if (character == ' ')
+	if (character == ' ' || character == '\t')
 		return (space);
 	if (character == '\0')
 		return (end_line);
