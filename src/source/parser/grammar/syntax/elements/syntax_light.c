@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:07:03 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 04:04:52 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 23:31:42 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,5 @@ int	syntax_light(t_list *token_list)
 		return (ERR_SYNTAX);
 	if (check_property_syntax_radio(ft_lstget(token_list, 8)))
 		return (ERR_PROPERTY_RADIO);
-	if (BONUS == FALSE)
-	{
-		token_tmp = (t_token*)ft_lstget(token_list, 9)->content;
-		if (!dict_is_a_eol(token_tmp))
-			return (ERR_PROPERTY_EOL);
-		return (OK_SYNTAX);
-	}
 	return (syntax_light2(token_list));
 }
