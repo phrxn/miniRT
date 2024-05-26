@@ -12,6 +12,7 @@
 
 #include "check_params.h"
 #include "minirt.h"
+#include "minirt_utils.h"
 #include "window.h"
 #include "exit.h"
 #include "parser.h"
@@ -19,20 +20,9 @@
 #include "canvas.h"
 #include "file.h"
 
-static void	start_minirt_struct(t_minirt *minirt)
-{
-	minirt->window.mlx = 0;
-	minirt->window.window = 0;
-	minirt->window.image = 0;
-	minirt->window.addr = 0;
-	minirt->window.line_length = 0;
-	minirt->window.bits_per_pixel = 0;
-	minirt->window.endian = 0;
-}
-
 static void	start_things(t_minirt *minirt, char **argv)
 {
-	start_minirt_struct(minirt);
+	start_minirt(minirt);
 	create_window(minirt);
 	minirt->canvas = create_canvas(WIDTH, HEIGHT, minirt->window.endian);
 	if (!minirt->canvas)
