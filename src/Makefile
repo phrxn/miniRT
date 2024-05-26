@@ -39,12 +39,10 @@ DIR_GUI				= source/gui/
 # ++++++++++ LIBRARIES DIRECTORIES ++++++++++
 DIR_LIBS	= libs/
 DIR_LIBFT	= $(DIR_LIBS)libft/
-DIR_MLX		= $(DIR_LIBS)minilibx-linux/
 
 # =============== LIBRARIES ===============
 LIBFT_A = $(DIR_LIBFT)libft.a
-LIBML_A = $(DIR_MLX)libmlx.a
-LIBS = $(LIBFT_A) $(LIBML_A)
+LIBS = $(LIBFT_A)
 
 
 # =============== SOURCES FILES ===============
@@ -270,7 +268,7 @@ DEPENDS =	$(SOURCES:.c=.d)
 all : $(NAME)
 
 $(NAME) : $(LIBS) $(OBJECTS)
-	$(CC) $(OBJECTS) -o $@ $(LIBFT_A) $(LIBML_A) -lXext -lX11 -lm
+	$(CC) $(OBJECTS) -o $@ $(LIBFT_A) -lXext -lX11 -lm -lmlx
 
 %.o : %.c
 	$(CC) $(FLAGS) $(DEFINES) $(INCLUDES_F) -I$(DIR_LIBFT) -MMD -c $< -o $@
@@ -278,7 +276,6 @@ $(NAME) : $(LIBS) $(OBJECTS)
 
 $(LIBS) :
 	$(MAKE) -C $(DIR_LIBFT) rebonus
-	$(MAKE) -C $(DIR_MLX)
 
 clean :
 	$(MAKE) -C $(DIR_LIBFT) clean

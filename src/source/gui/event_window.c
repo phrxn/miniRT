@@ -13,7 +13,7 @@
 #include "event_window.h"
 #include "minirt.h"
 
-#include "mlx.h"
+#include <mlx.h>
 #include "frame.h"
 #include <stdlib.h>
 #include <stdio.h>
