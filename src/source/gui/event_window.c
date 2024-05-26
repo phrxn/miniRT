@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:00:22 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/25 18:13:53 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:45:03 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int	window_expose(void *param)
 	t_minirt	*minirt;
 
 	minirt = (t_minirt *)param;
-	draw_frame(minirt); ////// mudar essa funcao aqui!!!!!!!
+	draw_frame(minirt);
 	return (0);
 }

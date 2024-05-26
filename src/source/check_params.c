@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_params.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 18:37:04 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/04/22 13:28:13 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:52:47 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	is_extension_valid(char *arg)
 void	check_params(int argc, char *argv[])
 {
 	if (argc != 2)
-		exit_program(NULL, 1, MSG_INV_PARAMS);
+		exit_program(NULL, 1, MSG_INV_PARAMS, 0);
 	if (!is_extension_valid(argv[1]))
-		exit_program(NULL, 1, MSG_INV_EXTENSION);
+		exit_program(NULL, 1, MSG_INV_EXTENSION, 0);
 }

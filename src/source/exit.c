@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 18:14:41 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 18:41:33 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:41:59 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@
 #include "minirt_utils.h"
 #include <stdlib.h>
 
-void	exit_program(t_minirt *ptr, int exit_code, char *message)
+void	exit_program(t_minirt *mini, int exit_code, char *message, int perror)
 {
-	if (ptr)
-		terminate(ptr);
-
+	if (mini)
+		destroy_minirt(mini);
 	if (message)
-		show_error_message(message);
+	{
+		if(perror)
+			show_error_perror(message);
+		else
+			show_error_message(message);
+	}
 	exit(exit_code);
 }
 

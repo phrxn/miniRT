@@ -6,13 +6,15 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:09:42 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 19:06:45 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:53:33 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "check_params.h"
 #include "minirt.h"
 #include "window.h"
+#include "exit.h"
+
 
 static void start_minirt_struct(t_minirt *minirt)
 {
@@ -43,6 +45,7 @@ static void start_minirt_struct(t_minirt *minirt)
 #include <math.h>
 
 
+/*
 static void create_inverted(t_matrix* normal, t_matrix *inverted)
 {
 	t_matrix	*tmp_inverted_matrix;
@@ -72,19 +75,47 @@ static t_camera *start_camera()
 
 	return (camera);
 }
+*/
+
+
+
+static void	start_things(t_minirt *minirt, char **argv)
+{
+	start_minirt_struct(minirt);
+	create_window(minirt);
+	minirt->canvas = create_canvas(WIDTH, HEIGHT, minirt->window.endian);
+	if (!minirt->canvas)
+		exit_program(minirt, 1, MERR_MALLOC_CANVAS, 0);
+	minirt->fd_rt_file = open_file(argv[1]);
+	if (minirt->fd_rt_file == -1)
+		exit_program(minirt, 1, MERR_OPEN_RT_FILE, 1);
+}
+
+static void make_raytracing(t_minirt *minirt)
+{
+	t_world	*world;
+
+	world = parser(minirt->fd_rt_file);
+	if (!world)
+		exit_program(minirt, 1, NULL, 0);
+	render(world, minirt->canvas);
+	destroy_world(&world);
+}
 
 int	main(int argc, char *argv[])
 {
 	t_minirt	minirt;
-	(void) minirt;
 
-	start_minirt_struct(&minirt);
-	create_window(&minirt);
+	check_params(argc, argv);
+	start_things(&minirt, argv);
+	make_raytracing(&minirt);
 	start_event_handlers(&minirt);
 
+	return (0);
 
+/*
 	(void)minirt;
-	check_params(argc, argv);
+
 
 	int fd = open_file(argv[1]);
 	if (fd == -1)
@@ -97,10 +128,10 @@ int	main(int argc, char *argv[])
 
 	t_canvas *canvas = create_canvas(WIDTH, HEIGHT, FALSE);
 
-	render(world, canvas);
 
-#include "create_ppm.h"
+
+   #include "create_ppm.h"
 	save_ppm(canvas);
+*/
 
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:00:34 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/25 18:40:32 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:52:25 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,6 @@
 #include "minirt.h"
 #include <stdlib.h>
 #include "exit.h"
-
-static void die(t_minirt *minirt, char *str)
-{
-	(void)minirt;
-	(void)str;
-	#include <stdio.h>
-	printf("saindo no die do window.c\n");
-	exit(0);
-}
 
 void	start_event_handlers(t_minirt *minirt)
 {
@@ -42,19 +33,19 @@ void	create_window(t_minirt *minirt)  //rename para open_window
 	window = &minirt->window;
 	window->mlx = mlx_init();
 	if (!window->mlx)
-		exit_program(minirt, 1, MERR_INIT_MLX);
+		exit_program(minirt, 1, MERR_INIT_MLX, 0);
 	window->window = mlx_new_window(window->mlx, WIDTH, HEIGHT, WIN_TIT);
 	if (!window->window)
 	{
 		free(window->mlx);
-		exit_program(minirt, 1, MERR_MALLOC_MLX);
+		exit_program(minirt, 1, MERR_MALLOC_MLX, 0);
 	}
 	window->image = mlx_new_image(window->mlx, WIDTH, HEIGHT);
 	if (!window->image)
 	{
 		free(window->mlx);
 		free(window->window);
-		die(minirt, MERR_MALLOC_MLX_IMAGE);
+		exit_program(minirt, 1, MERR_MALLOC_MLX_IMAGE, 0);
 	}
 	window->addr = mlx_get_data_addr(window->image, &window->bits_per_pixel,
 			&window->line_length, &window->endian);
