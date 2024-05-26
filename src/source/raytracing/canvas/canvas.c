@@ -6,7 +6,7 @@
 /*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:00:21 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/15 20:31:10 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/25 21:03:08 by dmanoel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ static int	create_pixel(int red, int green, int blue, char endian)
 	pixel = 0;
 	if (endian)
 	{
-		pixel |= (red << 16);
-		pixel |= (green << 8);
-		pixel |= (blue);
-	}
-	else
-	{
 		pixel |= (blue << 24);
 		pixel |= (green << 16);
 		pixel |= (red << 8);
+	}
+	else
+	{
+		pixel |= (red << 16);
+		pixel |= (green << 8);
+		pixel |= (blue);
 	}
 	return (pixel);
 }
