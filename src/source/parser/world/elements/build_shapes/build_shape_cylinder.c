@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_shape_cylinder.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:00:23 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 05:41:39 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 05:05:03 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@
 #include "matrix_utils.h"
 #include "commons_build.h"
 
-
-
-static int fill_struct(t_element_cylinder	*cyl, t_list *token_list)
+static int	fill_struct(t_element_cylinder	*cyl, t_list *token_list)
 {
 	t_token	*token_tmp;
 	int		status;
 
-	status = property_xyz_to_number(ft_lstget(token_list, 2), cyl->coordenates);
+	status = property_xyz_to_number(ft_lstget(token_list, 2), cyl->coor);
 	if (status != OK_CONVERT)
 		return (status);
 	status = property_xyz_to_number(ft_lstget(token_list, 8), cyl->direction);
@@ -48,17 +46,15 @@ static int fill_struct(t_element_cylinder	*cyl, t_list *token_list)
 	return (status);
 }
 
-
-
-
 static void	fill_transformation(t_element_cylinder *cyl, t_transformation *t)
 {
 	double	radius;
 	double	height;
 
-	radius =  cyl->diameter/2;
-	height =  cyl->height/2;
-	matrix_fill_translation(t->translation, cyl->coordenates[X], cyl->coordenates[Y], cyl->coordenates[Z]);
+	radius = cyl->diameter / 2;
+	height = cyl->height / 2;
+	matrix_fill_translation(t->translation, cyl->coor[X], \
+			cyl->coor[Y], cyl->coor[Z]);
 	tokens_to_rotation(t, cyl->direction);
 	matrix_fill_scaling(t->scale, radius, height, radius);
 }

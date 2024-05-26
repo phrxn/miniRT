@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_world.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:09:03 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/24 19:08:41 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:42:25 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	build_elements(t_world *w, t_list *list_line, t_transformation *tr)
 	while (count < list_size)
 	{
 		fill_transformation_identity(tr);
-		line_item = (t_line*)ft_lstget(list_line, count)->content;
+		line_item = (t_line *)ft_lstget(list_line, count)->content;
 		status = build_element(w, line_item, tr);
 		if (status)
 			break ;

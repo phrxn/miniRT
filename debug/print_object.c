@@ -168,9 +168,9 @@ static void print_world_color(t_color *color)
 	printf("[color[red:%f, green:%f, blue:%f]]", color->red, color->green, color->blue);
 }
 
-static void print_world_coordanates(t_matrix *coordenates)
+static void print_world_coordanates(t_matrix *coor)
 {
-	printf("[coor[x=%f, y=%f, z=%f]]", coordenates->elements[X], coordenates->elements[Y],coordenates->elements[Z]);
+	printf("[coor[x=%f, y=%f, z=%f]]", coor->elements[X], coor->elements[Y],coor->elements[Z]);
 }
 
 static void print_world_light(const t_world *world)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 01:27:42 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/18 16:20:07 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:21:41 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include "matrix.h"
 
-typedef struct	s_camera
+typedef struct s_camera
 {
 	int			hsize;
 	int			vsize;
-	double 		field_of_view;
+	double		field_of_view;
 	t_matrix	*transformation;
 	t_matrix	*transformation_inv;
 	double		pixel_size;

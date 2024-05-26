@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_world_errors.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:55 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 00:02:02 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:16:40 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "line.h"
 #include "select_element.h"
 #include "array.h"
-
 
 static void	show_message_details(int error_code)
 {
@@ -34,7 +33,7 @@ static void	show_message_details(int error_code)
 			" inverse matrix\n", 2);
 }
 
-void show_error_build_world(int error_code)
+void	show_error_build_world(int error_code)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd("miniRT: build_world: ", 2);
@@ -63,7 +62,7 @@ static void	print_element(t_line *line)
 		ft_putstr_fd("cylinder", 2);
 }
 
-void show_error_build_element(int error_code, t_line *line)
+void	show_error_build_element(int error_code, t_line *line)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd("miniRT: build_world: element ", 2);

@@ -18,8 +18,7 @@
 #include "matrix_utils.h"
 #include "types.h"
 
-
-t_sphere	*create_sphere()
+t_sphere	*create_sphere(void)
 {
 	t_sphere	*sphere;
 

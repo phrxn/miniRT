@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:09:24 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/10 15:53:30 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 05:01:49 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	destroy_token2(void *token)
 {
 	t_token	*token_free;
 
-	token_free = (t_token*) token;
+	token_free = (t_token *) token;
 	if (!token_free)
 		return ;
 	if (token_free->text)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:00:21 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/18 15:59:13 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:22:06 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "types.h"
 #include "libft.h"
 
-int			canvas_start(t_canvas *canvas, int w, int h, char is_endian)
+int	canvas_start(t_canvas *canvas, int w, int h, char is_endian)
 {
 	canvas->width = w;
 	canvas->height = h;
@@ -36,14 +36,14 @@ t_canvas	*create_canvas(int w, int h, char is_endian)
 	canvas->width = w;
 	canvas->height = h;
 	canvas->is_endian = is_endian;
-	canvas->size =  w * h;
+	canvas->size = w * h;
 	canvas->pixels = ft_calloc(canvas->size, sizeof(*(canvas->pixels)));
 	if (!canvas->pixels)
 		destroy_canvas(&canvas);
 	return (canvas);
 }
 
-void		destroy_canvas(t_canvas **canvas)
+void	destroy_canvas(t_canvas **canvas)
 {
 	t_canvas	*canvas_tmp;
 

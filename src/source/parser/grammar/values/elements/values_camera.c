@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   values_camera.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:29:48 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 22:42:58 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:49:23 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "values_elements.h"
-# include "properties_values.h"
-# include "property_convert.h"
-# include "values_errors.h"
-# include "array.h"
+#include "values_elements.h"
+#include "properties_values.h"
+#include "property_convert.h"
+#include "values_errors.h"
+#include "array.h"
 
 int	values_camera(t_list *token_list)
 {

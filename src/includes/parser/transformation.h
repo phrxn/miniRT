@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transformation.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:15:41 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/23 11:39:21 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:02:48 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_transformation
 	t_matrix	*tmp;
 }	t_transformation;
 
-t_transformation	*create_transformation();
+t_transformation	*create_transformation(void);
 
 void				destroy_transformation(t_transformation	**transf);
 

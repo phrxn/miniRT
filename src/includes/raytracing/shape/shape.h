@@ -52,7 +52,7 @@ void		destroy_shape2(void *shape);
 t_shape		*create_shape_copy(t_shape	*shape);
 
 //sphere
-t_sphere	*create_sphere();
+t_sphere	*create_sphere(void);
 void		destroy_sphere(t_sphere **sphere);
 void		copy_sphere(t_sphere *from, t_sphere *to);
 
@@ -60,6 +60,5 @@ void		copy_sphere(t_sphere *from, t_sphere *to);
 t_cylinder	*create_cylinder(void);
 void		destroy_cylinder(t_cylinder **cylinder);
 void		copy_cylinder(t_cylinder *from, t_cylinder *to);
-
 
 #endif

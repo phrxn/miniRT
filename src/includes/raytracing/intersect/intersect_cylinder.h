@@ -6,7 +6,7 @@
 /*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:18:15 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/19 19:47:20 by gacalaza         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:06:22 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include "shape.h"
 # include "libft.h"
 
-# define	A 0
-# define	B 1
-# define	C 2
+# define A 0
+# define B 1
+# define C 2
 
 # define MERR_ALLOC_INTER "while allocating intersection"
 # define MERR_CREATING_LST "while creating list"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_keyboard.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:00:15 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/25 18:12:04 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:23:48 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	key_pressed(int key, void *param)
 	minirt = (t_minirt *)param;
 	(void)key;
 	if (key == VK_ESC)
-		terminate(minirt); ///mudar essa funcao tmb!!!!!!
-
+		terminate(minirt);
 	return (0);
 }

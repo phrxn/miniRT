@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   properties_values.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:59:12 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/22 14:49:13 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:48:58 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	is_color_invalid(int color)
 	return (FALSE);
 }
 
-int check_property_values_coor(t_list *token_list)
+int	check_property_values_coor(t_list *token_list)
 {
 	double	xyz[3];
 	int		status;
@@ -37,7 +37,7 @@ int check_property_values_coor(t_list *token_list)
 	return (OK_PROPERTY_VALUES);
 }
 
-int check_property_values_direction(t_list *token_list)
+int	check_property_values_direction(t_list *token_list)
 {
 	double	xyz[3];
 	int		status;
@@ -50,7 +50,7 @@ int check_property_values_direction(t_list *token_list)
 	return (OK_PROPERTY_VALUES);
 }
 
-int check_property_values_color(t_list *token_list)
+int	check_property_values_color(t_list *token_list)
 {
 	int		xyz[3];
 	int		status;
@@ -64,13 +64,13 @@ int check_property_values_color(t_list *token_list)
 	return (OK_PROPERTY_VALUES);
 }
 
-int check_property_values_fov(t_list *token_list)
+int	check_property_values_fov(t_list *token_list)
 {
 	t_token	*token_tmp;
 	int		value;
 	int		status;
 
-	token_tmp = (t_token*)ft_lstget(token_list, 0)->content;
+	token_tmp = (t_token *)ft_lstget(token_list, 0)->content;
 	status = property_to_int(token_tmp, &value);
 	if (status != OK_CONVERT)
 		return (ERR_PROPERTY_VALUES_FOV);

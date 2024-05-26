@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   count_elements.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 21:12:52 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/23 22:43:56 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 03:57:55 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	COUNT_ELEMENTS_H
+#ifndef COUNT_ELEMENTS_H
 # define COUNT_ELEMENTS_H
 
 # define OK_ELEMENT_NUMBERS 0

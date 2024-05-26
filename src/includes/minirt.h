@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 17:58:06 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 19:41:31 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:06:32 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_minirt
 {
 	t_window	window;
 	t_canvas	*canvas;
-	int		fd_rt_file;
+	int			fd_rt_file;
 }	t_minirt;
 
 #endif

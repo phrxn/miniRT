@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   intersect_world.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/26 04:30:06 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/05/26 04:30:50 by gacalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "intersect_world.h"
 
 #include "libft.h"
@@ -11,14 +23,14 @@ t_list	*intersect_world(t_world *world, t_ray *ray)
 {
 	t_list	*all_inter;
 	t_list	*tmp_inter;
-	t_shape *shape;
+	t_shape	*shape;
 	t_uint	count;
 	t_uint	size;
 
 	all_inter = NULL;
 	count = 0;
 	size = ft_lstsize(world->shapes);
-	while(count < size)
+	while (count < size)
 	{
 		shape = (t_shape *)ft_lstget(world->shapes, count)->content;
 		tmp_inter = intersect(shape, ray);

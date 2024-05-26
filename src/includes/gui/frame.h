@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   frame.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 18:13:09 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 18:13:32 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 03:51:57 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRAME_H
-#define FRAME_H
+# define FRAME_H
 
 void	draw_frame(t_minirt *minirt);
 

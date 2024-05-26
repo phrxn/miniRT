@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:00:22 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/25 19:45:03 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:24:19 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int	window_destroy(void *param)
 {
-	t_minirt	*minirt; //passar a minirt
+	t_minirt	*minirt;
 
 	minirt = (t_minirt *)param;
 	if (!minirt->window.mlx)

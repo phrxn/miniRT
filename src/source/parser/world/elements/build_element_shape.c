@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_element_shape.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 20:56:27 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/24 22:20:45 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:43:46 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	build_element_shape(t_world *w, t_list *token_list, t_transformation *t)
 	if (type == cylinder)
 		return (build_shape_cylinder(w, token_list, t));
 	if (type == plane)
-		return (build_shape_plane(w,token_list, t));
+		return (build_shape_plane(w, token_list, t));
 	if (type == sphere)
-		return (build_shape_sphere(w,token_list, t));
+		return (build_shape_sphere(w, token_list, t));
 	return (ERR_BUILD_ELEMENT_NOT_EXIT);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 21:32:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 00:47:02 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:36:28 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@
 #include "prepare_computations.h"
 #include "ray.h"
 #include "ray_for_pixel.h"
-
-void	create_world(void)
-{
-}
 
 void	destroy_world(t_world **world)
 {
@@ -80,7 +76,7 @@ void	render(t_world *world, t_canvas *canvas)
 	t_color	color;
 
 	count_y = 0;
-	while(count_y < canvas->height)
+	while (count_y < canvas->height)
 	{
 		count_x = 0;
 		while (count_x < canvas->width)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   property_convert_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 16:42:41 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/23 17:54:23 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:34:50 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ int	property_xyz_to_number(t_list *token_list, double xyz[3])
 	int		status;
 
 	status = OK_CONVERT;
-	token_tmp = (t_token*)ft_lstget(token_list, 0)->content;
+	token_tmp = (t_token *)ft_lstget(token_list, 0)->content;
 	status = property_to_number(token_tmp, &xyz[X]);
 	if (status != OK_CONVERT)
 		return (ERR_VALUE_X_NOT_VALID);
-	token_tmp = (t_token*)ft_lstget(token_list, 2)->content;
+	token_tmp = (t_token *)ft_lstget(token_list, 2)->content;
 	status = property_to_number(token_tmp, &xyz[Y]);
 	if (status != OK_CONVERT)
 		return (ERR_VALUE_Y_NOT_VALID);
-	token_tmp = (t_token*)ft_lstget(token_list, 4)->content;
+	token_tmp = (t_token *)ft_lstget(token_list, 4)->content;
 	status = property_to_number(token_tmp, &xyz[Z]);
 	if (status != OK_CONVERT)
 		return (ERR_VALUE_Z_NOT_VALID);

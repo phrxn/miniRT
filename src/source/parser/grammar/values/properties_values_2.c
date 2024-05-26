@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   properties_values_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:59:12 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 04:10:55 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:48:16 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_property_values_radio(t_list *token_list)
 	double	radio_value;
 	int		status;
 
-	token_tmp = (t_token*)ft_lstget(token_list, 0)->content;
+	token_tmp = (t_token *)ft_lstget(token_list, 0)->content;
 	status = property_to_number(token_tmp, &radio_value);
 	if (status != OK_PROPERTY_VALUES)
 		return (ERR_PROPERTY_VALUES_RADIO);
@@ -34,13 +34,13 @@ int	check_property_values_radio(t_list *token_list)
 	return (OK_PROPERTY_VALUES);
 }
 
-int check_property_values_diam(t_list *token_list)
+int	check_property_values_diam(t_list *token_list)
 {
 	t_token	*token_tmp;
 	double	diameter;
 	int		status;
 
-	token_tmp = (t_token*)ft_lstget(token_list, 0)->content;
+	token_tmp = (t_token *)ft_lstget(token_list, 0)->content;
 	status = property_to_number(token_tmp, &diameter);
 	if (status != OK_PROPERTY_VALUES)
 		return (ERR_PROPERTY_VALUES_DIAM);
@@ -49,13 +49,13 @@ int check_property_values_diam(t_list *token_list)
 	return (OK_PROPERTY_VALUES);
 }
 
-int check_property_values_height(t_list *token_list)
+int	check_property_values_height(t_list *token_list)
 {
 	t_token	*token_tmp;
 	int		status;
 	double	height;
 
-	token_tmp = (t_token*)ft_lstget(token_list, 0)->content;
+	token_tmp = (t_token *)ft_lstget(token_list, 0)->content;
 	status = property_to_number(token_tmp, &height);
 	if (status != OK_PROPERTY_VALUES)
 		return (ERR_PROPERTY_VALUES_HEIGHT);
@@ -64,7 +64,7 @@ int check_property_values_height(t_list *token_list)
 	return (OK_PROPERTY_VALUES);
 }
 
-int check_property_values_coor_camera(t_list *token_list)
+int	check_property_values_coor_camera(t_list *token_list)
 {
 	double	xyz[3];
 	int		status;

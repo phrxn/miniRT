@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   select_element.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:20:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/24 19:55:02 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:56:24 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "token.h"
 
-t_element_type	select_element_type(t_token* token_identifier)
+t_element_type	select_element_type(t_token *token_identifier)
 {
 	if (ft_strncmp("A", token_identifier->text, ft_strlen("A")) == 0)
 		return (ambient);

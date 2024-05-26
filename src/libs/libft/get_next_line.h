@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:32:23 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/13 14:29:47 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:17:55 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_H
 # include <stdlib.h>
 # include <unistd.h>
 

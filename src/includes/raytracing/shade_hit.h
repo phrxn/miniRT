@@ -1,13 +1,25 @@
-#ifndef SHADE_HIT
-#define SHADE_HIT
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   shade_hit.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/26 04:09:11 by dmanoel-          #+#    #+#             */
+/*   Updated: 2024/05/26 04:21:41 by gacalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "color.h"
-#include "world.h"
-#include "prepare_computations.h"
-#include "types.h"
-#include "light.h"
+#ifndef SHADE_HIT_H
+# define SHADE_HIT_H
 
-typedef struct	s_shade_vars
+# include "color.h"
+# include "world.h"
+# include "prepare_computations.h"
+# include "types.h"
+# include "light.h"
+
+typedef struct s_shade_vars
 {
 	t_color	color_tmp;
 	t_color	color;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_plane.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 19:16:11 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/19 02:43:07 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:28:16 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "types.h"
 #include "messages.h"
 #include <math.h>
-
 
 static t_list	*make_lst(t_inter *i0, int *status)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_grammar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:24:55 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/22 17:40:40 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:53:18 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	check_lines_syntax(t_list *list_line)
 	status = 0;
 	while (count < list_size)
 	{
-		line_item = (t_line*)ft_lstget(list_line, count)->content;
+		line_item = (t_line *)ft_lstget(list_line, count)->content;
 		status = check_line_syntax(line_item);
 		if (status)
 			break ;
@@ -83,7 +83,7 @@ static int	check_lines_values(t_list *list_line)
 	status = 0;
 	while (count < list_size)
 	{
-		line_item = (t_line*)ft_lstget(list_line, count)->content;
+		line_item = (t_line *)ft_lstget(list_line, count)->content;
 		status = check_line_value(line_item);
 		if (status)
 			break ;
@@ -93,7 +93,6 @@ static int	check_lines_values(t_list *list_line)
 		show_error_grammar_value(status, line_item);
 	return (status);
 }
-
 
 /**
  * check_lines_syntax - checks the grammar of all lines in a list of lines

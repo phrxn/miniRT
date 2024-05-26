@@ -29,6 +29,7 @@ typedef struct s_stream
 }	t_stream;
 
 # ifdef TEST
+
 char	*prepared_line(const char *line_readed);
 # endif
 

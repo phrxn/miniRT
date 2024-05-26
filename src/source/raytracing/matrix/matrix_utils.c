@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 19:54:41 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/09 21:38:05 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:27:41 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "matrix.h"
 #include "types.h"
 
-void		matrix_copy(t_matrix *from, t_matrix *to)
+void	matrix_copy(t_matrix *from, t_matrix *to)
 {
 	t_uint	size;
 	t_uint	count;

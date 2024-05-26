@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 18:45:15 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/24 13:52:34 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:04:59 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	color_copy(t_color *from, t_color *to);
 
 static inline double	color_int_to_double(int color)
 {
-	return ((double)color/ COLOR_MAX);
+	return ((double)color / COLOR_MAX);
 }
 
 #endif

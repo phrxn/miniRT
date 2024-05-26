@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_elements_errors.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:20:32 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/23 22:31:05 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:21:39 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "count_elements.h"
 #include "libft.h"
 
-void show_error_count_elements(int error_code)
+void	show_error_count_elements(int error_code)
 {
 	if (error_code == OK_ELEMENT_NUMBERS)
 		return ;

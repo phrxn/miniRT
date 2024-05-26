@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   values_plane.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:29:48 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/22 16:06:49 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:52:30 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "values_elements.h"
-# include "properties_values.h"
-# include "values_errors.h"
-# include "array.h"
+#include "values_elements.h"
+#include "properties_values.h"
+#include "values_errors.h"
+#include "array.h"
 
 int	values_plane(t_list *token_list)
 {

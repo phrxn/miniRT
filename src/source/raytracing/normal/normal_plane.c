@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal_plane.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 01:19:33 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/19 01:50:06 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:26:12 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ t_matrix	*normal_at_plane(t_shape *shape, t_matrix *point)
 
 	(void)shape;
 	(void)point;
-	local_normal = matrix_create_vector(0,1,0);
+	local_normal = matrix_create_vector(0, 1, 0);
 	return (local_normal);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_element_ambient.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:00:16 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 03:42:28 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:53:16 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 #include "color.h"
 #include "ambient.h"
 
-static int fill_struct(t_element_ambient *element, t_list *token_list)
+static int	fill_struct(t_element_ambient *element, t_list *token_list)
 {
-	t_token				*token_tmp;
-	int					status;
+	t_token		*token_tmp;
+	int			status;
 
 	token_tmp = (t_token *)ft_lstget(token_list, 2)->content;
 	status = property_to_number(token_tmp, &element->radio);
@@ -49,7 +49,7 @@ static int	create_element(t_world *w, t_element_ambient *amb)
 	return (OK_BUILD_ELEMENT);
 }
 
-int	build_element_ambient(t_world *w,t_list *token_list)
+int	build_element_ambient(t_world *w, t_list *token_list)
 {
 	t_element_ambient	element;
 	int					status;

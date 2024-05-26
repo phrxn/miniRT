@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:02:06 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/26 00:35:48 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:30:35 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_atof.h"
 #include "libft.h"
 
-double ft_atof(const char *str)
+double	ft_atof(const char *str)
 {
-    double	result;
-    double	fraction;
-    int		sign;
+	double	result;
+	double	fraction;
+	int		sign;
 
-    fraction = 0.1;
-    sign = 1;
-    result = ft_atoi(str);
-    if (str[0] == '-')
-    {
-        sign = -1;
-		result *= sign;
-    }
-    while (*str != '.' && *str)
-		str++;
-    if (*str == '.')
+	fraction = 0.1;
+	sign = 1;
+	result = ft_atoi(str);
+	if (str[0] == '-')
 	{
-        str++;
+		sign = -1;
+		result *= sign;
+	}
+	while (*str != '.' && *str)
+		str++;
+	if (*str == '.')
+	{
+		str++;
 	}
 	while (*str >= '0' && *str <= '9')
 	{
@@ -39,5 +39,5 @@ double ft_atof(const char *str)
 		fraction /= 10.0;
 		str++;
 	}
-    return (result *= sign);
+	return (result *= sign);
 }

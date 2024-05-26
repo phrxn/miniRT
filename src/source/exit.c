@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 18:14:41 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 19:41:59 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:20:49 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	exit_program(t_minirt *mini, int exit_code, char *message, int perror)
 		destroy_minirt(mini);
 	if (message)
 	{
-		if(perror)
+		if (perror)
 			show_error_perror(message);
 		else
 			show_error_message(message);

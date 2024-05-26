@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_shape_sphere.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:00:32 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 05:30:16 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 05:05:03 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@
 #include "matrix_utils.h"
 #include "commons_build.h"
 
-
-static int fill_struct(t_element_sphere	*sph, t_list *token_list)
+static int	fill_struct(t_element_sphere *sph, t_list *token_list)
 {
 	t_token	*token_tmp;
 	int		status;
 
-	status = property_xyz_to_number(ft_lstget(token_list, 2), sph->coordenates);
+	status = property_xyz_to_number(ft_lstget(token_list, 2), sph->coor);
 	if (status != OK_CONVERT)
 		return (status);
 	token_tmp = (t_token *)ft_lstget(token_list, 8)->content;
@@ -43,8 +42,9 @@ static void	fill_transformation(t_element_sphere *sph, t_transformation *t)
 {
 	double	radius;
 
-	radius = sph->diameter/2;
-	matrix_fill_translation(t->translation, sph->coordenates[X], sph->coordenates[Y], sph->coordenates[Z]);
+	radius = sph->diameter / 2;
+	matrix_fill_translation(t->translation, sph->coor[X], \
+				sph->coor[Y], sph->coor[Z]);
 	matrix_fill_scaling(t->scale, radius, radius, radius);
 }
 
@@ -80,5 +80,3 @@ int	build_shape_sphere(t_world *world, t_list *token_list, t_transformation *t)
 		return (status);
 	return (put_in_world(shape, world));
 }
-
-

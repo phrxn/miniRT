@@ -16,7 +16,7 @@
 # include "lexer.h"
 # include "types.h"
 
-typedef enum	e_token_type
+typedef enum e_token_type
 {
 	identifier = 1,
 	pos_int,

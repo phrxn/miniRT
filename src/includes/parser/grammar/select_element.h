@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   select_element.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:20:14 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/24 19:55:28 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 03:56:06 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "token.h"
 
-typedef enum	e_element_type
+typedef enum e_element_type
 {
 	not_exist = 1,
 	ambient,

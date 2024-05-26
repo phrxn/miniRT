@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 21:22:09 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/24 19:55:43 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 05:03:03 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 #include <stdio.h>
 
-static void count_itens(t_list *valid_line_list, t_count_elements *counter)
+static void	count_itens(t_list *valid_line_list, t_count_elements *counter)
 {
 	t_uint				list_size;
 	t_uint				count;
@@ -29,7 +29,6 @@ static void count_itens(t_list *valid_line_list, t_count_elements *counter)
 
 	list_size = ft_lstsize(valid_line_list);
 	count = 0;
-
 	while (count < list_size)
 	{
 		line = ft_lstget(valid_line_list, count)->content;
@@ -72,7 +71,6 @@ static int	is_quantity_valid(t_count_elements *counter)
 	}
 	return (status);
 }
-
 
 /**
  * count_elements - checks if the list has the necessary number of elements to

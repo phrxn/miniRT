@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_shape_plane.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:00:29 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 05:30:51 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 05:08:01 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@
 #include "matrix_utils.h"
 #include "commons_build.h"
 
-static int fill_struct(t_element_plane	*pla, t_list *token_list)
+static int	fill_struct(t_element_plane	*pla, t_list *token_list)
 {
-	//t_token	*token_tmp;
 	int		status;
 
-	status = property_xyz_to_number(ft_lstget(token_list, 2), pla->coordenates);
+	status = property_xyz_to_number(ft_lstget(token_list, 2), pla->coor);
 	if (status != OK_CONVERT)
 		return (status);
 	status = property_xyz_to_number(ft_lstget(token_list, 8), pla->direction);
@@ -41,7 +40,8 @@ static int fill_struct(t_element_plane	*pla, t_list *token_list)
 static void	fill_transformation(t_element_plane *pla, t_transformation *t)
 {
 	tokens_to_rotation(t, pla->direction);
-	matrix_fill_translation(t->translation, pla->coordenates[X], pla->coordenates[Y], pla->coordenates[Z]);
+	matrix_fill_translation(t->translation, pla->coor[X], \
+		pla->coor[Y], pla->coor[Z]);
 }
 
 static int	put_in_world(t_shape *shape, t_world *world)

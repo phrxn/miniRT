@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 21:19:18 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/12 02:11:02 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:29:35 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	sort_intersection(void **t1, void **t2)
 	double	value2;
 	t_inter	*temp;
 
-	value1 = (*(t_inter**)t1)->t;
-	value2 = (*(t_inter**)t2)->t;
+	value1 = (*(t_inter **)t1)->t;
+	value2 = (*(t_inter **)t2)->t;
 	if (value2 < value1)
 	{
 		temp = *t1;

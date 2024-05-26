@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 22:00:34 by gacalaza          #+#    #+#             */
-/*   Updated: 2024/05/25 19:52:25 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:25:01 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ void	start_event_handlers(t_minirt *minirt)
 {
 	mlx_hook(minirt->window.window, ON_KEYDOWN, (1L << 0), key_pressed, minirt);
 	mlx_hook(minirt->window.window, ON_DESTROY, (0), terminate, minirt);
-	mlx_hook(minirt->window.window, ON_EXPOSE, (1L << 15), window_expose, minirt);
+	mlx_hook(minirt->window.window, ON_EXPOSE, (1L << 15), window_expose,
+		minirt);
 	mlx_loop(minirt->window.mlx);
 }
 
-void	create_window(t_minirt *minirt)  //rename para open_window
+void	create_window(t_minirt *minirt)
 {
 	t_window	*window;
 

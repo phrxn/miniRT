@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 01:28:55 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/18 16:20:43 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:33:51 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "matrix_alloc.h"
 #include <math.h>
 
-void		set_aspect(t_camera *new_camera, int hsize, int vsize)
+void	set_aspect(t_camera *new_camera, int hsize, int vsize)
 {
 	double		aspect;
 
@@ -52,9 +52,10 @@ t_camera	*create_camera(int hsize, int vsize, double field_of_view)
 	return (new_camera);
 }
 
-void		destroy_camera(t_camera **camera)
+void	destroy_camera(t_camera **camera)
 {
 	t_camera	*camera_tmp;
+
 	if (!camera || !*camera)
 		return ;
 	camera_tmp = *camera;

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   transformation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:15:09 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/23 11:45:43 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 05:02:02 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "transformation.h"
-# include "matrix.h"
-# include "matrix_alloc.h"
-# include "matrix_operations.h"
-# include "libft.h"
+#include "matrix.h"
+#include "matrix_alloc.h"
+#include "matrix_operations.h"
+#include "libft.h"
 
-t_transformation	*create_transformation()
+t_transformation	*create_transformation(void)
 {
 	t_transformation	*transformation;
 
@@ -39,7 +39,7 @@ t_transformation	*create_transformation()
 	return (transformation);
 }
 
-void				destroy_transformation(t_transformation	**transf)
+void	destroy_transformation(t_transformation	**transf)
 {
 	t_transformation	*transf_tmp;
 
@@ -56,7 +56,7 @@ void				destroy_transformation(t_transformation	**transf)
 	*transf = NULL;
 }
 
-void				fill_transformation_identity(t_transformation	*transf)
+void	fill_transformation_identity(t_transformation	*transf)
 {
 	matrix_fill_identity(transf->translation);
 	matrix_fill_identity(transf->rotation);
@@ -66,7 +66,7 @@ void				fill_transformation_identity(t_transformation	*transf)
 	matrix_fill_identity(transf->tmp);
 }
 
-int					make_transformation(t_transformation *transf)
+int	make_transformation(t_transformation *transf)
 {
 	int	status;
 
@@ -77,6 +77,7 @@ int					make_transformation(t_transformation *transf)
 	status = matrix_mult(transf->tmp, transf->scale, transf->transformation);
 	if (status != OK_OPERATION)
 		return (status);
-	status = matrix_inverse_4x4(transf->transformation, transf->transformation_inv);
+	status = matrix_inverse_4x4(transf->transformation, \
+				transf->transformation_inv);
 	return (status);
 }

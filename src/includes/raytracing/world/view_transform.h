@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   view_transform.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 04:10:52 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/15 04:19:16 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:21:41 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "matrix.h"
 
-typedef struct	s_view_transf_vars
+typedef struct s_view_transf_vars
 {
 	t_matrix	*forward;
 	t_matrix	*upn;

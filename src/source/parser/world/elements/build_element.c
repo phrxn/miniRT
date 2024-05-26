@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   build_element.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:52:32 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/24 22:19:57 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 04:49:49 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "build_element.h"
-# include "build_world.h"
-# include "world.h"
-# include "line.h"
-# include "select_element.h"
-# include "transform.h"
+#include "build_element.h"
+#include "build_world.h"
+#include "world.h"
+#include "line.h"
+#include "select_element.h"
+#include "transform.h"
 
 int	build_element(t_world *world, t_line *line, t_transformation *transform)
 {

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   material.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/26 04:07:21 by gacalaza          #+#    #+#             */
+/*   Updated: 2024/05/26 04:07:29 by gacalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MATERIAL_H
 # define MATERIAL_H
 
@@ -12,8 +24,8 @@ typedef struct s_material
 	double	shininess;
 }	t_material;
 
-void    fill_material(t_material *material);
+void	fill_material(t_material *material);
 
-void    material_copy(t_material *from, t_material *to);
+void	material_copy(t_material *from, t_material *to);
 
 #endif

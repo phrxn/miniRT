@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_errors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmanoel- <dmanoel-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gacalaza <gacalaza@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:49:58 by dmanoel-          #+#    #+#             */
-/*   Updated: 2024/05/25 22:44:27 by dmanoel-         ###   ########.fr       */
+/*   Updated: 2024/05/26 05:05:03 by gacalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@
 
 static void	printf_property2(int error_code)
 {
+	if (error_code == ERR_PROPERTY_VALUES_DIAM_INVALID)
+		ft_putstr_fd("property diameter (the value must be greather than zero)",
+			2);
+	if (error_code == ERR_PROPERTY_VALUES_HEIGHT)
+		ft_putstr_fd("property height", 2);
 	if (error_code == ERR_PROPERTY_VALUES_HEIGHT_INVALID)
-		ft_putstr_fd("property height (the value must be greather than zero)", 2);
+		ft_putstr_fd("property height (the value must be greather than zero)",
+			2);
 	if (error_code == ERR_PROPERTY_VALUES_COOR_CAMERA)
 		ft_putstr_fd("property coornenates (all values are 0's)", 2);
 }
@@ -27,7 +33,7 @@ static void	printf_property2(int error_code)
 static void	printf_property(int error_code)
 {
 	if (error_code == ERR_PROPERTY_VALUES_COOR)
-		ft_putstr_fd("property coordenates", 2);
+		ft_putstr_fd("property coor", 2);
 	if (error_code == ERR_PROPERTY_VALUES_DIRECTION_CONVERT)
 		ft_putstr_fd("property direction", 2);
 	if (error_code == ERR_PROPERTY_VALUES_DIRECTION_ALL_ZEROS)
@@ -46,11 +52,7 @@ static void	printf_property(int error_code)
 		ft_putstr_fd("property radio (value must be between 0.0-1.0)", 2);
 	if (error_code == ERR_PROPERTY_VALUES_DIAM)
 		ft_putstr_fd("property diameter", 2);
-	if (error_code ==  ERR_PROPERTY_VALUES_DIAM_INVALID)
-		ft_putstr_fd("property diameter (the value must be greather than zero)", 2);
-	if (error_code == ERR_PROPERTY_VALUES_HEIGHT)
-		ft_putstr_fd("property height", 2);
-	return printf_property2(error_code);
+	return (printf_property2(error_code));
 }
 
 static void	printf_default_text(int line_number)
