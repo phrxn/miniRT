@@ -6,7 +6,7 @@ CC = cc
 
 FLAGS = -Wall -Werror -Wextra
 
-DEFINES = -DBONUS=0
+DEFINES = -DBONUS=1
 
 # ==================================================
 
@@ -39,10 +39,13 @@ DIR_GUI				= source/gui/
 # ++++++++++ LIBRARIES DIRECTORIES ++++++++++
 DIR_LIBS	= libs/
 DIR_LIBFT	= $(DIR_LIBS)libft/
+DIR_MLX		= $(DIR_LIBS)minilibx-linux/
+
 
 # =============== LIBRARIES ===============
 LIBFT_A = $(DIR_LIBFT)libft.a
-LIBS = $(LIBFT_A)
+LIBML_A = $(DIR_MLX)libmlx.a
+LIBS = $(LIBFT_A) $(LIBML_A)
 
 
 # =============== SOURCES FILES ===============
@@ -188,7 +191,8 @@ FILES_GUI		=	event_keyboard.c \
 					window.c
 
 # =============== INCLUDES FILES ===============
-INCLUDES =	includes/ \
+INCLUDES =	$(DIR_MLX) \
+			includes/ \
 			includes/array/ \
 			includes/errors/ \
 			includes/parser/ \
@@ -251,13 +255,15 @@ DEPENDS =	$(SOURCES:.c=.d)
 all : $(NAME)
 
 $(NAME) : $(LIBS) $(OBJECTS)
-	$(CC) $(OBJECTS) -o $@ $(LIBFT_A) -lXext -lX11 -lm -lmlx
+	$(CC) $(OBJECTS) -o $@ $(LIBFT_A) $(LIBML_A) -lXext -lX11 -lm
 
 %.o : %.c
 	$(CC) $(FLAGS) $(DEFINES) $(INCLUDES_F) -I$(DIR_LIBFT) -MMD -c $< -o $@
 
 $(LIBS) :
 	$(MAKE) -C $(DIR_LIBFT) rebonus
+	$(MAKE) -C $(DIR_MLX)
+
 
 clean :
 	$(MAKE) -C $(DIR_LIBFT) clean
