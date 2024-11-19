@@ -25,6 +25,7 @@ void	start_minirt(t_minirt *minirt)
 	minirt->window.bits_per_pixel = 0;
 	minirt->window.endian = 0;
 	minirt->canvas = 0;
+	minirt->fd_rt_file = 0;
 }
 
 void	destroy_minirt(t_minirt *minirt)

@@ -12,6 +12,7 @@
 
 #include "check_params.h"
 #include "minirt.h"
+#include "minirt_utils.h"
 #include "window.h"
 #include "exit.h"
 #include "parser.h"
@@ -19,27 +20,14 @@
 #include "canvas.h"
 #include "file.h"
 
-static void	start_minirt_struct(t_minirt *minirt)
-{
-	minirt->window.mlx = 0;
-	minirt->window.window = 0;
-	minirt->window.image = 0;
-	minirt->window.addr = 0;
-	minirt->window.line_length = 0;
-	minirt->window.bits_per_pixel = 0;
-	minirt->window.endian = 0;
-}
-
 static void	start_things(t_minirt *minirt, char **argv)
 {
-	start_minirt_struct(minirt);
+	start_minirt(minirt);
 	create_window(minirt);
 	minirt->canvas = create_canvas(WIDTH, HEIGHT, minirt->window.endian);
 	if (!minirt->canvas)
 		exit_program(minirt, 1, MERR_MALLOC_CANVAS, 0);
-	minirt->fd_rt_file = open_file(argv[1]);
-	if (minirt->fd_rt_file == -1)
-		exit_program(minirt, 1, MERR_OPEN_RT_FILE, 1);
+	minirt->fd_rt_file = open_file(argv[1], minirt);
 }
 
 static void	make_raytracing(t_minirt *minirt)

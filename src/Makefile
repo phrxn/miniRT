@@ -6,7 +6,7 @@ CC = cc
 
 FLAGS = -Wall -Werror -Wextra
 
-DEFINES = -DBONUS=0
+DEFINES = -DBONUS=1
 
 # ==================================================
 
@@ -40,6 +40,7 @@ DIR_GUI				= source/gui/
 DIR_LIBS	= libs/
 DIR_LIBFT	= $(DIR_LIBS)libft/
 DIR_MLX		= $(DIR_LIBS)minilibx-linux/
+
 
 # =============== LIBRARIES ===============
 LIBFT_A = $(DIR_LIBFT)libft.a
@@ -190,7 +191,8 @@ FILES_GUI		=	event_keyboard.c \
 					window.c
 
 # =============== INCLUDES FILES ===============
-INCLUDES =	includes/ \
+INCLUDES =	$(DIR_MLX) \
+			includes/ \
 			includes/array/ \
 			includes/errors/ \
 			includes/parser/ \
@@ -248,23 +250,6 @@ SOURCES +=	$(SHAPE_F) $(SOURCES_F) $(SYNTAX_F) $(WORLD_F)
 OBJECTS =	$(SOURCES:.c=.o)
 DEPENDS =	$(SOURCES:.c=.d)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # =============== RECIPES ===============
 
 all : $(NAME)
@@ -275,31 +260,21 @@ $(NAME) : $(LIBS) $(OBJECTS)
 %.o : %.c
 	$(CC) $(FLAGS) $(DEFINES) $(INCLUDES_F) -I$(DIR_LIBFT) -MMD -c $< -o $@
 
-
 $(LIBS) :
 	$(MAKE) -C $(DIR_LIBFT) rebonus
 	$(MAKE) -C $(DIR_MLX)
 
+
 clean :
 	$(MAKE) -C $(DIR_LIBFT) clean
-	# $(MAKE) -C $(DIR_MLX) clean
 	$(RM) $(OBJECTS)
 	$(RM) $(DEPENDS)
-#$(RM) $(OBJECTS_BONUS)
-#$(RM) $(DEPENDS_BONUS)
 
 fclean : clean
 	$(RM) $(NAME)
 	$(MAKE) -C $(DIR_LIBFT) fclean
 
 re : fclean all
-
-# bonus : $(LIBS) $(OBJECTS_BONUS)
-# define WIDTH 800
-# define HEIGHT 600
-# define WIN_TIT "miniRT"
-
-# 	$(CC) $(FLAGS) $(OBJECTS_BONUS) -o $(NAME) $(LIBFT_A) $(LIBML_A) -lXext -lX11 -lm -DBONUS
 
 -include $(DEPENDS)
 

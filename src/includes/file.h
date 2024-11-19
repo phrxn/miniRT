@@ -12,9 +12,10 @@
 
 #ifndef FILE_H
 # define FILE_H
+# include "minirt.h"
 
 # define MSG_OPEN_RT_FILE "Could not open the rt file"
 
-int	open_file(char *file_name);
+int	open_file(char *file_name, t_minirt *minirt);
 
 #endif

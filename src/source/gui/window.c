@@ -13,7 +13,7 @@
 #include "window.h"
 #include "event_keyboard.h"
 #include "event_window.h"
-#include "mlx.h"
+#include <mlx.h>
 #include "minirt.h"
 #include <stdlib.h>
 #include "exit.h"
